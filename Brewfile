@@ -1,3 +1,4 @@
+tap "felixkratz/formulae"
 tap "gantoreno/macfetch"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
@@ -10,14 +11,15 @@ brew "bat"
 brew "bear"
 brew "python@3.11"
 brew "bpytop"
-brew "fastfetch"
 brew "fd"
 brew "fzf"
 brew "gcc"
 brew "gdu"
 brew "grip"
+brew "jq"
 brew "lsd"
 brew "mas"
+brew "neofetch"
 brew "neovim"
 brew "node"
 brew "ranger"
@@ -25,9 +27,12 @@ brew "ripgrep"
 brew "speedtest-cli"
 brew "tmux"
 brew "tree"
+brew "felixkratz/formulae/sketchybar"
+brew "koekeishiya/formulae/skhd"
+brew "koekeishiya/formulae/yabai"
 cask "aldente"
-cask "amethyst"
 cask "appcleaner"
+cask "arc"
 cask "audacity"
 cask "balenaetcher"
 cask "bitwarden"
@@ -38,24 +43,21 @@ cask "hiddenbar"
 cask "iina"
 cask "keyclu"
 cask "kitty"
-cask "macdown"
-cask "microsoft-auto-update"
-cask "microsoft-teams"
-cask "monitorcontrol"
+cask "lmms"
 cask "obsidian"
-cask "orion"
+cask "private-internet-access"
 cask "raycast"
 cask "tomatobar"
 cask "visual-studio-code"
+mas "AdGuard for Safari", id: 1440147259
 mas "Color Picker", id: 1545870783
-mas "DaVinci Resolve", id: 571213070
 mas "Dropover", id: 1355679052
 mas "Keynote", id: 409183694
-mas "Noir", id: 1592917505
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Prime Video", id: 545519333
 mas "Telegram", id: 747648890
+mas "The Unarchiver", id: 425424353
 mas "Vimari", id: 1480933944
 vscode "Cardinal90.multi-cursor-case-preserve"
 vscode "Catppuccin.catppuccin-vsc"

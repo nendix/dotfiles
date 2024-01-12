@@ -3,12 +3,12 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="bira"
 
 # Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
+# DISABLE_AUTO_TITLE="true"
 
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh
 
 plugins=(
-  vi-mode
+  # vi-mode
   aliases
   brew
 	git
@@ -18,7 +18,14 @@ plugins=(
   web-search
 	zsh-autosuggestions
   zsh-syntax-highlighting
+  zsh-vim-mode
 )
+MODE_CURSOR_VIINS="#f4dbd6 blinking bar"
+MODE_CURSOR_REPLACE="#f4dbd6 blinking underline"
+MODE_CURSOR_VICMD="#f4dbb6 steady block"
+MODE_CURSOR_SEARCH="#f4dbd6 steady underline"
+MODE_CURSOR_VISUAL="#f4dbb6 steady block"
+MODE_CURSOR_VLINE="#f4dbd6 steady block"
 
 source $ZSH/oh-my-zsh.sh
 

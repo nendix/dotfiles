@@ -51,7 +51,7 @@ keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 ----------------------
 
 -- bufferline
-keymap.set("n", "<leader>bd", ":bdelete<CR>")
+keymap.set("n", "<leader>x", ":bdelete<CR>")
 keymap.set("n", "L", ":BufferLineCycleNext<CR>")
 keymap.set("n", "H", ":BufferLineCyclePrev<CR>")
 
