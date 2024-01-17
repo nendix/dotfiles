@@ -8,7 +8,6 @@ ZSH_THEME="bira"
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh
 
 plugins=(
-  # vi-mode
   aliases
   brew
 	git
