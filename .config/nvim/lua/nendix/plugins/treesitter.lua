@@ -18,7 +18,6 @@ treesitter.setup({
 	ensure_installed = {
 		"json",
 		"javascript",
-		"typescript",
 		"tsx",
 		"yaml",
 		"html",
@@ -26,12 +25,10 @@ treesitter.setup({
 		"c",
 		"markdown",
 		"markdown_inline",
-		"svelte",
 		"graphql",
 		"bash",
 		"lua",
 		"vim",
-		"dockerfile",
 		"gitignore",
 	},
 	-- auto install above language parsers

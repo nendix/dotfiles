@@ -35,7 +35,6 @@ return packer.startup(function(use)
 
 	-- colorscheme
 	use({ "catppuccin/nvim", as = "catppuccin" })
-	use({ "folke/tokyonight.nvim", as = "catppuccin" })
 
 	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 	use("szw/vim-maximizer") -- maximizes and restores current window
@@ -112,6 +111,17 @@ return packer.startup(function(use)
 
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+
+	-- obsidian plugin
+	use({
+		"epwalsh/obsidian.nvim",
+		tag = "*", -- recommended, use latest release instead of latest commit
+		requires = {
+			-- Required.
+			"nvim-lua/plenary.nvim",
+			-- see below for full list of optional dependencies 👇
+		},
+	})
 
 	if packer_bootstrap then
 		require("packer").sync()
