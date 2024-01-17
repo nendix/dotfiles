@@ -26,6 +26,7 @@ null_ls.setup({
 			end,
 		}),
 		formatting.clang_format,
+		-- disable copyright message
 		diagnostics.cpplint.with({
 			filter = function(diagnostic)
 				return diagnostic.code == "-whitespace,-legal/copyright"
