@@ -84,6 +84,12 @@ _G.packer_plugins = {
     path = "/Users/daniele/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["alpha-nvim"] = {
+    config = { "\27LJ\2\nÝ\4\0\0\b\0\27\00156\0\0\0'\2\1\0B\0\2\0029\0\2\0006\2\0\0'\4\3\0B\2\2\0029\2\4\2B\0\2\0016\0\0\0'\2\3\0B\0\2\0029\1\5\0009\1\6\0014\2\a\0009\3\b\0'\5\t\0'\6\n\0'\a\v\0B\3\4\2>\3\1\0029\3\b\0'\5\f\0'\6\r\0'\a\14\0B\3\4\2>\3\2\0029\3\b\0'\5\15\0'\6\16\0'\a\17\0B\3\4\2>\3\3\0029\3\b\0'\5\18\0'\6\19\0'\a\20\0B\3\4\2>\3\4\0029\3\b\0'\5\21\0'\6\22\0'\a\23\0B\3\4\2>\3\5\0029\3\b\0'\5\24\0'\6\25\0'\a\26\0B\3\4\0?\3\0\0=\2\a\1K\0\1\0\16<cmd>qa<CR>\20ï— > Quit NVIM\6q\28<cmd>SessionRestore<CR>2ó°¯  > Restore Session For Current Directory\vSPC wr!<cmd>Telescope live_grep<CR>\21ï¢  > Find Word\vSPC fs\"<cmd>Telescope find_files<CR>\21ó°±¼ > Find File\vSPC ff\28<cmd>NvimTreeToggle<CR> î—¾  > Toggle file explorer\nSPC e\17<cmd>ene<CR>\20ï…›  > New File\6e\vbutton\bval\fbuttons\fsection\vconfig\27alpha.themes.dashboard\nsetup\nalpha\frequire\r€€À™\4\0" },
+    loaded = true,
+    path = "/Users/daniele/.local/share/nvim/site/pack/packer/start/alpha-nvim",
+    url = "https://github.com/goolord/alpha-nvim"
+  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/Users/daniele/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
@@ -240,10 +246,19 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/daniele/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
     url = "https://github.com/christoomey/vim-tmux-navigator"
+  },
+  ["which-key.nvim"] = {
+    loaded = true,
+    path = "/Users/daniele/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: alpha-nvim
+time([[Config for alpha-nvim]], true)
+try_loadstring("\27LJ\2\nÝ\4\0\0\b\0\27\00156\0\0\0'\2\1\0B\0\2\0029\0\2\0006\2\0\0'\4\3\0B\2\2\0029\2\4\2B\0\2\0016\0\0\0'\2\3\0B\0\2\0029\1\5\0009\1\6\0014\2\a\0009\3\b\0'\5\t\0'\6\n\0'\a\v\0B\3\4\2>\3\1\0029\3\b\0'\5\f\0'\6\r\0'\a\14\0B\3\4\2>\3\2\0029\3\b\0'\5\15\0'\6\16\0'\a\17\0B\3\4\2>\3\3\0029\3\b\0'\5\18\0'\6\19\0'\a\20\0B\3\4\2>\3\4\0029\3\b\0'\5\21\0'\6\22\0'\a\23\0B\3\4\2>\3\5\0029\3\b\0'\5\24\0'\6\25\0'\a\26\0B\3\4\0?\3\0\0=\2\a\1K\0\1\0\16<cmd>qa<CR>\20ï— > Quit NVIM\6q\28<cmd>SessionRestore<CR>2ó°¯  > Restore Session For Current Directory\vSPC wr!<cmd>Telescope live_grep<CR>\21ï¢  > Find Word\vSPC fs\"<cmd>Telescope find_files<CR>\21ó°±¼ > Find File\vSPC ff\28<cmd>NvimTreeToggle<CR> î—¾  > Toggle file explorer\nSPC e\17<cmd>ene<CR>\20ï…›  > New File\6e\vbutton\bval\fbuttons\fsection\vconfig\27alpha.themes.dashboard\nsetup\nalpha\frequire\r€€À™\4\0", "config", "alpha-nvim")
+time([[Config for alpha-nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]
