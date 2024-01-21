@@ -1,11 +1,10 @@
 -- disable multiple different client encodings
-local notify = vim.notify
 vim.notify = function(msg, ...)
 	if msg:match("warning: multiple different client offset_encodings") then
 		return
 	end
 
-	notify(msg, ...)
+	vim.notify(msg, ...)
 end
 
 local opt = vim.opt -- for conciseness
@@ -50,3 +49,16 @@ opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
 
 opt.iskeyword:append("-") -- consider string-string as whole word
+
+-- removing cmdline
+opt.cmdheight = 0
+vim.api.nvim_create_autocmd({ "RecordingEnter" }, {
+	callback = function()
+		vim.opt.cmdheight = 1
+	end,
+})
+vim.api.nvim_create_autocmd({ "RecordingLeave" }, {
+	callback = function()
+		vim.opt.cmdheight = 0
+	end,
+})

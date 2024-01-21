@@ -58,8 +58,6 @@ return packer.startup(function(use)
 	use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
 	-- statusline
 	use("nvim-lualine/lualine.nvim")
-	-- indent blankline
-	use("lukas-reineke/indent-blankline.nvim")
 
 	-- fuzzy finding w/ telescope
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
@@ -111,16 +109,6 @@ return packer.startup(function(use)
 
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
-
-	-- obsidian plugin
-	use({
-		"epwalsh/obsidian.nvim",
-		tag = "*", -- recommended, use latest release instead of latest commit
-		requires = {
-			-- Required.
-			"nvim-lua/plenary.nvim",
-		},
-	})
 
 	if packer_bootstrap then
 		require("packer").sync()
