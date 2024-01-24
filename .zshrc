@@ -5,6 +5,7 @@ ZSH_THEME="bira"
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 plugins=(
+  vi-mode
   aliases
   brew
 	git
@@ -12,26 +13,24 @@ plugins=(
   safe-paste
   tmux
   web-search
-	zsh-autosuggestions
   zsh-syntax-highlighting
-  zsh-vim-mode
+	zsh-autosuggestions
 )
 
-source $ZSH/oh-my-zsh.sh
 
-MODE_CURSOR_VIINS="#f4dbd6 blinking bar"
-MODE_CURSOR_REPLACE="#f4dbd6 blinking underline"
-MODE_CURSOR_VICMD="#f4dbb6 steady block"
-MODE_CURSOR_SEARCH="#f4dbd6 steady underline"
-MODE_CURSOR_VISUAL="#f4dbb6 steady block"
-MODE_CURSOR_VLINE="#f4dbd6 steady block"
-KEYTIMEOUT=10
+KEYTIMEOUT=1
+
+source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 export EDITOR=nvim
+
+# export TERM=screen-256color
+
+export VI_MODE_SET_CURSOR=true
 
 # Line for custom utils
 export PATH="/Users/daniele/Developer/utils:$PATH"
@@ -59,11 +58,14 @@ alias m="make"
 alias mr="make run"
 alias mc="make clean"
 alias bmr="make clean && bear -- make all"
-alias vi="vim"
 alias ls="lsd"
 alias lsa="ls -a"
 alias lst="ls --tree"
 alias btop="bpytop"
 alias rng="ranger"
+
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/usr/local/mysql/bin/:$PATH"
+
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
+eval "$(starship init zsh)"
