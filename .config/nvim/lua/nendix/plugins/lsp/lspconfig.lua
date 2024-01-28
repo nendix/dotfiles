@@ -29,7 +29,7 @@ return {
 			keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
 
 			opts.desc = "Show LSP implementations"
-			keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts, {desc = "Show LSP implementations"}) -- show lsp implementations
+			keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
 
 			opts.desc = "Show LSP type definitions"
 			keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
@@ -54,9 +54,6 @@ return {
 
 			opts.desc = "Show documentation for what is under cursor"
 			keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
-
-			opts.desc = "Restart LSP"
-			keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 		end
 
 		-- used to enable autocompletion (assign to every lsp server config)
@@ -90,11 +87,6 @@ return {
 		lspconfig["jdtls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			-- cmd = {
-			-- 	"/Users/daniele/.local/share/nvim/mason/bin/jdtls",
-			-- 	"-configuration /Users/daniele/.cache/jdtls/config/",
-			-- 	"-data /Users/daniele/.cache/jdtls/workspace",
-			-- },
 		})
 
 		-- configure python server
