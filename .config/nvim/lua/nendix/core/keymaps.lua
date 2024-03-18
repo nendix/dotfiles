@@ -43,11 +43,8 @@ keymap.set("n", "<leader>tx", ":tabclose<CR>", { desc = "Close current tab" }) -
 ----------------------
 -- Plugin Keybinds
 ----------------------
-
--- bufferline
+-- buffer
 keymap.set("n", "<leader>x", ":bdelete<CR>", { desc = "Close buffer" })
-keymap.set("n", "L", ":BufferLineCycleNext<CR>", { desc = "Next buffer" })
-keymap.set("n", "H", ":BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
 
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", { desc = "Split window maximization" }) -- toggle split window maximization
@@ -64,7 +61,7 @@ keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy f
 keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
 keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
-keymap.set("n", "<leader>hh", "<cmd>Telescope harpoon marks<cr>", { desc = "Find harpoon marks" })
+keymap.set("n", "<leader>fh", "<cmd>Telescope harpoon marks<cr>", { desc = "Find harpoon marks" })
 
 -- telescope git commands
 keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", { desc = "List all git commits" }) -- list all git commits (use <cr> to checkout) ["gc" for git commits]

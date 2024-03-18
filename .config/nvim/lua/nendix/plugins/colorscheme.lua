@@ -10,8 +10,8 @@ return {
 					light = "latte",
 					dark = "macchiato",
 				},
-				transparent_background = false,
-				show_end_of_buffer = false, -- show the '~' characters after the end of buffers
+				transparent_background = true,
+				show_end_of_buffer = true, -- show the '~' characters after the end of buffers
 				term_colors = false,
 				dim_inactive = {
 					enabled = false,
@@ -38,6 +38,7 @@ return {
 				color_overrides = {},
 				custom_highlights = {},
 				integrations = {
+					treesitter = true,
 					cmp = true,
 					gitsigns = true,
 					nvimtree = true,
