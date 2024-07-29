@@ -31,6 +31,7 @@ return {
 				"cssls",
 				"lua_ls",
 				"clangd",
+				"gopls",
 				"jdtls",
 			},
 			-- auto-install configured servers (with lspconfig)

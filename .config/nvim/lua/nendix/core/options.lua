@@ -1,9 +1,9 @@
 -- disable multiple different client encodings
-vim.notify = function(msg, ...)
-	if msg:match("warning: multiple different client offset_encodings") then
-		return
-	end
-end
+-- vim.notify = function(msg, ...)
+-- 	if msg:match("warning: multiple different client offset_encodings") then
+-- 		return
+-- 	end
+-- end
 
 local opt = vim.opt -- for conciseness
 
@@ -34,7 +34,7 @@ opt.cursorline = true -- highlight the current cursor line
 -- (have to use iterm2 or any other true color terminal)
 opt.termguicolors = true
 opt.background = "dark" -- colorschemes that can be light or dark will be made dark
-opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+opt.signcolumn = "no" -- show sign column so that text doesn't shift
 
 -- backspace
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
@@ -49,14 +49,14 @@ opt.splitbelow = true -- split horizontal window to the bottom
 opt.iskeyword:append("-") -- consider string-string as whole word
 
 -- removing cmdline
-opt.cmdheight = 0
-vim.api.nvim_create_autocmd({ "RecordingEnter" }, {
-	callback = function()
-		vim.opt.cmdheight = 1
-	end,
-})
-vim.api.nvim_create_autocmd({ "RecordingLeave" }, {
-	callback = function()
-		vim.opt.cmdheight = 0
-	end,
-})
+-- opt.cmdheight = 0
+-- vim.api.nvim_create_autocmd({ "RecordingEnter" }, {
+-- 	callback = function()
+-- 		vim.opt.cmdheight = 1
+-- 	end,
+-- })
+-- vim.api.nvim_create_autocmd({ "RecordingLeave" }, {
+-- 	callback = function()
+-- 		vim.opt.cmdheight = 0
+-- 	end,
+-- })

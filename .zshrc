@@ -2,7 +2,6 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="bira"
 
-source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 plugins=(
   vi-mode
@@ -35,6 +34,9 @@ export VI_MODE_SET_CURSOR=true
 # Line for custom utils
 export PATH="/Users/daniele/Developer/utils:$PATH"
 
+# direnv 
+eval "$(direnv hook zsh)"
+
 # fzf options
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
@@ -64,8 +66,13 @@ alias lst="ls --tree"
 alias btop="bpytop"
 alias rng="ranger"
 
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+# export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/usr/local/mysql/bin/:$PATH"
+export JAVA_HOME="/opt/homebrew/Cellar/openjdk@17/17.0.11/libexec/openjdk.jdk/Contents/Home"
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
-eval "$(starship init zsh)"
+# source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
+
+eval "$(zoxide init --cmd cd zsh)"
+
+eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zencat.toml)"

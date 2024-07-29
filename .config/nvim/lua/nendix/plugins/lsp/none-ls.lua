@@ -1,7 +1,6 @@
 return {
 	"nvimtools/none-ls.nvim", -- configure formatters & linters
-	lazy = true,
-	event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
+	-- event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
 	dependencies = {
 		"jay-babu/mason-null-ls.nvim",
 	},
@@ -14,11 +13,11 @@ return {
 
 		mason_null_ls.setup({
 			ensure_installed = {
-				"prettier", -- ts/js formatter
 				"stylua", -- lua formatter
-				"eslint_d", -- ts/js linter
-				"cpplint",
-				"clang-format",
+				"clang-format", -- c c++ formatter
+				"golangci-lint", -- go linter
+				"gofumpt", -- go formatter
+				"shfmt", -- bash formatter
 			},
 		})
 
@@ -38,21 +37,12 @@ return {
 				--  to disable file types use
 				--  "formatting.prettier.with({disabled_filetypes = {}})" (see null-ls docs)
 				formatting.prettier, -- js/ts formatter
+				formatting.gofumpt, -- go formatter
 				formatting.stylua, -- lua formatter
-				diagnostics.eslint_d.with({ -- js/ts linter
-					-- only enable eslint if root has .eslintrc.js (not in youtube nvim video)
-					condition = function(utils)
-						return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
-					end,
-				}),
-				formatting.clang_format,
-				-- disable copyright message
-				diagnostics.cpplint.with({
-					filter = function(diagnostic)
-						return diagnostic.code == "-whitespace,-legal/copyright"
-					end,
-				}),
 				formatting.shfmt,
+				formatting.clang_format,
+				diagnostics.golangci_lint,
+				diagnostics.markuplint,
 			},
 			-- configure format on save
 			on_attach = function(current_client, bufnr)

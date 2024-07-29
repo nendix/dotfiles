@@ -1,5 +1,6 @@
 # ignore .DS_Store file
 .DS_Store
 
-raycast/
 gtk-2.0/
+zed/
+mgba/

@@ -79,8 +79,20 @@ return {
 			on_attach = on_attach,
 		})
 
+		-- configure ts/js server
+		lspconfig["tsserver"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
 		-- configure c server
 		lspconfig["clangd"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		-- configure go server
+		lspconfig["gopls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
@@ -93,12 +105,6 @@ return {
 
 		-- configure java server
 		lspconfig["jdtls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure python server
-		lspconfig["pyright"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})

@@ -74,4 +74,4 @@ keymap.set(
 	{ desc = "List current changes per file with diff preview " }
 )
 
--- more mapping in lua/nendix/plugins/lsp/lspcongig.lua
+-- more mapping in lua/nendix/plugins/lsp/lspconfig.lua

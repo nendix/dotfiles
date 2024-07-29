@@ -6,7 +6,7 @@ return {
 			options = {
 				theme = "auto",
 				component_separators = { left = "|", right = "|" },
-				section_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
 				disabled_filetypes = {
 					statusline = { "NvimTree" },
 					winbar = {},
@@ -15,8 +15,15 @@ return {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = { "branch", "diff", "diagnostics" },
-				lualine_c = { "buffers" },
-				lualine_x = { "encoding", "filetype" },
+				lualine_x = {
+					{
+						require("noice").api.statusline.mode.get,
+						cond = require("noice").api.statusline.mode.has,
+						color = { fg = "#cdd6f4" },
+					},
+					"encoding",
+					"filetype",
+				},
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
 			},

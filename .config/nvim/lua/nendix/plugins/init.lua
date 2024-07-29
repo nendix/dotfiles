@@ -6,5 +6,4 @@ return {
 	"tpope/vim-surround", -- change surroundings
 	"mbbill/undotree", -- undotree
 	"nvim-tree/nvim-web-devicons", -- vs-code icons
-	"lewis6991/gitsigns.nvim",
 }
