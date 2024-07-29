@@ -15,20 +15,14 @@ keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "UndotreeToggle" })
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "No highlights" })
 
 keymap.set("x", "<leader>p", [["_dP]], { desc = "Copy and paste w/o copying into reg in visual mode" })
-
--- move lines
--- keymap.set("n", "<leader>j", ":m .+1<CR>==")
--- keymap.set("n", "<leader>k", ":m .-2<CR>==")
--- keymap.set("v", "<leader>j", ":m '>+1<CR>gv==gv")
--- keymap.set("v", "<leader>k", ":m '>-2<CR>gv==gv")
-
-keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank w/o copying into system clipboard" })
-keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank line w/o copying into system clipboard" })
-
 keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete w/o copying into reg" })
 
 -- delete single character without ciw into register
 -- keymap.set("n", "x", '"_x')
+
+-- increment/decrement
+keymap.set("n", "+", "<C-a>", { desc = "Increment" })
+keymap.set("n", "-", "<C-x>", { desc = "Decrement" })
 
 -- window management
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
