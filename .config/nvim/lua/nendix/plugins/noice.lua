@@ -10,7 +10,7 @@ return {
 		-- OPTIONAL:
 		--   `nvim-notify` is only needed, if you want to use the notification view.
 		--   If not available, we use `mini` as the fallback
-		"rcarriga/nvim-notify",
+		-- "rcarriga/nvim-notify",
 	},
 	config = function()
 		require("noice").setup({
@@ -39,38 +39,38 @@ return {
 					},
 					opts = { skip = true },
 				},
-				{
-					filter = {
-						event = "msg_show",
-						kind = "",
-						find = "change",
-					},
-					opts = { skip = true },
-				},
-				{
-					filter = {
-						event = "msg_show",
-						kind = "",
-						find = "before",
-					},
-					opts = { skip = true },
-				},
-				{
-					filter = {
-						event = "msg_show",
-						kind = "",
-						find = "after",
-					},
-					opts = { skip = true },
-				},
-				{
-					filter = {
-						event = "msg_show",
-						kind = "",
-						find = "lines",
-					},
-					opts = { skip = true },
-				},
+				-- {
+				-- 	filter = {
+				-- 		event = "msg_show",
+				-- 		kind = "",
+				-- 		find = "change",
+				-- 	},
+				-- 	opts = { skip = true },
+				-- },
+				-- {
+				-- 	filter = {
+				-- 		event = "msg_show",
+				-- 		kind = "",
+				-- 		find = "before",
+				-- 	},
+				-- 	opts = { skip = true },
+				-- },
+				-- {
+				-- 	filter = {
+				-- 		event = "msg_show",
+				-- 		kind = "",
+				-- 		find = "after",
+				-- 	},
+				-- 	opts = { skip = true },
+				-- },
+				-- {
+				-- 	filter = {
+				-- 		event = "msg_show",
+				-- 		kind = "",
+				-- 		find = "lines",
+				-- 	},
+				-- 	opts = { skip = true },
+				-- },
 			},
 		})
 	end,
