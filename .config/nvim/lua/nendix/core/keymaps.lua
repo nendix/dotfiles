@@ -15,7 +15,7 @@ keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "UndotreeToggle" })
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "No highlights" })
 
 keymap.set("x", "<leader>p", [["_dP]], { desc = "Copy and paste w/o copying into reg in visual mode" })
-keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete w/o copying into reg" })
+-- keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete w/o copying into reg" })
 
 -- delete single character without ciw into register
 -- keymap.set("n", "x", '"_x')
@@ -38,7 +38,7 @@ keymap.set("n", "<leader>tx", ":tabclose<CR>", { desc = "Close current tab" }) -
 -- Plugin Keybinds
 ----------------------
 -- buffer
-keymap.set("n", "<leader>x", ":bdelete<CR>", { desc = "Close buffer" })
+keymap.set("n", "<leader>bx", ":bdelete<CR>", { desc = "Close buffer" })
 
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", { desc = "Split window maximization" }) -- toggle split window maximization

@@ -5,7 +5,7 @@ return {
 	config = function()
 		require("lualine").setup({
 			options = {
-				theme = require("nendix.custom.themes.catlineppucin").theme(),
+				theme = require("nendix.custom.themes.catline").theme(),
 				component_separators = { left = "|", right = "|" },
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = {
