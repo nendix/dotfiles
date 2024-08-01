@@ -7,6 +7,7 @@
 
 local opt = vim.opt -- for conciseness
 
+opt.showmode = false
 opt.swapfile = false
 -- line numbers
 opt.relativenumber = true -- show relative line numbers

@@ -1,10 +1,11 @@
 return {
+
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		require("lualine").setup({
 			options = {
-				theme = "auto",
+				theme = require("nendix.custom.themes.catlineppucin").theme(),
 				component_separators = { left = "|", right = "|" },
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = {
@@ -13,14 +14,16 @@ return {
 				},
 			},
 			sections = {
-				lualine_a = { "mode" },
-				lualine_b = { "branch", "diff", "diagnostics" },
-				lualine_x = {
+				lualine_a = {
+					"mode",
 					{
 						require("noice").api.statusline.mode.get,
 						cond = require("noice").api.statusline.mode.has,
-						color = { fg = "#cdd6f4" },
+						color = { fg = "#181825" },
 					},
+				},
+				lualine_b = { "branch", "diff", "diagnostics" },
+				lualine_x = {
 					"encoding",
 					"filetype",
 				},

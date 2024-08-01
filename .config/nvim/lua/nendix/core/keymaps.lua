@@ -70,3 +70,8 @@ keymap.set(
 )
 
 -- more mapping in lua/nendix/plugins/lsp/lspconfig.lua
+-- and in lua/nendix/plugins/lsp/formatting.lua
+-- and in lua/nendix/plugins/lsp/linting.lua
+-- and lua/nendix/plugins/harpoon.lua
+-- and lua/nendix/plugins/git-signs.lua
+-- and lua/nendix/plugins/trouble.lua
