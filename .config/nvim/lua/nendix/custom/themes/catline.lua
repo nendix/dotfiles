@@ -1,5 +1,5 @@
-local catlineppucin = {}
-catlineppucin.theme = function()
+local catline = {}
+catline.theme = function()
 	local colors = {
 		black = "#181826",
 		white = "#ccd6f4",
@@ -44,4 +44,4 @@ catlineppucin.theme = function()
 		},
 	}
 end
-return catlineppucin
+return catline

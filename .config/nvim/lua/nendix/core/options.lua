@@ -1,9 +1,10 @@
--- disable multiple different client encodings
--- vim.notify = function(msg, ...)
--- 	if msg:match("warning: multiple different client offset_encodings") then
--- 		return
--- 	end
--- end
+-- trigger treesitter for go files
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "go",
+	callback = function()
+		vim.treesitter.start()
+	end,
+})
 
 local opt = vim.opt -- for conciseness
 
@@ -17,7 +18,7 @@ opt.number = true -- shows absolute line number on cursor line (when relative nu
 opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
 opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
-opt.autoindent = true -- copy indent from current line when starting new one
+opt.smartindent = true -- copy indent from current line when starting new one
 
 -- line wrapping
 opt.wrap = false -- disable line wrapping
@@ -49,7 +50,7 @@ opt.splitbelow = true -- split horizontal window to the bottom
 opt.iskeyword:append("-") -- consider string-string as whole word
 
 -- removing cmdline
--- opt.cmdheight = 0
+opt.cmdheight = 0
 -- vim.api.nvim_create_autocmd({ "RecordingEnter" }, {
 -- 	callback = function()
 -- 		vim.opt.cmdheight = 1

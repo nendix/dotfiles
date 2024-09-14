@@ -32,7 +32,7 @@ export EDITOR=nvim
 export VI_MODE_SET_CURSOR=true
 
 # Line for custom utils
-export PATH="/Users/daniele/Developer/utils:$PATH"
+export PATH="$HOME/Developer/utils:$PATH"
 
 # direnv 
 eval "$(direnv hook zsh)"
@@ -55,7 +55,7 @@ function take {
 }
 alias rm="trash"
 alias vim="nvim"
-alias gcc="/opt/homebrew/bin/gcc-13"
+alias gcc="/opt/homebrew/bin/gcc-14"
 alias m="make"
 alias mr="make run"
 alias mc="make clean"
@@ -64,15 +64,21 @@ alias ls="lsd"
 alias lsa="ls -a"
 alias lst="ls --tree"
 alias btop="bpytop"
-alias rng="ranger"
+alias y="yazi"
 
 # export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/usr/local/mysql/bin/:$PATH"
 export JAVA_HOME="/opt/homebrew/Cellar/openjdk@17/17.0.11/libexec/openjdk.jdk/Contents/Home"
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
-
+export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
+export DYLD_LIBRARY_PATH="/usr/local/Cellar/openssl@1.1/1.1.1g/lib:$DYLD_LIBRARY_PATH"
+export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
+# export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig/"
 # source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 eval "$(zoxide init --cmd cd zsh)"
+
+eval $(thefuck --alias)
 
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zencat.toml)"

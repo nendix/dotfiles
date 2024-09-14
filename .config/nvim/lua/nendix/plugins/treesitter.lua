@@ -10,9 +10,7 @@ return {
 		config = function() -- configure treesitter
 			require("nvim-treesitter").setup({
 				-- enable syntax highlighting
-				highlight = {
-					enable = true,
-				},
+				highlight = { enable = true },
 				-- enable indentation
 				indent = { enable = true },
 				-- enable autotagging (w/ nvim-ts-autotag plugin)
@@ -28,7 +26,7 @@ return {
 					"c",
 					"markdown",
 					"markdown_inline",
-					"graphql",
+					"go",
 					"bash",
 					"lua",
 					"vim",

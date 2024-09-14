@@ -1,6 +1,7 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
+		event = "VeryLazy",
 		dependencies = {
 			"leoluz/nvim-dap-go",
 			"rcarriga/nvim-dap-ui",
@@ -36,27 +37,6 @@ return {
 
 			-- go dap config handled by plugin
 			require("dap-go").setup()
-
-			-- dap.adapters.codelldb = {
-			-- 	type = "server",
-			-- 	port = "13000",
-			-- 	executable = {
-			-- 		command = "~/.local/share/nvim/mason/bin/codelldb",
-			-- 		args = { "--port", "13000" },
-			-- 	},
-			-- }
-			-- dap.configurations.c = {
-			-- 	{
-			-- 		name = "Launch file",
-			-- 		type = "codelldb",
-			-- 		request = "launch",
-			-- 		program = function()
-			-- 			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-			-- 		end,
-			-- 		cwd = "${workspaceFolder}",
-			-- 		stopOnEntry = false,
-			-- 	},
-			-- }
 		end,
 	},
 }

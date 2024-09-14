@@ -10,9 +10,9 @@ return {
 					light = "latte",
 					dark = "mocha",
 				},
-				transparent_background = false,
+				transparent_background = true,
 				show_end_of_buffer = false, -- show the '~' characters after the end of buffers
-				term_colors = false,
+				term_colors = true,
 				dim_inactive = {
 					enabled = false,
 					shade = "dark",
@@ -23,7 +23,7 @@ return {
 				no_underline = false, -- Force no underline
 				styles = {
 					comments = { "italic" },
-					conditionals = { "italic" },
+					conditionals = {},
 					loops = {},
 					functions = {},
 					keywords = {},
@@ -43,8 +43,8 @@ return {
 					gitsigns = true,
 					nvimtree = true,
 					telescope = true,
-					notify = false,
-					mini = false,
+					notify = true,
+					mini = true,
 					-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 				},
 			})
