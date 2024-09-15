@@ -7,12 +7,12 @@ local keymap = vim.keymap -- for conciseness
 -- General Keymaps
 ---------------------
 
-keymap.set("n", "<leader>w", vim.cmd.w, { desc = "Save file(:w)" })
-keymap.set("n", "<leader>q", vim.cmd.q, { desc = "Quit file(:q)" })
-keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { desc = "Undotree" })
+keymap.set("n", "<leader>w", vim.cmd.w, { desc = "Save file" })
+keymap.set("n", "<leader>q", vim.cmd.q, { desc = "Quit file" })
+keymap.set("n", "<leader>u", "<CMD>UndotreeToggle<CR>", { desc = "Undotree" })
 keymap.set("n", "<leader>e", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 
-keymap.set("n", "<leader>nh", "<cmd>nohl<CR>", { desc = "No highlights" })
+keymap.set("n", "<leader>nh", "<CMD>nohl<CR>", { desc = "No highlights" })
 
 keymap.set("x", "<leader>p", [["_dP]], { desc = "Copy and paste w/o copying into reg in visual mode" })
 -- keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete w/o copying into reg" })
@@ -28,46 +28,46 @@ keymap.set("n", "-", "<C-x>", { desc = "Decrement" })
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make split windows equal" }) -- make split windows equal width & height
-keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split window" }) -- close current split window
+keymap.set("n", "<leader>sx", "<CMD>close<CR>", { desc = "Close current split window" }) -- close current split window
 
 --tab management
-keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
-keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
+keymap.set("n", "<leader>to", "<CMD>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
+keymap.set("n", "<leader>tx", "<CMD>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
 
 ----------------------
 -- Plugin Keybinds
 ----------------------
 -- buffer
-keymap.set("n", "<leader>bx", "<cmd>bdelete<CR>", { desc = "Close buffer" })
+keymap.set("n", "<leader>bx", "<CMD>bdelete<CR>", { desc = "Close buffer" })
 
 -- vim-maximizer
-keymap.set("n", "<leader>sm", "<cmd>MaximizerToggle<CR>", { desc = "Split window maximization" }) -- toggle split window maximization
+keymap.set("n", "<leader>sm", "<CMD>MaximizerToggle<CR>", { desc = "Split window maximization" }) -- toggle split window maximization
 
 -- telescope
-keymap.set("n", "<leader><space>", "<cmd>Telescope buffers<cr>", { desc = "Find open buffers" })
+keymap.set(
+	"n",
+	"<leader><space>",
+	"<CMD>Telescope buffers theme=get_dropdown previewer=false<CR>",
+	{ desc = "Find open buffers" }
+)
 keymap.set(
 	"n",
 	"<leader>'",
-	"<cmd>Telescope current_buffer_fuzzy_find theme=get_dropdown previewer=false<cr>",
+	"<CMD>Telescope current_buffer_fuzzy_find theme=get_dropdown previewer=false<CR>",
 	{ desc = "Fuzzily search in current buffer" }
 )
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
-keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
-keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
-keymap.set("n", "<leader>fh", "<cmd>Telescope harpoon marks<cr>", { desc = "Find harpoon marks" })
-keymap.set("n", "<leader>fj", "<cmd>Telescope jumplist<cr>", { desc = "Find jumps" })
+keymap.set("n", "<leader>ff", "<CMD>Telescope find_files<CR>", { desc = "Fuzzy find files in cwd" })
+keymap.set("n", "<leader>fr", "<CMD>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
+keymap.set("n", "<leader>fs", "<CMD>Telescope live_grep<CR>", { desc = "Find string in cwd" })
+keymap.set("n", "<leader>fc", "<CMD>Telescope grep_string<CR>", { desc = "Find string under cursor in cwd" })
+keymap.set("n", "<leader>fh", "<CMD>Telescope harpoon marks<CR>", { desc = "Find harpoon marks" })
+keymap.set("n", "<leader>fj", "<CMD>Telescope jumplist<CR>", { desc = "Find jumps" })
 
 -- telescope git commands
-keymap.set("n", "<leader>gC", "<cmd>Telescope git_commits<cr>", { desc = "List all git commits" }) -- list all git commits (use <cr> to checkout) ["gc" for git commits]
-keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>", { desc = "List git commits for current file/buffer" })
-keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", { desc = "List git branches" })
-keymap.set(
-	"n",
-	"<leader>gs",
-	"<cmd>Telescope git_status<cr>",
-	{ desc = "List current changes per file with diff preview " }
-)
+keymap.set("n", "<leader>gC", "<CMD>Telescope git_commits<CR>", { desc = "List all git commits" }) -- list all git commits (use <CR> to checkout) ["gc" for git commits]
+keymap.set("n", "<leader>gfc", "<CMD>Telescope git_bcommits<CR>", { desc = "List git commits for current file/buffer" })
+keymap.set("n", "<leader>gb", "<CMD>Telescope git_branches<CR>", { desc = "List git branches" })
+keymap.set("n", "<leader>gd", "<cmd>Telescope git_status<cr>", { desc = "List files with diffs" })
 
 -- more mapping in lua/nendix/plugins/lsp/lspconfig.lua
 -- and in lua/nendix/plugins/lsp/formatting.lua
@@ -75,3 +75,4 @@ keymap.set(
 -- and lua/nendix/plugins/harpoon.lua
 -- and lua/nendix/plugins/git-signs.lua
 -- and lua/nendix/plugins/trouble.lua
+-- and lua/nendix/plugins/nvim-cmp.lua

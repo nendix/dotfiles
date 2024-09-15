@@ -5,24 +5,41 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-		keys = {
-			{ "<leader>hm", "<CMD>lua require('harpoon.mark').add_file()<CR>", desc = "Mark file with harpoon" },
-			{ "<leader>hc", "<CMD>lua require('harpoon.mark').clear_all()<CR>", desc = "Clear all harpoon marks" },
-			{
-				"<leader>hh",
-				"<CMD>lua require('harpoon.ui').toggle_quick_menu()<CR>",
-				desc = "Clear all harpoon marks",
-			},
+		config = function()
+			local harpoon = require("harpoon")
+			harpoon:setup()
 
-			{ "<leader>1", "<CMD>lua require('harpoon.ui').nav_file(1)<CR>", desc = "Harpoon buffer 1" },
-			{ "<leader>2", "<CMD>lua require('harpoon.ui').nav_file(2)<CR>", desc = "Harpoon buffer 2" },
-			{ "<leader>3", "<CMD>lua require('harpoon.ui').nav_file(3)<CR>", desc = "Harpoon buffer 3" },
-			{ "<leader>4", "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", desc = "Harpoon buffer 4" },
-			{ "<leader>5", "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", desc = "Harpoon buffer 4" },
-			{ "<leader>6", "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", desc = "Harpoon buffer 4" },
-			{ "<leader>7", "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", desc = "Harpoon buffer 4" },
-			{ "<leader>8", "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", desc = "Harpoon buffer 4" },
-			{ "<leader>9", "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", desc = "Harpoon buffer 4" },
-		},
+			vim.keymap.set("n", "<leader>hm", function()
+				harpoon:list():add()
+			end, { desc = "Mark file with harpoon" })
+
+			vim.keymap.set("n", "<leader>hh", function()
+				harpoon.ui:toggle_quick_menu(harpoon:list())
+			end, { desc = "Toggle harpoon quick menu" })
+
+			vim.keymap.set("n", "<leader>hc", function()
+				harpoon:list():clear()
+			end, { desc = "Clear all harpoon marks" })
+
+			vim.keymap.set("n", "<leader>1", function()
+				harpoon:list():select(1)
+			end, { desc = "Harpoon file 1" })
+
+			vim.keymap.set("n", "<leader>2", function()
+				harpoon:list():select(2)
+			end, { desc = "Harpoon file 2" })
+
+			vim.keymap.set("n", "<leader>3", function()
+				harpoon:list():select(3)
+			end, { desc = "Harpoon file 3" })
+
+			vim.keymap.set("n", "<leader>4", function()
+				harpoon:list():select(4)
+			end, { desc = "Harpoon file 4" })
+
+			vim.keymap.set("n", "<leader>5", function()
+				harpoon:list():select(5)
+			end, { desc = "Harpoon file 5" })
+		end,
 	},
 }
