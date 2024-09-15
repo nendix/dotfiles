@@ -20,7 +20,7 @@ return {
 
 			-- set keybinds
 			opts.desc = "Show LSP references"
-			keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+			keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show references
 
 			opts.desc = "Go to declaration"
 			keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
@@ -37,7 +37,7 @@ return {
 			opts.desc = "See available code actions"
 			keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
-			opts.desc = "Smart rename"
+			opts.desc = "Refactor"
 			keymap.set("n", "<leader>rf", vim.lsp.buf.rename, opts) -- smart rename
 
 			-- opts.desc = "Show buffer diagnostics"
@@ -102,6 +102,7 @@ return {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
+
 		-- configure rust server
 		lspconfig["rust_analyzer"].setup({
 			capabilities = capabilities,
