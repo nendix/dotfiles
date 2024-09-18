@@ -10,6 +10,7 @@ local opt = vim.opt -- for conciseness
 
 opt.showmode = false
 opt.swapfile = false
+
 -- line numbers
 opt.relativenumber = true -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
@@ -47,10 +48,8 @@ opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
 
-opt.iskeyword:append("-") -- consider string-string as whole word
-
 -- removing cmdline
-opt.cmdheight = 0
+-- opt.cmdheight = 0
 -- vim.api.nvim_create_autocmd({ "RecordingEnter" }, {
 -- 	callback = function()
 -- 		vim.opt.cmdheight = 1

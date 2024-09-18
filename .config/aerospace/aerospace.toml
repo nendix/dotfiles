@@ -63,11 +63,11 @@ ctrl-1 = 'workspace 1'
 ctrl-2 = 'workspace 2'
 ctrl-3 = 'workspace 3'
 ctrl-4 = 'workspace 4'
-ctrl-5 = 'workspace 5'
-ctrl-6 = 'workspace 6'
-ctrl-7 = 'workspace 7'
-ctrl-8 = 'workspace 8'
-ctrl-9 = 'workspace 9'
+# ctrl-5 = 'workspace 5'
+# ctrl-6 = 'workspace 6'
+# ctrl-7 = 'workspace 7'
+# ctrl-8 = 'workspace 8'
+# ctrl-9 = 'workspace 9'
 ctrl-t = 'workspace T'
 ctrl-b = 'workspace B'
 
@@ -76,17 +76,17 @@ ctrl-alt-1 = 'move-node-to-workspace 1'
 ctrl-alt-2 = 'move-node-to-workspace 2'
 ctrl-alt-3 = 'move-node-to-workspace 3'
 ctrl-alt-4 = 'move-node-to-workspace 4'
-ctrl-alt-5 = 'move-node-to-workspace 5'
-ctrl-alt-6 = 'move-node-to-workspace 6'
-ctrl-alt-7 = 'move-node-to-workspace 7'
-ctrl-alt-8 = 'move-node-to-workspace 8'
-ctrl-alt-9 = 'move-node-to-workspace 9'
+# ctrl-alt-5 = 'move-node-to-workspace 5'
+# ctrl-alt-6 = 'move-node-to-workspace 6'
+# ctrl-alt-7 = 'move-node-to-workspace 7'
+# ctrl-alt-8 = 'move-node-to-workspace 8'
+# ctrl-alt-9 = 'move-node-to-workspace 9'
 ctrl-alt-t = 'move-node-to-workspace T'
 ctrl-alt-b = 'move-node-to-workspace B'
 
 ctrl-tab = 'workspace-back-and-forth' # Switch between workspaces
 
-ctrl-space = 'layout floating tiling' # Toggle between floating and tiling layout
+ctrl-alt-space = 'layout floating tiling' # Toggle between floating and tiling layout
 ctrl-alt-f = 'fullscreen' # Toggle fullscreen
 
 ctrl-alt-tab = 'move-workspace-to-monitor --wrap-around next' # Move workspace to next monitor
@@ -119,3 +119,13 @@ run = 'move-node-to-workspace T' # mnemonics T - Terminal
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
 run = 'move-node-to-workspace B' # mnemonics W - Web browser
+
+# auto float AppCleaner
+[[on-window-detected]]
+if.app-id = 'net.freemacsoft.AppCleaner'
+run = 'layout floating' 
+
+# auto float GIMP
+[[on-window-detected]]
+if.app-id = 'org.gimp.gimp-2.10'
+run = 'layout floating'

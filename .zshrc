@@ -45,6 +45,7 @@ export FZF_DEFAULT_OPTS=" \
 --border --reverse --height 80% --preview 'bat {}'"
 export FZF_DEFAULT_COMMAND="fd --type f"
 bindkey "©" fzf-cd-widget
+bindkey "^F" fzf-file-widget
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
@@ -82,3 +83,4 @@ eval "$(zoxide init --cmd cd zsh)"
 eval $(thefuck --alias)
 
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zencat.toml)"
+
