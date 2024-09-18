@@ -1,6 +1,7 @@
 # ignore .DS_Store file
 .DS_Store
 Alacritty.icns
+kitty.app.png
 
 gtk-2.0/
 zed/
