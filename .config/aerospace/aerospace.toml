@@ -109,8 +109,8 @@ ctrl-shift-k = 'join-with up'
 ctrl-shift-l = 'join-with right'
 
 # change layout
-t = ['layout tiles horizontal vertical', 'mode main'] # toggle between tiles horizontal and vertical
-a = ['layout accordion horizontal', 'mode main'] # switch to accordion horizontal
+t = ['layout h_tiles v_tiles', 'mode main'] # toggle between tiles horizontal and vertical
+a = ['layout h_accordion', 'mode main'] # switch to accordion horizontal
 
 [[on-window-detected]]
 if.app-id = 'org.alacritty'
