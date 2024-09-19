@@ -17,19 +17,16 @@ config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.8
 config.macos_window_background_blur = 100
 config.window_padding = {
-	left = 12,
-	right = 12,
-	top = 12,
-	bottom = 12,
+	left = 8,
+	right = 8,
+	top = 8,
+	bottom = 8,
 }
 
 -- keys
 config.keys = {
-	{
-		key = "+",
-		mods = "SUPER",
-		action = wezterm.action.IncreaseFontSize,
-	},
+	{ key = "+", mods = "CMD", action = wezterm.action.IncreaseFontSize },
+	{ key = "k", mods = "CMD", action = wezterm.action.SendString("clear\n") },
 }
 config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = true
