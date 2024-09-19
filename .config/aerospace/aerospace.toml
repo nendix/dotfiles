@@ -113,7 +113,7 @@ t = ['layout h_tiles v_tiles', 'mode main'] # toggle between tiles horizontal an
 a = ['layout h_accordion', 'mode main'] # switch to accordion horizontal
 
 [[on-window-detected]]
-if.app-id = 'org.alacritty'
+if.app-id = 'com.github.wez.wezterm'
 run = 'move-node-to-workspace T' # mnemonics T - Terminal
 
 [[on-window-detected]]
