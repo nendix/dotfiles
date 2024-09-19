@@ -113,6 +113,9 @@ return {
 		lspconfig["jdtls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			handlers = {
+				["$/progress"] = function(_, result, ctx) end,
+			},
 		})
 
 		-- configure lua server (with special settings)
