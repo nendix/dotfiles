@@ -20,6 +20,7 @@ return {
 				shell = { "shfmt" },
 				go = { "gofumpt" },
 				c = { "clang-format" },
+				java = { "clang-format" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
