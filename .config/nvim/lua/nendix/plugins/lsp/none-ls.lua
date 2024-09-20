@@ -14,7 +14,7 @@ return {
 		mason_null_ls.setup({
 			ensure_installed = {
 				"stylua", -- lua formatter
-				"clang-format", -- c c++ formatter
+				"clang-format", -- c c++ java formatter
 				"golangci-lint", -- go linter
 				"gofumpt", -- go formatter
 				"shfmt", -- bash formatter
