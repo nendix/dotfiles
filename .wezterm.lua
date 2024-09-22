@@ -5,7 +5,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- font
-config.font = wezterm.font("MesloLGS NF")
+config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 config.font_size = 16
 
 -- color scheme
