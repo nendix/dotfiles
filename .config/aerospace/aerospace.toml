@@ -115,6 +115,9 @@ a = ['layout h_accordion', 'mode main'] # switch to accordion horizontal
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = 'move-node-to-workspace T' # mnemonics T - Terminal
+[[on-window-detected]]
+if.app-id = 'net.kovidgoyal.kitty'
+run = 'move-node-to-workspace T' # mnemonics T - Terminal
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'

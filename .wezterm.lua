@@ -23,6 +23,9 @@ config.window_padding = {
 	bottom = 8,
 }
 
+-- config.window_close_confirmation = "NeverPrompt"
+config.skip_close_confirmation_for_processes_named = { "bash", "sh", "zsh", "fish" }
+
 -- keys
 config.keys = {
 	{ key = "+", mods = "CMD", action = wezterm.action.IncreaseFontSize },
