@@ -128,6 +128,11 @@ run = 'move-node-to-workspace B' # mnemonics W - Web browser
 if.app-id = 'net.freemacsoft.AppCleaner'
 run = 'layout floating' 
 
+# auto float Riot client
+[[on-window-detected]]
+if.app-id = 'com.riotgames.RiotGames.RiotClient'
+run = 'layout floating' 
+
 # auto float GIMP
 [[on-window-detected]]
 if.app-id = 'org.gimp.gimp-2.10'

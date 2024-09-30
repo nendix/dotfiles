@@ -97,6 +97,12 @@ return {
 			on_attach = on_attach,
 		})
 
+		-- configure python server
+		lspconfig["pylsp"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
 		-- configure zig server
 		lspconfig["zls"].setup({
 			capabilities = capabilities,

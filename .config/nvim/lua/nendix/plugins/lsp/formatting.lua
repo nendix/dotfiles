@@ -21,6 +21,7 @@ return {
 				go = { "gofumpt" },
 				c = { "clang-format" },
 				java = { "clang-format" },
+				python = { "black" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
@@ -29,7 +30,7 @@ return {
 			},
 		})
 
-		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
+		vim.keymap.set({ "n", "v" }, "<leader>mf", function()
 			conform.format({
 				lsp_fallback = true,
 				async = false,
