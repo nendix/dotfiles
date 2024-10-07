@@ -137,3 +137,8 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'org.gimp.gimp-2.10'
 run = 'layout floating'
+
+# auto float Apple Passwords
+[[on-window-detected]]
+if.app-id = 'com.apple.Passwords'
+run = 'layout floating'
