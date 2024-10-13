@@ -71,6 +71,7 @@ alias y="yazi"
 export PATH="/usr/local/mysql/bin/:$PATH"
 export JAVA_HOME="/opt/homebrew/Cellar/openjdk/23/libexec/openjdk.jdk/Contents/Home"
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+export PATH="$PATH:/Users/daniele/.local/bin"
 # export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
 # export DYLD_LIBRARY_PATH="/usr/local/Cellar/openssl@1.1/1.1.1g/lib:$DYLD_LIBRARY_PATH"
 # export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
@@ -83,4 +84,3 @@ eval "$(zoxide init --cmd cd zsh)"
 eval $(thefuck --alias)
 
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zencat.toml)"
-

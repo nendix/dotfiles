@@ -6,6 +6,11 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*.templ",
+	command = "set filetype=go",
+})
+
 local opt = vim.opt -- for conciseness
 
 opt.showmode = false
