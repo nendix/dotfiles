@@ -1,85 +1,101 @@
-export ZSH="$HOME/.oh-my-zsh"
+# set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-ZSH_THEME="bira"
+# download zinit, if it's not there yet
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
+# source/load zinit
+source "${ZINIT_HOME}/zinit.zsh"
 
-plugins=(
-  vi-mode
-  aliases
-  brew
-	git
-  macos
-  safe-paste
-  tmux
-  web-search
-  zsh-syntax-highlighting
-	zsh-autosuggestions
-)
+# If you're using macOS, you'll want this enabled
+if [[ -f "/opt/homebrew/bin/brew" ]] then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
+# add in zsh plugins
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light Aloxaf/fzf-tab
 
-KEYTIMEOUT=1
+# add in snippets
+zinit snippet OMZP::git
+zinit snippet OMZP::tmux
+zinit snippet OMZP::vi-mode
 
-source $ZSH/oh-my-zsh.sh
+# load completions
+autoload -U compinit && compinit
 
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
+zinit cdreplay -q
 
-# Preferred editor for local and remote sessions
-export EDITOR=nvim
-
-# export TERM=screen-256color
-
-export VI_MODE_SET_CURSOR=true
-
-# Line for custom utils
-export PATH="$HOME/Developer/utils:$PATH"
-
-# direnv 
-eval "$(direnv hook zsh)"
-
-# fzf options
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
---color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
---color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
---border --reverse --height 80% --preview 'bat {}'"
-export FZF_DEFAULT_COMMAND="fd --type f"
+# keybindings
+bindkey -v
+bindkey "^p" history-search-backward
+bindkey "^n" history-search-forward
 bindkey "©" fzf-cd-widget
 bindkey "^F" fzf-file-widget
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+# history
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
+# completion styling
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab: complete:cd:*' ff-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+
+# vim mode styling
+KEYTIMEOUT=1
+export VI_MODE_SET_CURSOR=true
+
+# aliases
 function take {
   mkdir -p $1
   cd $1
 }
 alias rm="trash"
 alias vim="nvim"
-alias gcc="/opt/homebrew/bin/gcc-14"
 alias m="make"
-alias mr="make run"
-alias mc="make clean"
 alias bmr="make clean && bear -- make all"
-alias ls="lsd"
-alias lsa="ls -a"
-alias lst="ls --tree"
+alias ls="lsd --color=auto"
+alias lsl="lsd -l --color=auto"
+alias lsa="lsd -a --color=auto"
+alias lst="lsd --tree --color=auto"
 alias btop="bpytop"
 alias y="yazi"
+alias t="todopher"
 
-# export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="/usr/local/mysql/bin/:$PATH"
-export JAVA_HOME="/opt/homebrew/Cellar/openjdk/23/libexec/openjdk.jdk/Contents/Home"
-export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
-# export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
-# export DYLD_LIBRARY_PATH="/usr/local/Cellar/openssl@1.1/1.1.1g/lib:$DYLD_LIBRARY_PATH"
-# export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
-# export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
-# export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig/"
-# source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
+# exports
+export EDITOR=nvim
+export PATH="$HOME/Developer/utils:$PATH"
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a \
+--multi \
+--border --reverse --height 80%"
+export FZF_DEFAULT_COMMAND="fd --type f"
 
+# shell integrations
+eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(direnv hook zsh)"
 
-eval $(thefuck --alias)
-
+# load oh-my-posh
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zencat.toml)"

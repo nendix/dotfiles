@@ -23,11 +23,13 @@ return {
 				java = { "clang-format" },
 				python = { "black" },
 			},
-			format_on_save = {
-				lsp_fallback = true,
-				async = false,
-				timeout_ms = 1000,
-			},
+			format_on_save = function(bufnr)
+				local ignore_filetypes = { "markdown" }
+				if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+					return
+				end
+				return { timeout_ms = 700, quiet = true, lsp_fallback = false }
+			end,
 		})
 
 		vim.keymap.set({ "n", "v" }, "<leader>mf", function()
