@@ -5,11 +5,11 @@ return {
 		local lint = require("lint")
 
 		lint.linters_by_ft = {
-			javascript = { "eslint_d" },
-			typescript = { "eslint_d" },
-			javascriptreact = { "eslint_d" },
-			typescriptreact = { "eslint_d" },
-			hmtl = { "markuplint" },
+			javascript = { "trivy" },
+			typescript = { "trivy" },
+			javascriptreact = { "trivy" },
+			typescriptreact = { "trivy" },
+			-- hmtl = { "markuplint" },
 			go = { "trivy" },
 		}
 
