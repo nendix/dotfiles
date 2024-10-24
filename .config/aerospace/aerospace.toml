@@ -90,19 +90,19 @@ ctrl-alt-tab = 'move-workspace-to-monitor --wrap-around next' # Move workspace t
 ctrl-alt-s = 'mode service' # Go in service mode
 [mode.service.binding]
 esc = 'mode main' # Exit service mode
-c = ['reload-config', 'mode main'] # reload config
-r = ['flatten-workspace-tree', 'mode main'] # reset layout
-ctrl-backspace = ['close-all-windows-but-current', 'mode main'] # close all windows but current
+r = ['reload-config', 'mode main'] # reload config
+b = ['flatten-workspace-tree', 'mode main'] # reset layout
+backspace = ['close-all-windows-but-current', 'mode main'] # close all windows but current
 
 # resize windows smartly
 s = 'resize smart -20' # shrink
 e = 'resize smart +20' # expand
 
 # join windows into same container
-ctrl-shift-h = 'join-with left'
-ctrl-shift-j = 'join-with down'
-ctrl-shift-k = 'join-with up'
-ctrl-shift-l = 'join-with right'
+h = 'join-with left'
+j = 'join-with down'
+k = 'join-with up'
+l = 'join-with right'
 
 # change layout
 t = ['layout h_tiles v_tiles', 'mode main'] # toggle between tiles horizontal and vertical
