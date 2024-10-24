@@ -65,11 +65,9 @@ ctrl-3 = 'workspace 3'
 ctrl-4 = 'workspace 4'
 ctrl-5 = 'workspace 5'
 ctrl-6 = 'workspace 6'
-# ctrl-7 = 'workspace 7'
-# ctrl-8 = 'workspace 8'
-# ctrl-9 = 'workspace 9'
-ctrl-t = 'workspace T'
-ctrl-b = 'workspace B'
+ctrl-7 = 'workspace 7'
+ctrl-8 = 'workspace 8'
+ctrl-9 = 'workspace 9'
 
 # move window to workspace
 ctrl-alt-1 = 'move-node-to-workspace 1'
@@ -78,11 +76,9 @@ ctrl-alt-3 = 'move-node-to-workspace 3'
 ctrl-alt-4 = 'move-node-to-workspace 4'
 ctrl-alt-5 = 'move-node-to-workspace 5'
 ctrl-alt-6 = 'move-node-to-workspace 6'
-# ctrl-alt-7 = 'move-node-to-workspace 7'
-# ctrl-alt-8 = 'move-node-to-workspace 8'
-# ctrl-alt-9 = 'move-node-to-workspace 9'
-ctrl-alt-t = 'move-node-to-workspace T'
-ctrl-alt-b = 'move-node-to-workspace B'
+ctrl-alt-7 = 'move-node-to-workspace 7'
+ctrl-alt-8 = 'move-node-to-workspace 8'
+ctrl-alt-9 = 'move-node-to-workspace 9'
 
 ctrl-tab = 'workspace-back-and-forth' # Switch between workspaces
 
@@ -112,26 +108,15 @@ ctrl-shift-l = 'join-with right'
 t = ['layout h_tiles v_tiles', 'mode main'] # toggle between tiles horizontal and vertical
 a = ['layout h_accordion', 'mode main'] # switch to accordion horizontal
 
-[[on-window-detected]]
-if.app-id = 'com.github.wez.wezterm'
-run = 'move-node-to-workspace T' # mnemonics T - Terminal
-[[on-window-detected]]
-if.app-id = 'net.kovidgoyal.kitty'
-run = 'move-node-to-workspace T' # mnemonics T - Terminal
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Safari'
-run = 'move-node-to-workspace B' # mnemonics B - Web browser
-
 # auto float AppCleaner
 [[on-window-detected]]
 if.app-id = 'net.freemacsoft.AppCleaner'
-run = 'layout floating' 
+run = 'layout floating'
 
 # auto float Riot client
 [[on-window-detected]]
 if.app-id = 'com.riotgames.RiotGames.RiotClient'
-run = 'layout floating' 
+run = 'layout floating'
 
 # auto float GIMP
 [[on-window-detected]]
