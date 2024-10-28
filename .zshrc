@@ -34,7 +34,6 @@ bindkey -v
 bindkey "^p" history-search-backward
 bindkey "^n" history-search-forward
 bindkey "©" fzf-cd-widget
-bindkey "^F" fzf-file-widget
 
 # history
 HISTSIZE=5000
@@ -89,9 +88,7 @@ export FZF_DEFAULT_OPTS=" \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
 --color=selected-bg:#45475a \
---multi \
---border --reverse --height 80%"
-export FZF_DEFAULT_COMMAND="fd --type f"
+--multi"
 
 # shell integrations
 eval "$(fzf --zsh)"

@@ -67,7 +67,7 @@ ctrl-5 = 'workspace 5'
 ctrl-6 = 'workspace 6'
 ctrl-7 = 'workspace 7'
 ctrl-8 = 'workspace 8'
-ctrl-9 = 'workspace 9'
+ctrl-0 = 'workspace 10'
 
 # move window to workspace
 ctrl-alt-1 = 'move-node-to-workspace 1'
@@ -79,6 +79,7 @@ ctrl-alt-6 = 'move-node-to-workspace 6'
 ctrl-alt-7 = 'move-node-to-workspace 7'
 ctrl-alt-8 = 'move-node-to-workspace 8'
 ctrl-alt-9 = 'move-node-to-workspace 9'
+ctrl-alt-0 = 'move-node-to-workspace 10'
 
 ctrl-tab = 'workspace-back-and-forth' # Switch between workspaces
 
