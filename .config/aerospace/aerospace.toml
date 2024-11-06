@@ -20,7 +20,7 @@ key-mapping.preset = 'qwerty'
 
 # mouse follows monitors and windows changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
-on-focus-changed = ['move-mouse window-lazy-center']
+on-focus-changed = ['move-mouse --fail-if-noop window-lazy-center', 'move-mouse monitor-lazy-center']
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 [gaps]
