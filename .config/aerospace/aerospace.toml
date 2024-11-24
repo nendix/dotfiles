@@ -89,6 +89,7 @@ ctrl-alt-f = 'fullscreen' # Toggle fullscreen
 ctrl-alt-tab = 'move-workspace-to-monitor --wrap-around next' # Move workspace to next monitor
 
 ctrl-alt-s = 'mode service' # Go in service mode
+ctrl-alt-enter = 'mode apps' # Go in app mode
 [mode.service.binding]
 esc = 'mode main' # Exit service mode
 r = ['reload-config', 'mode main'] # reload config
@@ -108,6 +109,11 @@ l = 'join-with right'
 # change layout
 t = ['layout h_tiles v_tiles', 'mode main'] # toggle between tiles horizontal and vertical
 a = ['layout h_accordion', 'mode main'] # switch to accordion horizontal
+
+[mode.apps.binding]
+esc = 'mode main' # Exit apps mode
+k =['exec-and-forget open -a /Applications/kitty.app/', 'mode main'] # open kitty
+s =['exec-and-forget open -a /Applications/Safari.app/', 'mode main'] # open safari
 
 # auto float AppCleaner
 [[on-window-detected]]
