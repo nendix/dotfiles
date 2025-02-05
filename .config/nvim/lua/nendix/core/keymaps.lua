@@ -56,8 +56,18 @@ keymap.set(
 	"<CMD>Telescope current_buffer_fuzzy_find theme=get_dropdown previewer=false<CR>",
 	{ desc = "Fuzzily search in current buffer" }
 )
-keymap.set("n", "<leader>ff", "<CMD>Telescope find_files<CR>", { desc = "Fuzzy find files in cwd" })
-keymap.set("n", "<leader>fr", "<CMD>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
+keymap.set(
+	"n",
+	"<leader>ff",
+	"<CMD>Telescope find_files hidden=true no_ignore=true<CR>",
+	{ desc = "Fuzzy find files in cwd" }
+)
+keymap.set(
+	"n",
+	"<leader>fr",
+	"<CMD>Telescope oldfiles hidden=true no_ignore=true<CR>",
+	{ desc = "Fuzzy find recent files" }
+)
 keymap.set("n", "<leader>fs", "<CMD>Telescope live_grep<CR>", { desc = "Find string in cwd" })
 keymap.set("n", "<leader>fc", "<CMD>Telescope grep_string<CR>", { desc = "Find string under cursor in cwd" })
 keymap.set("n", "<leader>fh", "<CMD>Telescope harpoon marks<CR>", { desc = "Find harpoon marks" })
@@ -69,10 +79,11 @@ keymap.set("n", "<leader>gfc", "<CMD>Telescope git_bcommits<CR>", { desc = "List
 keymap.set("n", "<leader>gb", "<CMD>Telescope git_branches<CR>", { desc = "List git branches" })
 keymap.set("n", "<leader>gd", "<cmd>Telescope git_status<cr>", { desc = "List files with diffs" })
 
--- more mapping in lua/nendix/plugins/lsp/lspconfig.lua
--- and in lua/nendix/plugins/lsp/formatting.lua
--- and in lua/nendix/plugins/lsp/linting.lua
--- and lua/nendix/plugins/harpoon.lua
--- and lua/nendix/plugins/git-signs.lua
--- and lua/nendix/plugins/trouble.lua
--- and lua/nendix/plugins/nvim-cmp.lua
+-- more mappings in:
+-- lua/nendix/plugins/lsp/lspconfig.lua
+-- lua/nendix/plugins/lsp/formatting.lua
+-- lua/nendix/plugins/lsp/linting.lua
+-- lua/nendix/plugins/harpoon.lua
+-- lua/nendix/plugins/git-signs.lua
+-- lua/nendix/plugins/trouble.lua
+-- lua/nendix/plugins/nvim-cmp.lua
