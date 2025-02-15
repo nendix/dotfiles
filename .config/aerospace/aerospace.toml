@@ -112,7 +112,7 @@ a = ['layout h_accordion', 'mode main'] # switch to accordion horizontal
 
 [mode.apps.binding]
 esc = 'mode main' # Exit apps mode
-k =['exec-and-forget open -a /Applications/kitty.app/', 'mode main'] # open kitty
+g =['exec-and-forget open -a /Applications/Ghostty.app/', 'mode main'] # open Ghostty
 s =['exec-and-forget open -a /Applications/Safari.app/', 'mode main'] # open safari
 
 # auto float AppCleaner
@@ -133,4 +133,19 @@ run = 'layout floating'
 # auto float Apple Passwords
 [[on-window-detected]]
 if.app-id = 'com.apple.Passwords'
+run = 'layout floating'
+
+# auto float FaceTime
+[[on-window-detected]]
+if.app-id = 'com.apple.FaceTime'
+run = 'layout floating'
+
+# auto float Adobe Photoshop
+[[on-window-detected]]
+if.app-id = 'com.adobe.photoshop'
+run = 'layout floating'
+
+# auto float Adobe Illustrator
+[[on-window-detected]]
+if.app-id = 'com.adobe.illustrator'
 run = 'layout floating'
