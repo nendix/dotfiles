@@ -69,14 +69,12 @@ function take {
 }
 alias rm="trash"
 alias vim="nvim"
-alias m="make"
 alias bmr="make clean && bear -- make all"
 alias ls="lsd --color=auto"
 alias lsl="lsd -l --color=auto"
 alias lsa="lsd -a --color=auto"
 alias lst="lsd --tree --color=auto"
 alias btop="bpytop"
-alias y="yazi"
 alias t="todopher"
 
 # exports
