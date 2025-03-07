@@ -81,6 +81,7 @@ alias t="todopher"
 export EDITOR=nvim
 export PATH="$HOME/Developer/utils:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+export PATH=$PATH:"$HOME/fvm/default/bin"
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
@@ -95,3 +96,8 @@ eval "$(direnv hook zsh)"
 
 # load oh-my-posh
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zencat.toml)"
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/daniele/.dart-cli-completion/zsh-config.zsh ]] && . /Users/daniele/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]

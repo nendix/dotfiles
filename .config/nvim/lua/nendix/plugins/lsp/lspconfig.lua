@@ -118,6 +118,12 @@ return {
 			},
 		})
 
+		-- configure dart server
+		lspconfig["dartls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
 		-- configure lua server
 		lspconfig["lua_ls"].setup({
 			capabilities = capabilities,
