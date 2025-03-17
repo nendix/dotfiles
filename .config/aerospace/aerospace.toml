@@ -97,8 +97,8 @@ b = ['flatten-workspace-tree', 'mode main'] # reset layout
 backspace = ['close-all-windows-but-current', 'mode main'] # close all windows but current
 
 # resize windows smartly
-s = 'resize smart -20' # shrink
-e = 'resize smart +20' # expand
+s = 'resize smart -50' # shrink
+e = 'resize smart +50' # expand
 
 # join windows into same container
 h = 'join-with left'
