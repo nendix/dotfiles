@@ -11,7 +11,7 @@ return {
 				javascriptreact = { "prettier" },
 				typescriptreact = { "prettier" },
 				css = { "prettier" },
-				-- html = { "prettier" },
+				html = { "prettier" },
 				json = { "prettier" },
 				yaml = { "prettier" },
 				markdown = { "prettier" },
@@ -22,6 +22,7 @@ return {
 				c = { "clang-format" },
 				java = { "clang-format" },
 				python = { "black" },
+				dart = { "ast_grep" },
 			},
 			format_on_save = function(bufnr)
 				local ignore_filetypes = { "markdown" }
