@@ -22,7 +22,14 @@ return {
 				c = { "clang-format" },
 				java = { "clang-format" },
 				python = { "black" },
-				dart = { "ast_grep" },
+				dart = { "dartfmt" },
+			},
+			formatters = {
+				dartfmt = {
+					command = "dart", -- Replace with your formatter command
+					args = { "format" }, -- Replace with your formatter args
+					stdin = true, -- Whether to pass the file content via stdin
+				},
 			},
 			format_on_save = function(bufnr)
 				local ignore_filetypes = { "markdown" }
