@@ -101,6 +101,16 @@ return {
 		lspconfig["pylsp"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			settings = {
+				pylsp = {
+					plugins = {
+						pyflakes = { enabled = true },
+						pylint = { enabled = false },
+						mccabe = { enabled = false },
+						pycodestyle = { enabled = false },
+					},
+				},
+			},
 		})
 
 		-- configure rust server
