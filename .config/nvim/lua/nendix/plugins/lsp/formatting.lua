@@ -6,11 +6,12 @@ return {
 
 		conform.setup({
 			formatters_by_ft = {
-				javascript = { "prettier" },
-				typescript = { "prettier" },
 				javascriptreact = { "prettier" },
 				typescriptreact = { "prettier" },
+				javascript = { "prettier" },
+				typescript = { "prettier" },
 				css = { "prettier" },
+				htmldjango = { "djlint" },
 				html = { "prettier" },
 				json = { "prettier" },
 				yaml = { "prettier" },
@@ -29,6 +30,11 @@ return {
 					command = "dart", -- Replace with your formatter command
 					args = { "format" }, -- Replace with your formatter args
 					stdin = true, -- Whether to pass the file content via stdin
+				},
+				-- Configure djlint
+				djlint = {
+					args = { "--indent", "2", "--check", "-" }, -- Use "-" for stdin
+					stdin = true, -- Pass file content via stdin
 				},
 			},
 			format_on_save = function(bufnr)
