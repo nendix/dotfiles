@@ -1,16 +1,3 @@
--- trigger treesitter for go files
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "go",
-	callback = function()
-		vim.treesitter.start()
-	end,
-})
-
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = "*.templ",
-	command = "set filetype=go",
-})
-
 local opt = vim.opt -- for conciseness
 
 opt.showmode = false
@@ -53,16 +40,3 @@ opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 -- split windows
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
-
--- removing cmdline
--- opt.cmdheight = 0
--- vim.api.nvim_create_autocmd({ "RecordingEnter" }, {
--- 	callback = function()
--- 		vim.opt.cmdheight = 1
--- 	end,
--- })
--- vim.api.nvim_create_autocmd({ "RecordingLeave" }, {
--- 	callback = function()
--- 		vim.opt.cmdheight = 0
--- 	end,
--- })
