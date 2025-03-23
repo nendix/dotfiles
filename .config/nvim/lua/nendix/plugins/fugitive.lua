@@ -6,7 +6,7 @@ return {
 
 		vim.keymap.set("n", "<leader>gaa", "<CMD>Git add --all<CR>", { desc = "Git add all" })
 		vim.keymap.set("n", "<leader>gaf", "<CMD>Gwrite<CR>", { desc = "Git add file" })
-		vim.keymap.set("n", "<leader>gc", ":Git commit -m ", { desc = "Git commit" })
+		vim.keymap.set("n", "<leader>gc", ":Git commit ", { desc = "Git commit" })
 		vim.keymap.set("n", "<leader>gp", "<CMD>Git push<CR>", { desc = "Git push" })
 
 		vim.keymap.set("n", "<leader>gr", "<CMD>Git reset<CR>", { desc = "Git reset" })
