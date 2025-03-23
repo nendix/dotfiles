@@ -62,7 +62,7 @@ return {
 						end
 					end,
 				}),
-				["<C-e>"] = cmp.mapping(function(fallback)
+				["<TAB>"] = cmp.mapping(function(fallback)
 					-- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
 					if cmp.visible() then
 						local entry = cmp.get_selected_entry()
@@ -74,7 +74,7 @@ return {
 					else
 						fallback()
 					end
-				end, { "i", "s", "c" }),
+				end, { "i", "s" }),
 				["<C-d>"] = cmp.mapping(function(fallback)
 					if cmp.visible_docs() then
 						cmp.close_docs()
