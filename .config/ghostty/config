@@ -1,0 +1,17 @@
+theme = catppuccin-mocha
+
+background-opacity = 0.90
+background-blur-radius = 20
+
+mouse-hide-while-typing = true
+
+window-padding-x = 4
+window-padding-y = 4
+window-padding-balance = true
+macos-titlebar-style = hidden
+
+font-family = "JetBrainsMonoNL Nerd Font Mono"
+font-size = 16
+font-thicken = false
+
+keybind = ctrl+shift+space=toggle_quick_terminal
