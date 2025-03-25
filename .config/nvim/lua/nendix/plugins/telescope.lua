@@ -14,8 +14,12 @@ return {
 			defaults = {
 				file_ignore_patterns = {
 					"node_modules",
-					".git/",
+					".git",
 					"out",
+					"venv",
+					".DS_Store",
+					"migrations",
+					"bin",
 				},
 				path_display = { "truncate " },
 				mappings = {
