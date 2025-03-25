@@ -79,6 +79,9 @@ keymap.set("n", "<leader>gfc", "<CMD>Telescope git_bcommits<CR>", { desc = "List
 keymap.set("n", "<leader>gb", "<CMD>Telescope git_branches<CR>", { desc = "List git branches" })
 keymap.set("n", "<leader>gd", "<cmd>Telescope git_status<cr>", { desc = "List files with diffs" })
 
+-- colorizer
+keymap.set("n", "<leader>cc", "<CMD>ColorizerToggle<CR>", { desc = "Toggle colorizer" })
+
 -- more mappings in:
 -- lua/nendix/plugins/lsp/lspconfig.lua
 -- lua/nendix/plugins/lsp/formatting.lua
