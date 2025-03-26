@@ -2,15 +2,26 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
+		"saghen/blink.cmp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
+		{
+			"folke/lazydev.nvim",
+			ft = "lua", -- only load on lua files
+			opts = {
+				library = {
+					-- See the configuration section for more details
+					-- Load luvit types when the `vim.uv` word is found
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				},
+			},
+		},
 	},
 	config = function()
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
 
-		-- import cmp-nvim-lsp plugin
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+		-- import blink plugin
+		local blink = require("blink.cmp")
 
 		local keymap = vim.keymap -- for conciseness
 
@@ -57,7 +68,7 @@ return {
 		end
 
 		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = cmp_nvim_lsp.default_capabilities()
+		local capabilities = blink.get_lsp_capabilities()
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		-- (not in youtube nvim video)
@@ -66,6 +77,12 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
+
+		-- configure lua server
+		lspconfig["lua_ls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
 
 		-- configure html server
 		lspconfig["html"].setup({
@@ -127,12 +144,6 @@ return {
 			handlers = {
 				["$/progress"] = function(_, result, ctx) end,
 			},
-		})
-
-		-- configure lua server
-		lspconfig["lua_ls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
 		})
 	end,
 }
