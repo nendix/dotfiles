@@ -14,12 +14,6 @@ keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 keymap.set("n", "<leader>nh", "<CMD>nohl<CR>", { desc = "No highlights" })
 
-keymap.set("x", "<leader>p", [["_dP]], { desc = "Copy and paste w/o copying into reg in visual mode" })
--- keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete w/o copying into reg" })
-
--- delete single character without ciw into register
--- keymap.set("n", "x", '"_x')
-
 -- increment/decrement
 keymap.set("n", "+", "<C-a>", { desc = "Increment" })
 keymap.set("n", "-", "<C-x>", { desc = "Decrement" })
@@ -59,7 +53,7 @@ keymap.set(
 keymap.set(
 	"n",
 	"<leader>ff",
-	"<CMD>Telescope find_files hidden=true no_ignore=true<CR>",
+	"<CMD>Telescope find_files theme=ivy hidden=true no_ignore=true<CR>",
 	{ desc = "Fuzzy find files in cwd" }
 )
 keymap.set(
@@ -70,7 +64,7 @@ keymap.set(
 )
 keymap.set("n", "<leader>fs", "<CMD>Telescope live_grep<CR>", { desc = "Find string in cwd" })
 keymap.set("n", "<leader>fc", "<CMD>Telescope grep_string<CR>", { desc = "Find string under cursor in cwd" })
-keymap.set("n", "<leader>fh", "<CMD>Telescope harpoon marks<CR>", { desc = "Find harpoon marks" })
+keymap.set("n", "<leader>fh", "<CMD>Telescope help_tags<CR>", { desc = "Find harpoon marks" })
 keymap.set("n", "<leader>fj", "<CMD>Telescope jumplist<CR>", { desc = "Find jumps" })
 
 -- telescope git commands
