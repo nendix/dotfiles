@@ -12,6 +12,12 @@ keymap.set("n", "<leader>q", vim.cmd.q, { desc = "Quit file" })
 keymap.set("n", "<leader>u", "<CMD>UndotreeToggle<CR>", { desc = "Undotree" })
 keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
+-- quickfix list
+keymap.set("n", "<leader>co", "<CMD>copen<CR>", { desc = "Open qflist" })
+keymap.set("n", "<leader>cx", "<CMD>cclose<CR>", { desc = "Close qflist" })
+keymap.set("n", "<leader>cn", "<CMD>cnext<CR>", { desc = "Next item qflist" })
+keymap.set("n", "<leader>cp", "<CMD>cprev<CR>", { desc = "Previous item qflist" })
+
 keymap.set("n", "<leader>nh", "<CMD>nohl<CR>", { desc = "No highlights" })
 
 -- increment/decrement

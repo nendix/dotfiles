@@ -53,10 +53,10 @@ return {
 			nerd_font_variant = "mono",
 		},
 
-		-- completion = {
-		-- 	menu = { border = "rounded" },
-		-- 	documentation = { auto_show = false, window = { border = "rounded" } },
-		-- },
-		-- signature = { window = { border = "single" } },
+		completion = {
+			menu = { border = "rounded" },
+			documentation = { auto_show = false, window = { border = "rounded" } },
+		},
+		signature = { window = { border = "rounded" } },
 	},
 }
