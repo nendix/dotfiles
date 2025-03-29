@@ -1,6 +1,6 @@
 return {
 	"akinsho/flutter-tools.nvim",
-	event = "VeryLazy",
+	event = "FileType dart",
 	dependencies = {
 		"nvim-lua/plenary.nvim", -- Required by flutter-tools
 		"stevearc/dressing.nvim", -- Optional, for UI enhancements
