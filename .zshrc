@@ -102,3 +102,5 @@ eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zencat.toml)"
 ## Completion scripts setup. Remove the following line to uninstall
 [[ -f /Users/daniele/.dart-cli-completion/zsh-config.zsh ]] && . /Users/daniele/.dart-cli-completion/zsh-config.zsh || true
 ## [/Completion]
+export PATH="/opt/homebrew/opt/php@8.1/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"

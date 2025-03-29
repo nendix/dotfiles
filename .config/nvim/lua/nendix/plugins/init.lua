@@ -7,4 +7,5 @@ return {
 	"mbbill/undotree", -- undotree
 	"nvim-tree/nvim-web-devicons", -- vs-code icons
 	"mg979/vim-visual-multi",
+	"cohama/lexima.vim",
 }
