@@ -52,7 +52,7 @@ keymap.set(
 )
 keymap.set(
 	"n",
-	"<leader>'",
+	"<leader>/",
 	"<CMD>Telescope current_buffer_fuzzy_find theme=get_dropdown previewer=false<CR>",
 	{ desc = "Fuzzily search in current buffer" }
 )
@@ -72,6 +72,7 @@ keymap.set("n", "<leader>fs", "<CMD>Telescope live_grep<CR>", { desc = "Find str
 keymap.set("n", "<leader>fc", "<CMD>Telescope grep_string<CR>", { desc = "Find string under cursor in cwd" })
 keymap.set("n", "<leader>fh", "<CMD>Telescope help_tags<CR>", { desc = "Find harpoon marks" })
 keymap.set("n", "<leader>fj", "<CMD>Telescope jumplist<CR>", { desc = "Find jumps" })
+keymap.set("n", "<leader>fk", "<CMD>Telescope keymaps<CR>", { desc = "Find keymaps" })
 
 -- telescope git commands
 keymap.set("n", "<leader>gC", "<CMD>Telescope git_commits<CR>", { desc = "List all git commits" }) -- list all git commits (use <CR> to checkout) ["gc" for git commits]
