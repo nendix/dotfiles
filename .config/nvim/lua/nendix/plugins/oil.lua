@@ -38,22 +38,10 @@ return {
 				["g."] = "actions.toggle_hidden",
 				["g\\"] = "actions.toggle_trash",
 			},
-			use_default_keymaps = true,
+			use_default_keymaps = false,
 
 			view_options = {
 				show_hidden = true,
-			},
-
-			-- Configuration for the floating window in oil.open_float
-			float = {
-				-- Padding around the floating window
-				padding = 2,
-				max_width = 140,
-				max_height = 140,
-				border = "rounded",
-				win_options = {
-					winblend = 0,
-				},
 			},
 		})
 	end,
