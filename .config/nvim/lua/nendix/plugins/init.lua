@@ -20,7 +20,7 @@ return {
 	},
 	{
 		"echasnovski/mini.surround",
-		version = "*",
+		version = false,
 		config = function()
 			vim.keymap.set("n", "s", "<Nop>", { noremap = true, silent = true }) -- disable s
 			require("mini.surround").setup()
@@ -28,16 +28,23 @@ return {
 	},
 	{
 		"echasnovski/mini.operators",
-		version = "*",
+		version = false,
 		config = function()
 			require("mini.operators").setup()
 		end,
 	},
 	{
 		"echasnovski/mini.ai",
-		version = "*",
+		version = false,
 		config = function()
 			require("mini.ai").setup()
+		end,
+	},
+	{
+		"echasnovski/mini.jump",
+		version = false,
+		config = function()
+			require("mini.jump").setup({ delay = { highlight = 6 * (10 ^ 7) } })
 		end,
 	},
 }
