@@ -137,6 +137,12 @@ return {
 			on_attach = on_attach,
 		})
 
+		-- configure php server
+		lspconfig["phpactor"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
 		-- configure java server
 		lspconfig["jdtls"].setup({
 			capabilities = capabilities,
