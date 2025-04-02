@@ -32,7 +32,6 @@ return {
 				"fallback",
 			},
 			["<S-Tab>"] = { "snippet_backward", "fallback" },
-			["<Enter>"] = { "accept", "fallback" },
 
 			["<Up>"] = { "select_prev", "fallback" },
 			["<Down>"] = { "select_next", "fallback" },
