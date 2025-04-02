@@ -1,13 +1,10 @@
 return {
-	"nvim-tree/nvim-web-devicons", -- vs-code icons
-	"nvim-lua/plenary.nvim", -- lua functions that many plugins use
-	"christoomey/vim-tmux-navigator", -- tmux & split window navigation
-	"szw/vim-maximizer", -- maximize split
-	"mg979/vim-visual-multi",
-	{
-		"mbbill/undotree",
-		event = "VeryLazy",
-	},
+	{ "nvim-tree/nvim-web-devicons" }, -- vs-code icons
+	{ "nvim-lua/plenary.nvim" }, -- lua functions that many plugins use
+	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" }, -- tmux & split window navigation
+	{ "szw/vim-maximizer", event = "VeryLazy" }, -- maximize split
+	{ "mg979/vim-visual-multi", event = "VeryLazy" }, -- multiple cursors
+	{ "mbbill/undotree", event = "VeryLazy" },
 	{
 		"numToStr/Comment.nvim",
 		event = { "BufReadPre", "BufNewFile" },
