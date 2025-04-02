@@ -3,8 +3,6 @@ return {
 	"nvim-lua/plenary.nvim", -- lua functions that many plugins use
 	"christoomey/vim-tmux-navigator", -- tmux & split window navigation
 	"szw/vim-maximizer", -- maximize split
-	-- "inkarkat/vim-ReplaceWithRegister", -- replace with register contents using motion (gr + motion)
-	"tpope/vim-surround", -- change surroundings
 	{
 		"mbbill/undotree",
 		event = "VeryLazy",
