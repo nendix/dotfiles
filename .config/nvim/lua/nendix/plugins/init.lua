@@ -3,11 +3,19 @@ return {
 	"nvim-lua/plenary.nvim", -- lua functions that many plugins use
 	"christoomey/vim-tmux-navigator", -- tmux & split window navigation
 	"szw/vim-maximizer", -- maximize split
+	"mg979/vim-visual-multi",
 	{
 		"mbbill/undotree",
 		event = "VeryLazy",
 	},
-	"mg979/vim-visual-multi",
+	{
+		"numToStr/Comment.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {},
+		config = function()
+			require("Comment").setup()
+		end,
+	},
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
