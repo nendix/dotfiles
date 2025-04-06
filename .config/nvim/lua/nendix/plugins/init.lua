@@ -1,22 +1,28 @@
 return {
-	{ "nvim-tree/nvim-web-devicons" }, -- vs-code icons
+	-- { "nvim-tree/nvim-web-devicons" }, -- vs-code icons
 	{ "nvim-lua/plenary.nvim" }, -- lua functions that many plugins use
 	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" }, -- tmux & split window navigation
 	{ "szw/vim-maximizer", event = "VeryLazy" }, -- maximize split
 	{ "mg979/vim-visual-multi", event = "VeryLazy" }, -- multiple cursors
 	{ "mbbill/undotree", event = "VeryLazy" },
 	{
-		"numToStr/Comment.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {},
-		config = function()
-			require("Comment").setup()
-		end,
-	},
-	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		config = true,
+	},
+	{
+		"echasnovski/mini.icons",
+		version = false,
+		config = function()
+			require("mini.icons").setup()
+		end,
+	},
+	{
+		"echasnovski/mini.comment",
+		version = false,
+		config = function()
+			require("mini.comment").setup()
+		end,
 	},
 	{
 		"echasnovski/mini.surround",

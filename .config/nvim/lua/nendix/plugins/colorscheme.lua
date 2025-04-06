@@ -1,6 +1,7 @@
 return {
 	{
 		"catppuccin/nvim",
+		name = "catppuccin",
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			-- load the colorscheme here
@@ -38,13 +39,23 @@ return {
 				color_overrides = {},
 				custom_highlights = {},
 				integrations = {
-					treesitter = true,
-					cmp = true,
+					alpha = true,
+					blink_cmp = true,
+					dap = true,
+					dap_ui = true,
 					gitsigns = true,
-					nvimtree = true,
-					telescope = true,
+					harpoon = true,
+					indent_blankline = { enabled = true, scope_color = "text", colored_indent_levels = false },
+					lsp_trouble = true,
+					markdown = true,
+					mason = true,
+					mini = { enabled = true, indentscope_color = "" },
+					noice = true,
 					notify = true,
-					mini = true,
+					nvimtree = true,
+					telescope = { enabled = true, style = "classic" },
+					treesitter = true,
+					which_key = true,
 					-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 				},
 			})
