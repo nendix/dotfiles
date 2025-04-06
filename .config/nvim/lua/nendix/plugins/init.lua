@@ -1,14 +1,15 @@
 return {
-	-- { "nvim-tree/nvim-web-devicons" }, -- vs-code icons
 	{ "nvim-lua/plenary.nvim" }, -- lua functions that many plugins use
 	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" }, -- tmux & split window navigation
 	{ "szw/vim-maximizer", event = "VeryLazy" }, -- maximize split
 	{ "mg979/vim-visual-multi", event = "VeryLazy" }, -- multiple cursors
 	{ "mbbill/undotree", event = "VeryLazy" },
 	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		config = true,
+		"echasnovski/mini.pairs",
+		version = false,
+		config = function()
+			require("mini.pairs").setup()
+		end,
 	},
 	{
 		"echasnovski/mini.icons",
