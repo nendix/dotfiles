@@ -5,11 +5,9 @@ return {
 	{ "mg979/vim-visual-multi", event = "VeryLazy" }, -- multiple cursors
 	{ "mbbill/undotree", event = "VeryLazy" },
 	{
-		"echasnovski/mini.pairs",
-		version = false,
-		config = function()
-			require("mini.pairs").setup()
-		end,
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
 	},
 	{
 		"echasnovski/mini.icons",
