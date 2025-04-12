@@ -59,7 +59,16 @@ return {
 					-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 				},
 			})
-			vim.cmd([[colorscheme catppuccin]])
+			-- vim.cmd([[colorscheme catppuccin]])
+		end,
+	},
+	{
+		"gmr458/cold.nvim",
+		config = function()
+			require("cold").setup({
+				transparent_background = true,
+			})
+			vim.cmd([[colorscheme cold]])
 		end,
 	},
 }
