@@ -68,7 +68,9 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.g.zenbones_transparent_background = true
+			vim.g.zenbones = {
+				transparent_background = true,
+			}
 			vim.cmd.colorscheme("zenbones")
 		end,
 	},
