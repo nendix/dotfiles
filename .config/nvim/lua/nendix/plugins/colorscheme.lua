@@ -63,12 +63,18 @@ return {
 		end,
 	},
 	{
-		"gmr458/cold.nvim",
+		"nendix/cold.nvim",
+		lazy = false,
+		priority = 1000,
+		build = ":ColdCompile",
 		config = function()
 			require("cold").setup({
 				transparent_background = true,
+				cursorline = true,
+				treesitter_context_bg = false,
+				float_borderless = false,
 			})
-			vim.cmd([[colorscheme cold]])
+			vim.cmd.colorscheme("cold")
 		end,
 	},
 }
