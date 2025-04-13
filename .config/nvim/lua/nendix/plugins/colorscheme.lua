@@ -59,7 +59,7 @@ return {
 					-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 				},
 			})
-			-- vim.cmd([[colorscheme catppuccin]])
+			vim.cmd([[colorscheme catppuccin]])
 		end,
 	},
 	{
@@ -74,7 +74,7 @@ return {
 				treesitter_context_bg = false,
 				float_borderless = false,
 			})
-			vim.cmd.colorscheme("cold")
+			-- vim.cmd.colorscheme("cold")
 		end,
 	},
 }
