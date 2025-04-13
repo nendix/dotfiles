@@ -4,8 +4,8 @@ foreground = #c8c8c8
 cursor-color = #fefefe
 cursor-text = #111111
 
-selection-background = #888888
-selection-foreground = #111111
+selection-background = #787878
+selection-foreground = #161616
 
 # black
 palette = 0=#161616
