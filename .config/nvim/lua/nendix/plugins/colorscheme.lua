@@ -71,7 +71,45 @@ return {
 			vim.g.zenbones = {
 				transparent_background = true,
 			}
-			vim.cmd.colorscheme("zenbones")
+			-- vim.cmd.colorscheme("zenbones")
+		end,
+	},
+	{
+		"gmr458/cold.nvim",
+		lazy = false,
+		priority = 1000,
+		build = ":ColdCompile",
+		config = function()
+			require("cold").setup({
+				cursorline = vim.o.cursorline,
+				transparent_background = true,
+				nvim_tree_darker = true,
+				undercurl = true,
+				italic_string = true,
+				italic_keyword = true,
+				italic_type = {
+					normal = false,
+					builtin = false,
+					definition = false,
+				},
+				italic_constant = {
+					builtin = true,
+				},
+				italic_function = {
+					declaration = false,
+					call = false,
+					method = {
+						declaration = false,
+						call = false,
+					},
+				},
+				custom_dark_background = nil,
+				custom_light_background = nil,
+				custom_statusline_dark_background = "None",
+				treesitter_context_bg = true,
+				float_borderless = false,
+			})
+			vim.cmd.colorscheme("cold")
 		end,
 	},
 }
