@@ -40,6 +40,26 @@ return {
 			vim.keymap.set("n", "<leader>5", function()
 				harpoon:list():select(5)
 			end, { desc = "Harpoon file 5" })
+
+			vim.keymap.set("n", "<leader>6", function()
+				harpoon:list():select(4)
+			end, { desc = "Harpoon file 6" })
+
+			vim.keymap.set("n", "<leader>7", function()
+				harpoon:list():select(4)
+			end, { desc = "Harpoon file 7" })
+
+			vim.keymap.set("n", "<leader>8", function()
+				harpoon:list():select(4)
+			end, { desc = "Harpoon file 8" })
+
+			vim.keymap.set("n", "<leader>9", function()
+				harpoon:list():select(4)
+			end, { desc = "Harpoon file 9" })
+
+			vim.keymap.set("n", "<leader>0", function()
+				harpoon:list():select(4)
+			end, { desc = "Harpoon file 10" })
 		end,
 	},
 }
