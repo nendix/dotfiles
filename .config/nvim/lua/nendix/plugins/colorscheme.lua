@@ -63,7 +63,7 @@ return {
 		end,
 	},
 	{
-		"gmr458/cold.nvim",
+		"nendix/cold.nvim",
 		lazy = false,
 		priority = 1000,
 		build = ":ColdCompile",
@@ -71,29 +71,31 @@ return {
 			require("cold").setup({
 				cursorline = vim.o.cursorline,
 				transparent_background = true,
-				nvim_tree_darker = true,
+				nvim_tree_darker = false,
 				undercurl = true,
-				italic_string = true,
-				italic_keyword = true,
-				italic_type = {
-					normal = false,
-					builtin = false,
-					definition = false,
-				},
-				italic_constant = {
-					builtin = true,
-				},
-				italic_function = {
-					declaration = false,
-					call = false,
-					method = {
+				italic = {
+					comments = true,
+					strings = false,
+					keywords = true,
+					types = {
+						normal = false,
+						builtin = false,
+						definition = false,
+					},
+					constants = {
+						builtin = false,
+						user = false,
+						macro = false,
+					},
+					functions = {
 						declaration = false,
 						call = false,
+						method = {
+							declaration = false,
+							call = false,
+						},
 					},
 				},
-				custom_dark_background = nil,
-				custom_light_background = nil,
-				custom_statusline_dark_background = "None",
 				treesitter_context_bg = true,
 				float_borderless = false,
 			})
