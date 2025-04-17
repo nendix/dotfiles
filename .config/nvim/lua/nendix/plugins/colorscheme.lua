@@ -89,10 +89,10 @@ return {
 					},
 					functions = {
 						declaration = false,
-						call = false,
+						call = true,
 						method = {
 							declaration = false,
-							call = false,
+							call = true,
 						},
 					},
 				},
