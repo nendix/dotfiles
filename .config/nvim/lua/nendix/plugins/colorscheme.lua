@@ -75,4 +75,14 @@ return {
 			-- vim.cmd.colorscheme("cold")
 		end,
 	},
+	{
+		"mellow-theme/mellow.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.g.mellow_transparent = true
+			vim.g.mellow_italic_functions = true
+			-- vim.cmd.colorscheme("mellow")
+		end,
+	},
 }
