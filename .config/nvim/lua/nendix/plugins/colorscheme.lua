@@ -59,47 +59,20 @@ return {
 					-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 				},
 			})
-			-- vim.cmd.colorscheme("catppuccin")
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 	{
-		"nendix/cold.nvim",
+		"gmr458/cold.nvim",
 		lazy = false,
 		priority = 1000,
 		build = ":ColdCompile",
 		config = function()
 			require("cold").setup({
-				cursorline = vim.o.cursorline,
 				transparent_background = true,
-				nvim_tree_darker = false,
-				undercurl = true,
-				italic = {
-					comments = true,
-					strings = false,
-					keywords = true,
-					types = {
-						normal = false,
-						builtin = false,
-						definition = false,
-					},
-					constants = {
-						builtin = false,
-						user = false,
-						macro = false,
-					},
-					functions = {
-						declaration = false,
-						call = true,
-						method = {
-							declaration = false,
-							call = true,
-						},
-					},
-				},
-				treesitter_context_bg = true,
-				float_borderless = false,
+				italic_keyword = true,
 			})
-			vim.cmd.colorscheme("cold")
+			-- vim.cmd.colorscheme("cold")
 		end,
 	},
 }
