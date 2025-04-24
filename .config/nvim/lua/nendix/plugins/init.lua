@@ -52,4 +52,10 @@ return {
 			require("mini.jump").setup({ delay = { highlight = 6 * (10 ^ 7) } })
 		end,
 	},
+	{
+		"chomosuke/typst-preview.nvim",
+		ft = "typst",
+		version = "1.*",
+		opts = {},
+	},
 }

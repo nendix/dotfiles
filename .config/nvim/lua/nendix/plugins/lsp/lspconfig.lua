@@ -31,19 +31,19 @@ return {
 
 			-- set keybinds
 			opts.desc = "Show LSP references"
-			keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show references
+			keymap.set("n", "gR", "<CMD>Telescope lsp_references<CR>", opts) -- show references
 
 			opts.desc = "Go to declaration"
 			keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
 
 			opts.desc = "Show LSP definitions"
-			keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+			keymap.set("n", "gd", "<CMD>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
 
 			opts.desc = "Show LSP implementations"
-			keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+			keymap.set("n", "gi", "<CMD>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
 
 			opts.desc = "Show LSP type definitions"
-			keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+			keymap.set("n", "gt", "<CMD>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
 
 			opts.desc = "See available code actions"
 			keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
@@ -51,17 +51,17 @@ return {
 			opts.desc = "Refactor"
 			keymap.set("n", "<leader>rf", vim.lsp.buf.rename, opts) -- smart rename
 
-			-- opts.desc = "Show buffer diagnostics"
-			keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
-			--
-			-- opts.desc = "Show line diagnostics"
+			opts.desc = "Show buffer diagnostics"
+			keymap.set("n", "<leader>fd", "<CMD>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+
+			opts.desc = "Show line diagnostics"
 			keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
-			--
-			-- opts.desc = "Go to previous diagnostic"
-			-- keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
-			--
-			-- opts.desc = "Go to next diagnostic"
-			-- keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+
+			opts.desc = "Go to previous diagnostic"
+			keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+
+			opts.desc = "Go to next diagnostic"
+			keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
 
 			opts.desc = "Show documentation for what is under cursor"
 			keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
@@ -71,12 +71,17 @@ return {
 		local capabilities = blink.get_lsp_capabilities()
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
-		-- (not in youtube nvim video)
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
+
+		-- configure typst server
+		lspconfig["tinymist"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
 
 		-- configure lua server
 		lspconfig["lua_ls"].setup({

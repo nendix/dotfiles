@@ -24,6 +24,7 @@ return {
 				java = { "clang-format" },
 				python = { "black" },
 				dart = { "dartfmt" },
+				typst = { "typstyle" },
 			},
 			formatters = {
 				dartfmt = {
