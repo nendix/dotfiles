@@ -70,12 +70,19 @@ return {
 		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = blink.get_lsp_capabilities()
 
-		-- Change the Diagnostic symbols in the sign column (gutter)
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
+		-- configure diagnostics
+		vim.diagnostic.config({
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = "", -- Error icon
+					[vim.diagnostic.severity.WARN] = "", -- Warning icon
+					[vim.diagnostic.severity.HINT] = "󰠠", -- Hint icon
+					[vim.diagnostic.severity.INFO] = "", -- Info icon
+				},
+			},
+			underline = true, -- Keep underlines for diagnostics
+			severity_sort = true, -- Sort diagnostics by severity (errors first)
+		})
 
 		-- configure typst server
 		lspconfig["tinymist"].setup({
