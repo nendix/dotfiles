@@ -77,6 +77,7 @@ alias lst="lsd --tree --color=auto"
 alias btop="bpytop"
 alias t="todopher"
 alias y="yazi"
+alias k="clear"
 
 # exports
 export EDITOR=nvim
