@@ -34,7 +34,7 @@ return {
 					-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 				},
 			})
-			-- vim.cmd.colorscheme("catppuccin")
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 	{
@@ -107,7 +107,7 @@ return {
 					strings = "none",
 				},
 			})
-			vim.cmd.colorscheme("vague")
+			-- vim.cmd.colorscheme("vague")
 		end,
 	},
 }
