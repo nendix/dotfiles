@@ -51,11 +51,8 @@ return {
 			opts.desc = "Refactor"
 			keymap.set("n", "<leader>rf", vim.lsp.buf.rename, opts) -- smart rename
 
-			opts.desc = "Show buffer diagnostics"
-			keymap.set("n", "<leader>fd", "<CMD>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
-
 			opts.desc = "Show line diagnostics"
-			keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+			keymap.set("n", "<leader>xd", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
 			opts.desc = "Go to previous diagnostic"
 			keymap.set("n", "[d", function()
