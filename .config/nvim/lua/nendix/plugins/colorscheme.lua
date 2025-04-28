@@ -61,6 +61,7 @@ return {
 				theme = "gorgoroth",
 				plain_float = true,
 				transparent = true,
+				alt_bg = true,
 				code_style = {
 					comments = "italic",
 					conditionals = "none",

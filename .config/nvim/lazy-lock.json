@@ -1,6 +1,6 @@
 {
   "alpha-nvim": { "branch": "main", "commit": "de72250e054e5e691b9736ee30db72c65d560771" },
-  "base16-black-metal-scheme": { "branch": "master", "commit": "c7a32bec8105a1ceddb9fcc90b713dabde5e7e5e" },
+  "black-metal-theme-neovim": { "branch": "main", "commit": "5f24497ed12129979a5119b2b230a370634baac8" },
   "blink.cmp": { "branch": "main", "commit": "cb5e346d9e0efa7a3eee7fd4da0b690c48d2a98e" },
   "catppuccin": { "branch": "main", "commit": "5b5e3aef9ad7af84f463d17b5479f06b87d5c429" },
   "codeium.vim": { "branch": "main", "commit": "272c6e2755e8faa90e26bcdcd9fde6b9e61751ea" },
