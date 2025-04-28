@@ -10,7 +10,7 @@ final_space = true
 [transient_prompt]
   template = '❯ '
   background = 'transparent'
-  foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
+  foreground_templates = ['{{if gt .Code 0}}red{{else}}magenta{{end}}']
 
 [[blocks]]
   type = 'prompt'
@@ -71,9 +71,9 @@ final_space = true
   [[blocks.segments]]
     template = '❯'
     background = 'transparent'
+    foreground_templates = ['{{if gt .Code 0}}red{{else}}magenta{{end}}']
     type = 'text'
     style = 'plain'
-    foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
 
     [blocks.segments.properties]
       cache_duration = 'none'
