@@ -13,13 +13,11 @@ return {
 		telescope.setup({
 			defaults = {
 				file_ignore_patterns = {
-					"node_modules",
-					".git",
-					"out",
-					"venv",
+					".git/",
+					"node_modules/",
+					"venv/",
 					".DS_Store",
-					"migrations",
-					"bin",
+					"bin/",
 				},
 				path_display = { "truncate " },
 				mappings = {
