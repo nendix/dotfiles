@@ -34,7 +34,7 @@ return {
 					-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 				},
 			})
-			vim.cmd.colorscheme("catppuccin")
+			-- vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 	{
@@ -75,27 +75,31 @@ return {
 				-- Override highlight groups
 				highlights = {
 					-- Diagnostic highlights
-					DiagnosticError = { fg = "#ffa3a3" }, -- Bright red
-					DiagnosticWarn = { fg = "#f7ca88" }, -- Orange
-					DiagnosticInfo = { fg = "#739393" }, -- Light blue
-					DiagnosticHint = { fg = "#c493b0" }, -- Purple
+					DiagnosticError = { fg = "#6a4c4c" },
+					DiagnosticWarn = { fg = "#8a7d4c" },
+					DiagnosticInfo = { fg = "#4c5a75" },
+					DiagnosticHint = { fg = "#6a4c6a" },
 
-					DiagnosticUnderlineError = { undercurl = true, sp = "#ffa3a3" },
-					DiagnosticUnderlineWarn = { undercurl = true, sp = "#f7ca88" },
-					DiagnosticUnderlineInfo = { undercurl = true, sp = "#739393" },
-					DiagnosticUnderlineHint = { undercurl = true, sp = "#c493b0" },
+					DiagnosticUnderlineError = { undercurl = true, sp = "#6a4c4c" },
+					DiagnosticUnderlineWarn = { undercurl = true, sp = "#8a7d4c" },
+					DiagnosticUnderlineInfo = { undercurl = true, sp = "#4c5a75" },
+					DiagnosticUnderlineHint = { undercurl = true, sp = "#6a4c6a" },
 
-					DiagnosticVirtualTextError = { bg = "#ffa3a3" },
-					DiagnosticVirtualTextWarn = { bg = "#f7ca88" },
-					DiagnosticVirtualTextInfo = { bg = "#739393" },
-					DiagnosticVirtualTextHint = { bg = "#c493b0" },
+					DiagnosticVirtualTextError = { bg = "#6a4c4c" },
+					DiagnosticVirtualTextWarn = { bg = "#8a7d4c" },
+					DiagnosticVirtualTextInfo = { bg = "#4c5a75" },
+					DiagnosticVirtualTextHint = { bg = "#6a4c6a" },
 
-					GitSignsAdd = { fg = "#9ebc9f" },
-					GitSignsChange = { fg = "#f7ca88" },
-					GitSignsDelete = { fg = "#ffa3a3" },
+					GitSignsAdd = { fg = "#5a7a4c" },
+					GitSignsChange = { fg = "#8a7d4c" },
+					GitSignsDelete = { fg = "#6a4c4c" },
+
+					DiffAdd = { fg = "#5a7a4c" },
+					DiffChange = { fg = "#8a7d4c" },
+					DiffDelete = { fg = "#6a4c4c" },
 				},
 			})
-			-- require("black-metal").load()
+			require("black-metal").load()
 		end,
 	},
 	{
