@@ -1,4 +1,4 @@
-theme = catppuccin-mocha
+theme = gorgoroth
 
 background-opacity = 0.90
 background-blur-radius = 20
