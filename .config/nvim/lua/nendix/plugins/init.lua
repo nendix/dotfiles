@@ -52,4 +52,11 @@ return {
 			require("mini.jump").setup({ delay = { highlight = 6 * (10 ^ 7) } })
 		end,
 	},
+	{
+		"folke/zen-mode.nvim",
+		opts = {},
+		config = function()
+			vim.keymap.set("n", "<leader>z", "<CMD>ZenMode<CR>", { desc = "Zen mode" })
+		end,
+	},
 }
