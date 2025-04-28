@@ -6,32 +6,32 @@ cursor-text = #000000
 
 # black
 palette = 0=#111113
-palette = 8=#505050
+palette = 8=#333333
 
 # red
-palette = 1=#8c5353
-palette = 9=#af6e6e
+palette = 1=#6e4c4c
+palette = 9=#8c6a6a
 
 # green
-palette = 2=#6d8c6d
-palette = 10=#8cac8c
+palette = 2=#4c6e4c
+palette = 10=#6a8c6a
 
 # yellow
-palette = 3=#8c7c53
-palette = 11=#ac9c6e
+palette = 3=#6e6a4c
+palette = 11=#8c886a
 
 # blue
 palette = 4=#5f8787
-palette = 12=#7fa7a7
+palette = 12=#7fa5a5
 
 # magenta
-palette = 5=#8c638c
-palette = 13=#ac83ac
+palette = 5=#6e4c6e
+palette = 13=#8c6a8c
 
 # cyan
-palette = 6=#7dac8c
-palette = 14=#9dccac
+palette = 6=#4c6e6e
+palette = 14=#6a8c8c
 
 # white
-palette = 7=#c1c1c1
-palette = 15=#c1c1c1
+palette = 7=#999999
+palette = 15=#bbbbbb
