@@ -1,37 +1,37 @@
-background = #000000
+background = #111111
 foreground = #c1c1c1
 
 cursor-color = #c1c1c1
 cursor-text = #000000
 
 # black
-palette = 0=#111113
-palette = 8=#333333
+palette = 0=#363636
+palette = 8=#545454
 
 # red
-palette = 1=#6e4c4c
-palette = 9=#8c6a6a
+palette = 1=#6a4c4c
+palette = 9=#886a6c
 
 # green
-palette = 2=#4c6e4c
-palette = 10=#6a8c6a
+palette = 2=#5a7a4c
+palette = 10=#6a8c6c
 
 # yellow
-palette = 3=#6e6a4c
-palette = 11=#8c886a
+palette = 3=#8a7d4c
+palette = 11=#a89b6c
 
 # blue
-palette = 4=#5f8787
-palette = 12=#7fa5a5
+palette = 4=#4c5a75
+palette = 12=#6c7892
 
 # magenta
-palette = 5=#6e4c6e
-palette = 13=#8c6a8c
+palette = 5=#6a4c6a
+palette = 13=#886c88
 
 # cyan
-palette = 6=#4c6e6e
-palette = 14=#6a8c8c
+palette = 6=#4c6d7d
+palette = 14=#6c8d9b
 
 # white
 palette = 7=#999999
-palette = 15=#bbbbbb
+palette = 15=#b3b3b3
