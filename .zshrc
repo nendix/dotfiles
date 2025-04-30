@@ -87,10 +87,10 @@ export PATH=$PATH:"$HOME/fvm/default/bin"
 
 # fzf styling
 export FZF_DEFAULT_OPTS="--multi
---color=fg:#c1c1c1,bg:#111113,hl:#9b8d7f,gutter:#111113
---color=fg+:#c1c1c1,bg+:#000000,hl+:#9b8d7f
---color=info:#505050,prompt:#9b8d7f,pointer:#c1c1c1
---color=marker:#999999,spinner:#999999,header:#999999"
+--color=fg:#adacac,bg:#111111,hl:#8a879c,gutter:#111111
+--color=fg+:#9c797d,bg+:#1b1c1d,hl+:#8a879c
+--color=info:#696969,prompt:#8a879c,pointer:#9c797d
+--color=marker:#a18b7f,spinner:#a18b7f,header:#a18b7f"
 
 # shell integrations
 eval "$(fzf --zsh)"

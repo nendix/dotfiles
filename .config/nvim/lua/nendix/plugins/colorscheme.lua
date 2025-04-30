@@ -62,6 +62,7 @@ return {
 				plain_float = true,
 				transparent = true,
 				alt_bg = true,
+				favor_treesitter_hl = true,
 				code_style = {
 					comments = "italic",
 					conditionals = "none",
@@ -100,19 +101,32 @@ return {
 					DiffDelete = { fg = "#6a4c4c" },
 				},
 			})
-			require("black-metal").load()
+			-- require("black-metal").load()
 		end,
 	},
 	{
-		"vague2k/vague.nvim",
+		"cdmill/neomodern.nvim",
+		lazy = false,
+		priority = 1000,
 		config = function()
-			require("vague").setup({
+			require("neomodern").setup({
+				theme = "hojicha",
+				plain_float = true,
 				transparent = true,
-				style = {
+				favor_treesitter_hl = true,
+				code_style = {
+					comments = "italic",
+					conditionals = "none",
+					functions = "none",
+					keywords = "italic",
+					headings = "bold", -- Markdown headings
+					operators = "none",
+					keyword_return = "none",
 					strings = "none",
+					variables = "none",
 				},
 			})
-			-- vim.cmd.colorscheme("vague")
+			require("neomodern").load()
 		end,
 	},
 }
