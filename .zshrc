@@ -94,7 +94,7 @@ export FZF_DEFAULT_OPTS="--multi
 
 # shell integrations
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init --cmd j zsh)"
 eval "$(direnv hook zsh)"
 
 # load oh-my-posh
