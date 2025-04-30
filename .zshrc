@@ -81,6 +81,7 @@ alias k="clear"
 
 # exports
 export EDITOR=nvim
+export TERM=xterm-256color
 export PATH="$HOME/Developer/utils:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH=$PATH:"$HOME/fvm/default/bin"
@@ -101,8 +102,13 @@ eval "$(direnv hook zsh)"
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zencat.toml)"
 
 ## [Completion]
-## Completion scripts setup. Remove the following line to uninstall
 [[ -f /Users/daniele/.dart-cli-completion/zsh-config.zsh ]] && . /Users/daniele/.dart-cli-completion/zsh-config.zsh || true
-## [/Completion]
+
+## [Completion]
 export PATH="/opt/homebrew/opt/php@8.1/bin:$PATH"
 export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"
+
+# load nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
