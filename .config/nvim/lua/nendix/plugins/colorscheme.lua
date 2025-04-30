@@ -38,16 +38,24 @@ return {
 		end,
 	},
 	{
-		"gmr458/cold.nvim",
+		"aktersnurra/no-clown-fiesta.nvim",
 		lazy = false,
 		priority = 1000,
-		build = ":ColdCompile",
 		config = function()
-			require("cold").setup({
-				transparent_background = true,
-				italic_keyword = true,
+			require("no-clown-fiesta").setup({
+				transparent = true,
+				styles = {
+					-- You can set any of the style values specified for `:h nvim_set_hl`
+					comments = { italic = true },
+					functions = {},
+					keywords = {},
+					lsp = {},
+					match_paren = {},
+					type = {},
+					variables = {},
+				},
 			})
-			-- vim.cmd.colorscheme("cold")
+			-- vim.cmd.colorscheme("no-clown-fiesta")
 		end,
 	},
 	{
@@ -74,34 +82,8 @@ return {
 					strings = "none",
 					variables = "none",
 				},
-				-- Override highlight groups
-				highlights = {
-					-- Diagnostic highlights
-					DiagnosticError = { fg = "#6a4c4c" },
-					DiagnosticWarn = { fg = "#8a7d4c" },
-					DiagnosticInfo = { fg = "#4c5a75" },
-					DiagnosticHint = { fg = "#6a4c6a" },
-
-					DiagnosticUnderlineError = { undercurl = true, sp = "#6a4c4c" },
-					DiagnosticUnderlineWarn = { undercurl = true, sp = "#8a7d4c" },
-					DiagnosticUnderlineInfo = { undercurl = true, sp = "#4c5a75" },
-					DiagnosticUnderlineHint = { undercurl = true, sp = "#6a4c6a" },
-
-					DiagnosticVirtualTextError = { bg = "#6a4c4c" },
-					DiagnosticVirtualTextWarn = { bg = "#8a7d4c" },
-					DiagnosticVirtualTextInfo = { bg = "#4c5a75" },
-					DiagnosticVirtualTextHint = { bg = "#6a4c6a" },
-
-					GitSignsAdd = { fg = "#5a7a4c" },
-					GitSignsChange = { fg = "#8a7d4c" },
-					GitSignsDelete = { fg = "#6a4c4c" },
-
-					DiffAdd = { fg = "#5a7a4c" },
-					DiffChange = { fg = "#8a7d4c" },
-					DiffDelete = { fg = "#6a4c4c" },
-				},
 			})
-			-- require("black-metal").load()
+			-- vim.cmd.colorscheme("gorgoroth")
 		end,
 	},
 	{
@@ -126,7 +108,7 @@ return {
 					variables = "none",
 				},
 			})
-			require("neomodern").load()
+			vim.cmd.colorscheme("hojicha")
 		end,
 	},
 }
