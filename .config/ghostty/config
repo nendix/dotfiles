@@ -12,6 +12,6 @@ macos-titlebar-style = hidden
 
 font-family = "Iosevka Nerd Font Mono"
 font-size = 16
-font-thicken = true
+font-feature = -calt, -liga, -dlig
 
 keybind = ctrl+shift+space=toggle_quick_terminal
