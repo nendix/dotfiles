@@ -1,37 +1,33 @@
-background = #111113
+# vim:ft=ghostty
+
+# name: GORGOROTH colors for Ghostty
+# url: https://ghostty.org/
+# upstream: ${upstream}
+# author: Andrea Schiavini (original code by Casey Miller)
+
+background = #000000
+# alternate, darker background #111113
 foreground = #c1c1c1
+selection-background = #333333
+selection-foreground = #c1c1c1
+cursor-color = #c1c1c1
 
-cursor-color = #ffffff
-cursor-text = #000000
+# normal
+palette = 0=#111113
+palette = 1=#5f8787
+palette = 2=#c1c1c1
+palette = 3=#888888
+palette = 4=#aaaaaa
+palette = 5=#999999
+palette = 6=#ddeecc
+palette = 7=#c1c1c1
 
-# black
-palette = 0=#363636
-palette = 8=#545454
-
-# red
-palette = 1=#6a4c4c
-palette = 9=#886a6c
-
-# green
-palette = 2=#5a7a4c
-palette = 10=#6a8c6c
-
-# yellow
-palette = 3=#8a7d4c
-palette = 11=#a89b6c
-
-# blue
-palette = 4=#4c5a75
-palette = 12=#6c7892
-
-# magenta
-palette = 5=#6a4c6a
-palette = 13=#886c88
-
-# cyan
-palette = 6=#4c6d7d
-palette = 14=#6c8d9b
-
-# white
-palette = 7=#999999
-palette = 15=#b3b3b3
+# bright
+palette = 8=#505050
+palette = 9=#5f8787
+palette = 10=#c1c1c1
+palette = 11=#888888
+palette = 12=#aaaaaa
+palette = 13=#9b8d7f
+palette = 14=#ddeecc
+palette = 15=#c1c1c1
