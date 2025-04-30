@@ -5,7 +5,7 @@
 # upstream: ${upstream}
 # author: Andrea Schiavini (original code by Casey Miller)
 
-background = #000000
+background = #111113
 # alternate, darker background #111113
 foreground = #c1c1c1
 selection-background = #333333
