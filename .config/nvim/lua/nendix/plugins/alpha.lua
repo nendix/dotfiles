@@ -32,14 +32,13 @@ return {
 
 		-- Set header
 		dashboard.section.header.val = {
-			"                                                     ",
-			"  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-			"  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-			"  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-			"  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-			"  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-			"  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-			"                                                     ",
+			" ▄▀▀▄ ▀▄  ▄▀▀█▄▄▄▄  ▄▀▀▄ ▀▄  ▄▀▀█▄▄   ▄▀▀█▀▄   ▄▀▀▄  ▄▀▄",
+			"█  █ █ █ ▐  ▄▀   ▐ █  █ █ █ █ ▄▀   █ █   █  █ █    █   █",
+			"▐  █  ▀█   █▄▄▄▄▄  ▐  █  ▀█ ▐ █    █ ▐   █  ▐ ▐     ▀▄▀ ",
+			"  █   █    █    ▌    █   █    █    █     █         ▄▀ █ ",
+			"▄▀   █    ▄▀▄▄▄▄   ▄▀   █    ▄▀▄▄▄▄▀  ▄▀▀▀▀▀▄     █  ▄▀ ",
+			"█    ▐    █    ▐   █    ▐   █     ▐  █       █  ▄▀  ▄▀  ",
+			"▐         ▐        ▐        ▐        ▐       ▐ █    ▐   ",
 		}
 
 		-- Set menu with proper icons
@@ -47,7 +46,7 @@ return {
 			dashboard.button("e", icons.file .. " New File", "<CMD>ene<CR>"),
 			dashboard.button("SPC e", icons.folder .. " File Explorer", "<CMD>Oil --float<CR>"),
 			dashboard.button("SPC ff", icons.search .. " Find File", "<CMD>Telescope find_files<CR>"),
-			dashboard.button("SPC fg", icons.text .. " Live Grep", "<CMD>Telescope live_grep<CR>"),
+			dashboard.button("SPC fs", icons.text .. " Live Grep", "<CMD>Telescope live_grep<CR>"),
 			dashboard.button("c", icons.gear .. " Config", "<CMD>e ~/.config/nvim/<CR>"),
 			dashboard.button("q", icons.exit .. " Quit", "<CMD>qa<CR>"),
 		}
@@ -57,17 +56,9 @@ return {
 			local version = vim.version()
 			local vim_version = string.format("v%d.%d.%d", version.major, version.minor, version.patch)
 
-			local quotes = {
-				"Stay productive!",
-				"Happy coding!",
-				"Keep it simple.",
-				"Code is poetry.",
-			}
-
 			return {
-				"",
 				"Neovim " .. vim_version,
-				quotes[math.random(#quotes)],
+				-- quotes[math.random(#quotes)],
 			}
 		end
 
@@ -75,5 +66,14 @@ return {
 
 		-- Setup alpha
 		alpha.setup(dashboard.opts)
+		-- Add additional padding after buttons (alternative approach)
+		dashboard.config.layout = {
+			{ type = "padding", val = 8 }, -- Padding before header
+			dashboard.section.header,
+			{ type = "padding", val = 4 }, -- Padding after header
+			dashboard.section.buttons,
+			{ type = "padding", val = 12 }, -- Padding before footer (spacer)
+			dashboard.section.footer,
+		}
 	end,
 }
