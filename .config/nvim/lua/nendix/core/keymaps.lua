@@ -24,24 +24,12 @@ keymap.set("n", "<leader>nh", "<CMD>nohl<CR>", { desc = "No highlights" })
 keymap.set("n", "+", "<C-a>", { desc = "Increment" })
 keymap.set("n", "-", "<C-x>", { desc = "Decrement" })
 
--- window management
-keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
-keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
-keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make split windows equal" }) -- make split windows equal width & height
-keymap.set("n", "<leader>sx", "<CMD>close<CR>", { desc = "Close current split window" }) -- close current split window
-
---tab management
-keymap.set("n", "<leader>to", "<CMD>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
-keymap.set("n", "<leader>tx", "<CMD>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
-
 ----------------------
 -- Plugin Keybinds
 ----------------------
--- buffer
-keymap.set("n", "<leader>bx", "<CMD>bdelete<CR>", { desc = "Close buffer" })
 
 -- vim-maximizer
-keymap.set("n", "<leader>sm", "<CMD>MaximizerToggle<CR>", { desc = "Split window maximization" }) -- toggle split window maximization
+keymap.set("n", "<C-w>m", "<CMD>MaximizerToggle<CR>", { desc = "Toggle split window zoom" }) -- toggle split window zoom
 
 -- telescope
 keymap.set(
