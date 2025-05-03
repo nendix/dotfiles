@@ -1,6 +1,6 @@
-# background = #161616
+background = #161616
 # alternate, darker 
-background =#111111
+# background =#111111
 foreground =#adacac
 selection-background =#333333
 selection-foreground =#adacac
