@@ -108,7 +108,7 @@ return {
 					variables = "none",
 				},
 				highlights = {
-					IblIndent = { fg = "#1b1c1d", fmt = "nocombine" },
+					IblIndent = { fg = "#333333", fmt = "nocombine" },
 				},
 			})
 			vim.cmd.colorscheme("hojicha")
