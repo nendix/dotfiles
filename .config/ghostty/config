@@ -10,7 +10,7 @@ window-padding-y = 4
 window-padding-balance = true
 macos-titlebar-style = hidden
 
-font-family = "FantasqueSansM Nerd Font Mono"
+font-family = "IosevkaTerm Nerd Font Mono"
 font-size = 16
 font-feature = -calt, -liga, -dlig
 
