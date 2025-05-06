@@ -1,0 +1,28 @@
+foreground=#adadcc
+background=#121315
+# alternate, darker bg
+# background=#111111
+selection-background=#262830
+selection-foreground=#adadcc
+cursor-color=#adadcc
+cursor-text=#121315
+
+# normal
+palette=0=#111111
+palette=1=#ba5f60
+palette=2=#9bbdb8
+palette=3=#d2af98
+palette=4=#95b1fc
+palette=5=#a8a6f5
+palette=6=#6397cf
+palette=7=#adadcc
+
+# bright
+palette=8=#666a82
+palette=9=#ba5f60
+palette=10=#9bbdb8
+palette=11=#d2af98
+palette=12=#95b1fc
+palette=13=#ad82a2
+palette=14=#6397cf
+palette=15=#adadcc
