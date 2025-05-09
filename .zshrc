@@ -23,6 +23,7 @@ zinit light Aloxaf/fzf-tab
 zinit snippet OMZP::git
 zinit snippet OMZP::tmux
 zinit snippet OMZP::vi-mode
+zinit snippet OMZP::docker-compose
 
 # load completions
 autoload -U compinit && compinit
