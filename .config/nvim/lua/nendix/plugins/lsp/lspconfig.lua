@@ -85,6 +85,11 @@ return {
 			severity_sort = true, -- Sort diagnostics by severity (errors first)
 		})
 
+		-- configure bash server
+		lspconfig["bashls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
 		-- configure typst server
 		lspconfig["tinymist"].setup({
 			capabilities = capabilities,
