@@ -1,8 +1,9 @@
 #!/bin/bash
 
+WIFI_STATUS=$(networksetup -getairportpower en0 | awk '{print $4}')
 WIFI_SSID=$(networksetup -getairportnetwork en0 | awk '{print $4}')
 
-if [[ -n "$WIFI_SSID" ]]; then
+if [[ "$WIFI_STATUS" == "On" && -n "$WIFI_SSID" ]]; then
   ICON="󰖩"  # Connected
 else
   ICON="󰖪"  # Disconnected
