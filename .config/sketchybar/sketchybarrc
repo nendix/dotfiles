@@ -1,7 +1,12 @@
 #!/bin/bash
 
+# source "$CONFIG_DIR/colors.sh" # Loads all defined colors
+source "$CONFIG_DIR/icons.sh" # Loads all defined icons
+
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 ITEM_DIR="$CONFIG_DIR/items"
+
+FONT="Iosevka Nerd Font Propo"
 
 ##### Bar Appearance #####
 bar=(
@@ -11,15 +16,12 @@ bar=(
   position=top
   padding_right=10
   padding_left=10
-  topmost=window
 )
 sketchybar --bar "${bar[@]}"
 
 default=(
-  icon.font="Iosevka Nerd Font Propo:Bold:17.0"
-  label.font="Iosevka Nerd Font Propo:Bold:14.0"
-  # background.color=0xff161616
-  # background.corner_radius=12
+  icon.font="$FONT:Bold:17.0"
+  label.font="$FONT:Bold:14.0"
   padding_left=5
   padding_right=5
   icon.color=0xffffffff
@@ -31,31 +33,15 @@ default=(
 )
 sketchybar --default "${default[@]}"
 
-
-sketchybar --add event aerospace_workspace_change
-
-for sid in $(aerospace list-workspaces --all); do
-    sketchybar --add item space.$sid left \
-        --subscribe space.$sid aerospace_workspace_change \
-        --set space.$sid \
-        background.color=0x44ffffff \
-        background.corner_radius=5 \
-        background.height=20 \
-        background.drawing=off \
-        label="$sid" \
-        click_script="aerospace workspace $sid" \
-        script="$CONFIG_DIR/plugins/aerospace.sh $sid"
-done
-
 ##### Left Side Items #####
-sketchybar --add item chevron left \
-           --set chevron icon= label.drawing=off \
-           --add item front_app left \
-           --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
-           --subscribe front_app front_app_switched
+# source "$ITEM_DIR/apple.sh"
+source "$ITEM_DIR/aerospace.sh"
+source "$ITEM_DIR/front_app.sh"
 
 ##### Right Side Items #####
 source "$ITEM_DIR/calendar.sh"
+source "$ITEM_DIR/wifi.sh"
+source "$ITEM_DIR/battery.sh"
 
 # reload sketchybar on save
 sketchybar --hotload on
