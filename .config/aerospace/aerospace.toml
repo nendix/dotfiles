@@ -36,7 +36,7 @@ inner.horizontal = 6
 inner.vertical =   6
 outer.left =       6
 outer.bottom =     6
-outer.top =        6
+outer.top = [{ monitor."built-in" = 6 }, 32]
 outer.right =      6
 
 [mode.main.binding]
@@ -101,9 +101,10 @@ ctrl-alt-enter = 'mode apps' # Go in app mode
 [mode.service.binding]
 esc = 'mode main' # Exit service mode
 r = ['reload-config', 'mode main'] # reload config
+shift-r = ['exec-and-forget /opt/homebrew/bin/sketchybar --reload', 'mode main']
+
 b = ['flatten-workspace-tree', 'mode main'] # reset layout
 backspace = ['close-all-windows-but-current', 'mode main'] # close all windows but current
-
 # resize windows smartly
 s = 'resize smart -50' # shrink
 e = 'resize smart +50' # expand
