@@ -14,8 +14,8 @@ bar=(
   color=$TRANSPARENT
   shadow=off
   position=top
-  padding_right=10
-  padding_left=10
+  padding_right=18
+  padding_left=18
 )
 sketchybar --bar "${bar[@]}"
 
