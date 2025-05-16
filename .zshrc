@@ -13,6 +13,10 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# Load pure theme
+zinit ice pick"async.zsh" src"pure.zsh" # with zsh-async library that's bundled with it.
+zinit light sindresorhus/pure
+
 # add in zsh plugins
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
@@ -98,9 +102,6 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd j zsh)"
 eval "$(direnv hook zsh)"
-
-# load oh-my-posh
-eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zencat.toml)"
 
 ## [Completion]
 [[ -f /Users/daniele/.dart-cli-completion/zsh-config.zsh ]] && . /Users/daniele/.dart-cli-completion/zsh-config.zsh || true
