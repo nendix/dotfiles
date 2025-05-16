@@ -84,90 +84,10 @@ return {
 			underline = true, -- Keep underlines for diagnostics
 			severity_sort = true, -- Sort diagnostics by severity (errors first)
 		})
-
-		-- configure bash server
-		lspconfig["bashls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-		-- configure typst server
-		lspconfig["tinymist"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
 		-- configure lua server
 		lspconfig["lua_ls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-		})
-
-		-- configure html server
-		lspconfig["html"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			filetypes = { "html", "htmldjango" },
-		})
-
-		-- configure css server
-		lspconfig["cssls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure ts/js server
-		lspconfig["ts_ls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure c server
-		lspconfig["clangd"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure go server
-		lspconfig["gopls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure python server
-		lspconfig["pylsp"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = {
-				pylsp = {
-					plugins = {
-						pyflakes = { enabled = true },
-						pylint = { enabled = false },
-						mccabe = { enabled = false },
-						pycodestyle = { enabled = false },
-					},
-				},
-			},
-		})
-
-		-- configure rust server
-		lspconfig["rust_analyzer"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure php server
-		lspconfig["phpactor"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure java server
-		lspconfig["jdtls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = {
-				["$/progress"] = function(_, result, ctx) end,
-			},
 		})
 	end,
 }

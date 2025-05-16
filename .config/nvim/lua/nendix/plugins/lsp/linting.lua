@@ -4,16 +4,7 @@ return {
 	config = function()
 		local lint = require("lint")
 
-		lint.linters_by_ft = {
-			javascript = { "trivy" },
-			typescript = { "trivy" },
-			javascriptreact = { "trivy" },
-			typescriptreact = { "trivy" },
-			hmtl = { "htmlhint" },
-			hmtldjango = { "djlint" },
-			go = { "trivy" },
-			rust = { "trivy" },
-		}
+		lint.linters_by_ft = {}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
