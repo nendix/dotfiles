@@ -13,8 +13,8 @@ bar=(
   color=$TRANSPARENT
   shadow=off
   position=top
-  padding_right=18
-  padding_left=18
+  padding_right=16
+  padding_left=16
 )
 sketchybar --bar "${bar[@]}"
 
@@ -22,17 +22,17 @@ default=(
   icon.font="$FONT:Bold:17.0"
   label.font="$FONT:Bold:14.0"
   background.color=$BACKGROUND
-  background.corner_radius=12
+  background.corner_radius=8
   background.border_width=1
   background.border_color=$BORDER
   padding_left=4
   padding_right=4
   icon.color=$FOREGROUND
   label.color=$FOREGROUND
-  icon.padding_left=10
-  icon.padding_right=10
-  label.padding_left=10
-  label.padding_right=10
+  icon.padding_left=8
+  icon.padding_right=8
+  label.padding_left=8
+  label.padding_right=8
 )
 sketchybar --default "${default[@]}"
 
