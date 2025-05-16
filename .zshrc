@@ -72,15 +72,11 @@ function take {
   mkdir -p $1
   cd $1
 }
-alias rm="trash"
 alias vim="nvim"
-alias ls="eza --icons=auto --color=auto"
+alias ls="ls --color=always"
 alias lsa="ls -a"
 alias lsl="ls -l" 
-alias lst="ls --tree"
-alias btop="bpytop"
-alias t="todopher"
-alias y="yazi"
+alias y="/snap/bin/yazi"
 alias k="clear"
 
 # exports
@@ -100,17 +96,3 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS
 
 # shell integrations
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd j zsh)"
-eval "$(direnv hook zsh)"
-
-## [Completion]
-[[ -f /Users/daniele/.dart-cli-completion/zsh-config.zsh ]] && . /Users/daniele/.dart-cli-completion/zsh-config.zsh || true
-
-## [Completion]
-export PATH="/opt/homebrew/opt/php@8.1/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"
-
-# load nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
