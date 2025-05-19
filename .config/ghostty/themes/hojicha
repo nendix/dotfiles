@@ -26,3 +26,7 @@ palette=12=#808796
 palette=13=#a7ab93
 palette=14=#b0b58a
 palette=15=#adacac
+
+# pure prompt overrides
+palette=242=#696969
+palette=218=#9c797d

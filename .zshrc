@@ -13,9 +13,11 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Load pure theme
+# Load pure prompt
 zinit ice pick"async.zsh" src"pure.zsh" # with zsh-async library that's bundled with it.
 zinit light sindresorhus/pure
+# prompt styling
+zstyle ':prompt:pure:git:stash' show yes
 
 # add in zsh plugins
 zinit light zsh-users/zsh-completions
