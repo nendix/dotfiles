@@ -31,8 +31,6 @@ zinit cdreplay -q
 
 # keybindings
 bindkey -v
-bindkey "^p" history-search-backward
-bindkey "^n" history-search-forward
 bindkey "©" fzf-cd-widget
 
 # history
@@ -71,15 +69,13 @@ alias vim="nvim"
 alias ls="ls --color=always"
 alias lsa="ls -a"
 alias lsl="ls -l" 
-alias y="/snap/bin/yazi"
+alias y="yazi"
 alias k="clear"
 
 # exports
 export EDITOR=nvim
 export TERM=xterm-256color
-export PATH="$HOME/Developer/utils:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH=$PATH:"$HOME/fvm/default/bin"
+export PATH=$PATH:"/snap/bin/"
 
 # fzf styling
 export FZF_DEFAULT_OPTS="--multi"
@@ -88,6 +84,3 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS
 --color=fg+:#9c797d,bg+:#1b1c1d,hl+:#8a879c
 --color=info:#696969,prompt:#8a879c,pointer:#9c797d
 --color=marker:#a18b7f,spinner:#a18b7f,header:#a18b7f"
-
-# shell integrations
-eval "$(fzf --zsh)"
