@@ -28,7 +28,6 @@ zinit light Aloxaf/fzf-tab
 # add in snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::tmux
-zinit snippet OMZP::vi-mode
 zinit snippet OMZP::docker-compose
 
 # load completions
@@ -37,7 +36,6 @@ autoload -U compinit && compinit
 zinit cdreplay -q
 
 # keybindings
-bindkey -v
 bindkey "^p" history-search-backward
 bindkey "^n" history-search-forward
 bindkey "©" fzf-cd-widget
@@ -65,9 +63,11 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
 
-# vim mode styling
-KEYTIMEOUT=1
-export VI_MODE_SET_CURSOR=true
+# vim mode
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+ZVM_VI_HIGHLIGHT_FOREGROUND=#adacac
+ZVM_VI_HIGHLIGHT_BACKGROUND=#333333
 
 # aliases
 function take {
