@@ -3,7 +3,7 @@
 # upstream: ${upstream}
 # author: Casey Miller
 
-[manager]
+[mgr]
 cwd = { fg = "#808796" }
 
 hovered         = { fg = "#9c797d", bg = "#1b1c1d" }
