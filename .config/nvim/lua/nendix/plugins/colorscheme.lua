@@ -1,30 +1,37 @@
 return {
 	{
-		"cdmill/neomodern.nvim",
+		"webhooked/kanso.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("neomodern").setup({
-				theme = "hojicha",
-				plain_float = true,
+			require("kanso").setup({
+				bold = true,
+				italics = true,
+				compile = false,
+				undercurl = true,
+				commentStyle = { italic = true },
+				functionStyle = {},
+				keywordStyle = { italic = true },
+				statementStyle = {},
+				typeStyle = {},
 				transparent = true,
-				favor_treesitter_hl = true,
-				code_style = {
-					comments = "italic",
-					conditionals = "none",
-					functions = "none",
-					keywords = "italic",
-					headings = "bold", -- Markdown headings
-					operators = "none",
-					keyword_return = "none",
-					strings = "none",
-					variables = "none",
+				dimInactive = false,
+				terminalColors = true,
+				colors = {
+					palette = {},
+					theme = { zen = {}, pearl = {}, ink = {}, all = {} },
 				},
-				highlights = {
-					IblIndent = { fg = "#333333", fmt = "nocombine" },
+				overrides = function(colors)
+					return {}
+				end,
+				theme = "ink",
+				background = {
+					dark = "ink",
+					light = "pearl",
 				},
 			})
-			vim.cmd.colorscheme("hojicha")
+
+			vim.cmd("colorscheme kanso")
 		end,
 	},
 }

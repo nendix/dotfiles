@@ -17,7 +17,7 @@ require("lazy").setup({
 	{ import = "nendix.plugins.dap" },
 }, {
 	install = {
-		colorscheme = { "hojicha" },
+		colorscheme = { "kanso" },
 	},
 	checker = {
 		enabled = true,
