@@ -17,18 +17,7 @@ return {
 				transparent = true,
 				dimInactive = false,
 				terminalColors = true,
-				colors = {
-					palette = {},
-					theme = { zen = {}, pearl = {}, ink = {}, all = {} },
-				},
-				overrides = function(colors)
-					return {}
-				end,
 				theme = "ink",
-				background = {
-					dark = "ink",
-					light = "pearl",
-				},
 			})
 
 			vim.cmd("colorscheme kanso")

@@ -17,9 +17,6 @@ return {
 		},
 	},
 	config = function()
-		-- import lspconfig plugin
-		local lspconfig = require("lspconfig")
-
 		-- import blink plugin
 		local blink = require("blink.cmp")
 
@@ -86,55 +83,56 @@ return {
 		})
 
 		-- configure bash server
-		lspconfig["bashls"].setup({
+		vim.lsp.config("bashls", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
+
 		-- configure typst server
-		lspconfig["tinymist"].setup({
+		vim.lsp.config("tinymist", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure lua server
-		lspconfig["lua_ls"].setup({
+		vim.lsp.config("lua_ls", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure html server
-		lspconfig["html"].setup({
+		vim.lsp.config("html", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			filetypes = { "html", "htmldjango" },
 		})
 
 		-- configure css server
-		lspconfig["cssls"].setup({
+		vim.lsp.config("cssls", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure ts/js server
-		lspconfig["ts_ls"].setup({
+		vim.lsp.config("ts_ls", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure c server
-		lspconfig["clangd"].setup({
+		vim.lsp.config("clangd", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure go server
-		lspconfig["gopls"].setup({
+		vim.lsp.config("gopls", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure python server
-		lspconfig["pylsp"].setup({
+		vim.lsp.config("pylsp", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = {
@@ -150,19 +148,13 @@ return {
 		})
 
 		-- configure rust server
-		lspconfig["rust_analyzer"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure php server
-		lspconfig["phpactor"].setup({
+		vim.lsp.config("rust_analyzer", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure java server
-		lspconfig["jdtls"].setup({
+		vim.lsp.config("jdtls", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			handlers = {
