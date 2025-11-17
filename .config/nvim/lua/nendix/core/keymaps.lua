@@ -10,7 +10,7 @@ local keymap = vim.keymap -- for conciseness
 keymap.set("n", "<leader>w", vim.cmd.w, { desc = "Save file" }) --save
 keymap.set("n", "<leader>q", vim.cmd.q, { desc = "Quit file" }) -- quit
 keymap.set("n", "<leader>u", "<CMD>UndotreeToggle<CR>", { desc = "Undotree" }) -- undo tree
-keymap.set("n", "<leader>e", "<CMD>Oil --float<CR>", { desc = "Oil file explorer" }) -- oil
+keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Oil file explorer" }) -- oil
 
 -- quickfix list
 keymap.set("n", "<leader>co", "<CMD>copen<CR>", { desc = "Open qflist" })
