@@ -66,8 +66,8 @@ zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
 # vim mode
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
-ZVM_VI_HIGHLIGHT_FOREGROUND=#adacac
-ZVM_VI_HIGHLIGHT_BACKGROUND=#333333
+ZVM_VI_HIGHLIGHT_FOREGROUND=#c5c9c7
+ZVM_VI_HIGHLIGHT_BACKGROUND=#3E424A
 
 # aliases
 function take {
@@ -89,7 +89,6 @@ export EDITOR=nvim
 export TERM=xterm-256color
 export PATH="$HOME/Developer/utils:$PATH"
 export PATH="$HOME/go/bin:$PATH"
-export PATH=$PATH:"$HOME/fvm/default/bin"
 
 # fzf styling
 export FZF_DEFAULT_OPTS="--multi"
@@ -98,13 +97,6 @@ export FZF_DEFAULT_OPTS="--multi"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd j zsh)"
 eval "$(direnv hook zsh)"
-
-## [Completion]
-[[ -f /Users/daniele/.dart-cli-completion/zsh-config.zsh ]] && . /Users/daniele/.dart-cli-completion/zsh-config.zsh || true
-
-## [Completion]
-export PATH="/opt/homebrew/opt/php@8.1/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"
 
 # load nvm
 export NVM_DIR="$HOME/.nvm"
