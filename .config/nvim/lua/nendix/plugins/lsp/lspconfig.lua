@@ -34,7 +34,7 @@ return {
 			keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
 
 			opts.desc = "Show LSP definitions"
-			keymap.set("n", "gd", "<CMD>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+			keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- show lsp definitions
 
 			opts.desc = "Show LSP implementations"
 			keymap.set("n", "gi", "<CMD>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
@@ -68,73 +68,19 @@ return {
 		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = blink.get_lsp_capabilities()
 
-		-- configure diagnostics
-		vim.diagnostic.config({
-			signs = {
-				text = {
-					[vim.diagnostic.severity.ERROR] = "", -- Error icon
-					[vim.diagnostic.severity.WARN] = "", -- Warning icon
-					[vim.diagnostic.severity.HINT] = "󰠠", -- Hint icon
-					[vim.diagnostic.severity.INFO] = "", -- Info icon
-				},
-			},
-			underline = true, -- Keep underlines for diagnostics
-			severity_sort = true, -- Sort diagnostics by severity (errors first)
-		})
-
-		-- configure bash server
-		vim.lsp.config("bashls", {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure typst server
-		vim.lsp.config("tinymist", {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure lua server
-		vim.lsp.config("lua_ls", {
+		-- configure lsp servers
+		vim.lsp.config("*", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure html server
 		vim.lsp.config("html", {
-			capabilities = capabilities,
-			on_attach = on_attach,
 			filetypes = { "html", "htmldjango" },
-		})
-
-		-- configure css server
-		vim.lsp.config("cssls", {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure ts/js server
-		vim.lsp.config("ts_ls", {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure c server
-		vim.lsp.config("clangd", {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure go server
-		vim.lsp.config("gopls", {
-			capabilities = capabilities,
-			on_attach = on_attach,
 		})
 
 		-- configure python server
 		vim.lsp.config("pylsp", {
-			capabilities = capabilities,
-			on_attach = on_attach,
 			settings = {
 				pylsp = {
 					plugins = {
@@ -147,19 +93,25 @@ return {
 			},
 		})
 
-		-- configure rust server
-		vim.lsp.config("rust_analyzer", {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
 		-- configure java server
 		vim.lsp.config("jdtls", {
-			capabilities = capabilities,
-			on_attach = on_attach,
 			handlers = {
 				["$/progress"] = function(_, result, ctx) end,
 			},
+		})
+
+		-- configure diagnostics
+		vim.diagnostic.config({
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = "", -- Error icon
+					[vim.diagnostic.severity.WARN] = "", -- Warning icon
+					[vim.diagnostic.severity.HINT] = "󰠠", -- Hint icon
+					[vim.diagnostic.severity.INFO] = "", -- Info icon
+				},
+			},
+			underline = true, -- Keep underlines for diagnostics
+			severity_sort = true, -- Sort diagnostics by severity (errors first)
 		})
 	end,
 }
