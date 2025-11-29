@@ -35,7 +35,7 @@ unset_alt = { fg = "#e6c384", bg = "#14171D" }
 [status]
 sep_left = { open = "", close = "" }
 sep_right = { open = "", close = "" }
-overall = { fg = "#C5C9C7", bg = "#14171D" }
+overall = { fg = "#C5C9C7" }
 
 progress_label = { fg = "#8BA4B0", bg = "#14171D", bold = true }
 progress_normal = { fg = "#14171D", bg = "#14171D" }
