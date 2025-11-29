@@ -86,7 +86,7 @@ alias k="clear"
 
 # exports
 export EDITOR=nvim
-export TERM=tmux-256color
+export TERM=xterm-256color
 export PATH="$HOME/Developer/utils:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
