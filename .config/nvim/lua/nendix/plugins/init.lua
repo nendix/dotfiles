@@ -2,7 +2,6 @@ return {
 	{ "nvim-lua/plenary.nvim" }, -- lua functions that many plugins use
 	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" }, -- tmux & split window navigation
 	{ "szw/vim-maximizer", event = "VeryLazy" }, -- maximize split
-	{ "mg979/vim-visual-multi", event = "VeryLazy" }, -- multiple cursors
 	{ "mbbill/undotree", event = "VeryLazy" }, -- undo tree
 	{
 		"windwp/nvim-autopairs", -- autopairs
