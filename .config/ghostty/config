@@ -14,6 +14,4 @@ font-family = "IosevkaTerm Nerd Font Mono"
 font-size = 16
 font-feature = -calt, -liga, -dlig
 
-keybind = ctrl+shift+space=toggle_quick_terminal
-
 custom-shader = shaders/cursor_warp.glsl
