@@ -8,7 +8,7 @@ sketchybar --add item battery right \
     label.padding_left=2 \
     label.padding_right=4 \
     background.drawing=off \
-    click_script="sketchybar --set battery popup.blur_radius=0 popup.drawing=toggle; sketchybar --animate sin 16 --set battery popup.blur_radius=33" \
+    click_script="$PLUGIN_DIR/popup/battery.sh & $PLUGIN_DIR/popup/toggle.sh battery" \
     update_freq=60 \
 
 # Popup item for Time Remaining until 0%
@@ -16,7 +16,7 @@ sketchybar --add item battery.time popup.battery \
     --set battery.time \
     icon="󱎫" \
     icon.padding_right=2 \
-    label.string="Calculating..." \
+    label.string="--" \
     label.padding_left=2 \
     background.drawing=off
 

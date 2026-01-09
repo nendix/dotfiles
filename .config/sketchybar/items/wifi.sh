@@ -5,7 +5,7 @@ sketchybar --add item wifi right \
     --set wifi \
     script="$PLUGIN_DIR/wifi.sh" \
     update_freq=60 \
-    click_script="sketchybar --set wifi popup.drawing=toggle popup.blur_radius=0; sketchybar --animate sin 16 --set wifi popup.blur_radius=33 " \
+    click_script="$PLUGIN_DIR/popup/wifi.sh & $PLUGIN_DIR/popup/toggle.sh wifi" \
     background.drawing=off \
     icon.padding_left=4 \
     label.drawing=off \

@@ -7,7 +7,7 @@ sketchybar --add item calendar right \
     background.padding_right=0 \
     script="$PLUGIN_DIR/calendar.sh" \
     popup.align=right \
-    click_script="sketchybar --set calendar popup.drawing=toggle popup.blur_radius=0; sketchybar --animate sin 16 --set calendar popup.blur_radius=33"
+    click_script="$PLUGIN_DIR/popup/calendar.sh & $PLUGIN_DIR/popup/toggle.sh calendar"
 
 # Calendar popup items - one for each line
 sketchybar --add item calendar.month popup.calendar \

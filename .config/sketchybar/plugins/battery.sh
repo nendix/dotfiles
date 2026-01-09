@@ -48,29 +48,5 @@ else
     esac
 fi
 
-# Extract time remaining until 0% (only when discharging)
-# Format: "5:32 remaining" or "0:45 remaining"
-TIME_REMAINING=""
-
-if [[ "$CHARGING" == "" ]]; then
-    # Only show time remaining when discharging (on battery)
-    TIME_REMAINING="$(echo "$BATT_INFO" | grep -o '[0-9]\+:[0-9]\+ remaining')"
-    
-    if [ -n "$TIME_REMAINING" ]; then
-        TIME_REMAINING="$TIME_REMAINING"
-    else
-        TIME_REMAINING="Calculating..."
-    fi
-else
-    # When charging or plugged in, don't show time remaining
-    TIME_REMAINING="Plugged in"
-fi
-
 # Update main battery item (icon and percentage)
-sketchybar --set "$NAME" \
-    icon="$ICON" \
-    label="${PERCENTAGE}%"
-
-# Update popup with time remaining until 0%
-sketchybar --set battery.time \
-    label.string="$TIME_REMAINING"
+sketchybar --set "$NAME" icon="$ICON" label="${PERCENTAGE}%"
