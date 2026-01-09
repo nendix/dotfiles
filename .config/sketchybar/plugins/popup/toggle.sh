@@ -6,11 +6,10 @@ ITEM="$1"  # calendar, wifi, or battery
 POPUP_STATE=$(sketchybar --query $ITEM | grep -A1 '"popup":' | grep '"drawing":' | grep -o '"on"\|"off"' | tr -d '"')
 
 if [ "$POPUP_STATE" = "off" ]; then
-    # OPEN: Set initial state (shifted up, transparent, no blur)
-    sketchybar --set $ITEM popup.y_offset=-10 popup.background.color=0x001a1a1a popup.blur_radius=0 popup.drawing=on
-    # Animate to final state (grow down + fade in + blur)
-    sketchybar --animate sin 16 --set $ITEM popup.y_offset=0 popup.background.color=0x991a1a1a popup.blur_radius=33
+    # OPEN: Show popup with no blur, then animate blur in
+    sketchybar --set $ITEM popup.blur_radius=0 popup.drawing=on
+    sketchybar --animate sin 16 --set $ITEM popup.blur_radius=33
 else
-    # CLOSE: Hide popup immediately
+    # CLOSE: Hide popup instantly
     sketchybar --set $ITEM popup.drawing=off
 fi
