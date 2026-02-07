@@ -5,29 +5,29 @@ local wifi = sbar.add("item", "wifi", {
 	position = "right",
 	update_freq = 60,
 	background = { drawing = false },
-	icon = { padding_left = 4 },
+	icon = { padding_left = 6 },
 	label = { drawing = false },
 })
 
 -- Popup items
 local wifi_ssid = sbar.add("item", "wifi.ssid", {
 	position = "popup.wifi",
-	icon = { string = icons.popup.network, padding_right = 2 },
-	label = { string = "Not Connected", padding_left = 2 },
+	icon = { string = icons.popup.network, padding_right = 4 },
+	label = { string = "Not Connected", padding_left = 4 },
 	background = { drawing = false },
 })
 
 local wifi_speed = sbar.add("item", "wifi.speed", {
 	position = "popup.wifi",
-	icon = { string = icons.popup.speed, padding_right = 2 },
-	label = { string = "-- Mbps", padding_left = 2 },
+	icon = { string = icons.popup.speed, padding_right = 4 },
+	label = { string = "-- Mbps", padding_left = 4 },
 	background = { drawing = false },
 })
 
 local wifi_settings = sbar.add("item", "wifi.settings", {
 	position = "popup.wifi",
-	icon = { string = icons.popup.settings, padding_right = 2 },
-	label = { string = "Wi-Fi Settings", width = 120, padding_left = 2 },
+	icon = { string = icons.popup.settings, padding_right = 4 },
+	label = { string = "Wi-Fi Settings", padding_left = 4 },
 	background = { drawing = false },
 })
 

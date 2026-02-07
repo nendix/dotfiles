@@ -6,11 +6,9 @@ local apple = sbar.add("item", "apple", {
 	icon = {
 		string = icons.apple,
 		font = { size = 16 },
-		padding_left = 8,
-		padding_right = 8,
 	},
 	label = { drawing = false },
-	background = { drawing = true },
+	background = { padding_left = 0 },
 	popup = { align = "left" },
 })
 
@@ -18,42 +16,42 @@ local apple = sbar.add("item", "apple", {
 local about = sbar.add("item", "apple.about", {
 	position = "popup.apple",
 	icon = { string = icons.system.about, padding_right = 4 },
-	label = { string = "About This Mac" },
+	label = { string = "About This Mac", padding_left = 4 },
 	background = { drawing = false },
 })
 
 local settings = sbar.add("item", "apple.settings", {
 	position = "popup.apple",
 	icon = { string = icons.system.settings, padding_right = 4 },
-	label = { string = "System Settings" },
+	label = { string = "System Settings", padding_left = 4 },
 	background = { drawing = false },
 })
 
 local sleep = sbar.add("item", "apple.sleep", {
 	position = "popup.apple",
 	icon = { string = icons.system.sleep, padding_right = 4 },
-	label = { string = "Sleep" },
+	label = { string = "Sleep", padding_left = 4 },
 	background = { drawing = false },
 })
 
 local lock = sbar.add("item", "apple.lock", {
 	position = "popup.apple",
 	icon = { string = icons.system.lock, padding_right = 4 },
-	label = { string = "Lock Screen" },
+	label = { string = "Lock Screen", padding_left = 4 },
 	background = { drawing = false },
 })
 
 local restart = sbar.add("item", "apple.restart", {
 	position = "popup.apple",
 	icon = { string = icons.system.restart, padding_right = 4 },
-	label = { string = "Restart" },
+	label = { string = "Restart", padding_left = 4 },
 	background = { drawing = false },
 })
 
 local shutdown = sbar.add("item", "apple.shutdown", {
 	position = "popup.apple",
 	icon = { string = icons.system.shutdown, padding_right = 4 },
-	label = { string = "Shut Down" },
+	label = { string = "Shut Down", padding_left = 4 },
 	background = { drawing = false },
 })
 

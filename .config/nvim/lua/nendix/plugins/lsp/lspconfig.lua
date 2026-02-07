@@ -68,18 +68,34 @@ return {
 		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = blink.get_lsp_capabilities()
 
-		-- configure lsp servers
-		vim.lsp.config("*", {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
+		-- list of servers with defaults
+		local servers = {
+			"bashls",
+			"clangd",
+			"cssls",
+			"gopls",
+			"html",
+			"jdtls",
+			"lua_ls",
+			"pylsp",
+			"rust_analyzer",
+			"tinymist",
+			"zls",
+		}
 
-		-- configure html server
+		for _, server in ipairs(servers) do
+			vim.lsp.config(server, {
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+		end
+
+		-- override the defaults for html
 		vim.lsp.config("html", {
 			filetypes = { "html", "htmldjango" },
 		})
 
-		-- configure python server
+		-- override the defaults for pylsp
 		vim.lsp.config("pylsp", {
 			settings = {
 				pylsp = {
@@ -93,7 +109,7 @@ return {
 			},
 		})
 
-		-- configure java server
+		-- override the defaults for jdtls
 		vim.lsp.config("jdtls", {
 			handlers = {
 				["$/progress"] = function(_, result, ctx) end,
