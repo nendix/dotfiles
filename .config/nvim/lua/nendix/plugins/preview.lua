@@ -18,5 +18,9 @@ return {
 		ft = "typst",
 		version = "1.*",
 		opts = {},
+		keys = {
+			{ "<leader>tp", "<CMD>TypstPreviewToggle<CR>", desc = "Toggle Typst Preview" },
+			{ "<leader>ts", "<CMD>TypstPreviewSyncCursor<CR>", desc = "Force Sync Cursor" },
+		},
 	},
 }

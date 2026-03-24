@@ -1,5 +1,6 @@
 local opt = vim.opt -- for conciseness
 
+opt.exrc = true
 opt.showmode = false
 opt.swapfile = false
 
