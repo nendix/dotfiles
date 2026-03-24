@@ -36,9 +36,8 @@ autoload -U compinit && compinit
 zinit cdreplay -q
 
 # keybindings
-bindkey "^p" history-search-backward
-bindkey "^n" history-search-forward
 bindkey "©" fzf-cd-widget
+bindkey "^r" fzf-history-widget
 
 # history
 HISTSIZE=5000
