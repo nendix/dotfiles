@@ -6,69 +6,47 @@ return {
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{
 			"folke/lazydev.nvim",
-			ft = "lua", -- only load on lua files
+			ft = "lua",
 			opts = {
 				library = {
-					-- See the configuration section for more details
-					-- Load luvit types when the `vim.uv` word is found
 					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 				},
 			},
 		},
 	},
 	config = function()
-		-- import blink plugin
-		local blink = require("blink.cmp")
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-		local keymap = vim.keymap -- for conciseness
+		-- 1. Global LSP Configuration
+		vim.lsp.config("*", {
+			capabilities = capabilities,
+		})
 
-		local opts = { noremap = true, silent = true }
-		local on_attach = function(client, bufnr)
-			opts.buffer = bufnr
+		-- 2. Server-Specific Overrides
+		vim.lsp.config("html", {
+			filetypes = { "html", "htmldjango" },
+		})
 
-			-- set keybinds
-			opts.desc = "Show LSP references"
-			keymap.set("n", "gR", "<CMD>Telescope lsp_references<CR>", opts) -- show references
+		vim.lsp.config("pylsp", {
+			settings = {
+				pylsp = {
+					plugins = {
+						pyflakes = { enabled = true },
+						pylint = { enabled = false },
+						mccabe = { enabled = false },
+						pycodestyle = { enabled = false },
+					},
+				},
+			},
+		})
 
-			opts.desc = "Go to declaration"
-			keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+		vim.lsp.config("jdtls", {
+			handlers = {
+				["$/progress"] = function(_, result, ctx) end,
+			},
+		})
 
-			opts.desc = "Show LSP definitions"
-			keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- show lsp definitions
-
-			opts.desc = "Show LSP implementations"
-			keymap.set("n", "gi", "<CMD>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
-
-			opts.desc = "Show LSP type definitions"
-			keymap.set("n", "gt", "<CMD>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
-
-			opts.desc = "See available code actions"
-			keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
-
-			opts.desc = "Refactor"
-			keymap.set("n", "<leader>rf", vim.lsp.buf.rename, opts) -- smart rename
-
-			opts.desc = "Show line diagnostics"
-			keymap.set("n", "<leader>xd", vim.diagnostic.open_float, opts) -- show diagnostics for line
-
-			opts.desc = "Go to previous diagnostic"
-			keymap.set("n", "[d", function()
-				vim.diagnostic.jump({ count = -1 })
-			end, opts)
-
-			opts.desc = "Go to next diagnostic"
-			keymap.set("n", "]d", function()
-				vim.diagnostic.jump({ count = 1 })
-			end, opts)
-
-			opts.desc = "Show documentation for what is under cursor"
-			keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
-		end
-
-		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = blink.get_lsp_capabilities()
-
-		-- list of servers with defaults
+		-- 3. Enable the servers natively
 		local servers = {
 			"bashls",
 			"clangd",
@@ -84,50 +62,21 @@ return {
 		}
 
 		for _, server in ipairs(servers) do
-			vim.lsp.config(server, {
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
+			vim.lsp.enable(server)
 		end
 
-		-- override the defaults for html
-		vim.lsp.config("html", {
-			filetypes = { "html", "htmldjango" },
-		})
-
-		-- override the defaults for pylsp
-		vim.lsp.config("pylsp", {
-			settings = {
-				pylsp = {
-					plugins = {
-						pyflakes = { enabled = true },
-						pylint = { enabled = false },
-						mccabe = { enabled = false },
-						pycodestyle = { enabled = false },
-					},
-				},
-			},
-		})
-
-		-- override the defaults for jdtls
-		vim.lsp.config("jdtls", {
-			handlers = {
-				["$/progress"] = function(_, result, ctx) end,
-			},
-		})
-
-		-- configure diagnostics
+		-- 4. Configure diagnostics natively
 		vim.diagnostic.config({
 			signs = {
 				text = {
-					[vim.diagnostic.severity.ERROR] = "", -- Error icon
-					[vim.diagnostic.severity.WARN] = "", -- Warning icon
-					[vim.diagnostic.severity.HINT] = "󰠠", -- Hint icon
-					[vim.diagnostic.severity.INFO] = "", -- Info icon
+					[vim.diagnostic.severity.ERROR] = "",
+					[vim.diagnostic.severity.WARN] = "",
+					[vim.diagnostic.severity.HINT] = "󰠠",
+					[vim.diagnostic.severity.INFO] = "",
 				},
 			},
-			underline = true, -- Keep underlines for diagnostics
-			severity_sort = true, -- Sort diagnostics by severity (errors first)
+			underline = true,
+			severity_sort = true,
 		})
 	end,
 }

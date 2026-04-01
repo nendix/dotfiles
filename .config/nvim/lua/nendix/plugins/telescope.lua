@@ -4,11 +4,13 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		"nvim-telescope/telescope-ui-select.nvim",
 		"echasnovski/mini.icons",
 	},
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
+		local themes = require("telescope.themes")
 
 		telescope.setup({
 			defaults = {
@@ -28,8 +30,14 @@ return {
 					},
 				},
 			},
+			extensions = {
+				["ui-select"] = {
+					themes.get_dropdown({}),
+				},
+			},
 		})
 
 		telescope.load_extension("fzf")
+		telescope.load_extension("ui-select")
 	end,
 }

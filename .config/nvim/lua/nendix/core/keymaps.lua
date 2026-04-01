@@ -10,19 +10,29 @@ local keymap = vim.keymap -- for conciseness
 keymap.set("n", "<leader>w", vim.cmd.w, { desc = "Save file" }) --save
 keymap.set("n", "<leader>q", vim.cmd.q, { desc = "Quit file" }) -- quit
 keymap.set("n", "<leader>u", "<CMD>UndotreeToggle<CR>", { desc = "Undotree" }) -- undo tree
-keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Oil file explorer" }) -- oil
+keymap.set("n", "<leader>e", "<CMD>Oil --float<CR>", { desc = "Oil file explorer" }) -- oil
+
+-- Workspace diagnostics
+keymap.set("n", "<leader>xw", vim.diagnostic.setqflist, { desc = "Open workspace diagnostics" })
+-- Document diagnostics
+keymap.set("n", "<leader>xd", vim.diagnostic.setloclist, { desc = "Open document diagnostics" })
 
 -- quickfix list
-keymap.set("n", "<leader>co", "<CMD>copen<CR>", { desc = "Open qflist" })
-keymap.set("n", "<leader>cx", "<CMD>cclose<CR>", { desc = "Close qflist" })
+keymap.set("n", "<leader>co", "<CMD>cwindow<CR>", { desc = "Open qflist" })
 keymap.set("n", "<leader>cn", "<CMD>cnext<CR>", { desc = "Next item qflist" })
 keymap.set("n", "<leader>cp", "<CMD>cprev<CR>", { desc = "Previous item qflist" })
 
-keymap.set("n", "<leader>nh", "<CMD>nohl<CR>", { desc = "No highlights" })
+-- location list
+keymap.set("n", "<leader>lo", "<CMD>lwindow<CR>", { desc = "Open loclist" })
+keymap.set("n", "<leader>ln", "<CMD>lnext<CR>", { desc = "Next item loclist" })
+keymap.set("n", "<leader>lp", "<CMD>lprev<CR>", { desc = "Previous item loclist" })
+
+-- clear highlights
+keymap.set("n", "<leader>nh", "<CMD>nohl<CR>", { desc = "Clear highlights" })
 
 -- increment/decrement
-keymap.set("n", "+", "<C-a>", { desc = "Increment" })
-keymap.set("n", "-", "<C-x>", { desc = "Decrement" })
+keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment" })
+keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement" })
 
 ----------------------
 -- Plugin Keybinds

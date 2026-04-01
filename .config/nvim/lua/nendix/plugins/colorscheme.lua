@@ -13,7 +13,7 @@ return {
 		end,
 	},
 	{
-		dir = "/Users/daniele/Developer/zen.nvim",
+		"nendix/zen.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()

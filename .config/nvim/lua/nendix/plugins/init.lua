@@ -16,13 +16,6 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.comment", -- comments
-		version = false,
-		config = function()
-			require("mini.comment").setup()
-		end,
-	},
-	{
 		"echasnovski/mini.surround", -- change surroundings
 		version = false,
 		config = function()
@@ -34,7 +27,11 @@ return {
 		"echasnovski/mini.operators", -- replace with register
 		version = false,
 		config = function()
-			require("mini.operators").setup()
+			require("mini.operators").setup({
+				replace = {
+					prefix = "cr",
+				},
+			})
 		end,
 	},
 	{
@@ -42,20 +39,6 @@ return {
 		version = false,
 		config = function()
 			require("mini.ai").setup()
-		end,
-	},
-	{
-		"echasnovski/mini.jump", -- better jump f/t
-		version = false,
-		config = function()
-			require("mini.jump").setup({ delay = { highlight = 6 * (10 ^ 7) } })
-		end,
-	},
-	{
-		"folke/zen-mode.nvim", -- zen mode
-		opts = {},
-		config = function()
-			vim.keymap.set("n", "<leader>z", "<CMD>ZenMode<CR>", { desc = "Zen mode" })
 		end,
 	},
 }
