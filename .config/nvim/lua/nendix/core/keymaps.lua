@@ -68,7 +68,7 @@ keymap.set(
 )
 keymap.set("n", "<leader>fs", "<CMD>Telescope live_grep<CR>", { desc = "Find string in cwd" })
 keymap.set("n", "<leader>fc", "<CMD>Telescope grep_string<CR>", { desc = "Find string under cursor in cwd" })
-keymap.set("n", "<leader>fh", "<CMD>Telescope help_tags<CR>", { desc = "Find harpoon marks" })
+keymap.set("n", "<leader>fh", "<CMD>Telescope command_history<CR>", { desc = "Find command history" })
 keymap.set("n", "<leader>fj", "<CMD>Telescope jumplist<CR>", { desc = "Find jumps" })
 keymap.set("n", "<leader>fk", "<CMD>Telescope keymaps<CR>", { desc = "Find keymaps" })
 
@@ -79,10 +79,14 @@ keymap.set("n", "<leader>gb", "<CMD>Telescope git_branches<CR>", { desc = "List 
 keymap.set("n", "<leader>gd", "<cmd>Telescope git_status<cr>", { desc = "List files with diffs" })
 
 -- more mappings in:
--- lua/nendix/plugins/lsp/lspconfig.lua
 -- lua/nendix/plugins/lsp/formatting.lua
--- lua/nendix/plugins/lsp/linting.lua
+-- lua/nendix/plugins/dap/dap.lua
+-- lua/nendix/plugins/dap/dapui.lua
 -- lua/nendix/plugins/harpoon.lua
 -- lua/nendix/plugins/git-signs.lua
--- lua/nendix/plugins/trouble.lua
--- lua/nendix/plugins/nvim-cmp.lua
+-- lua/nendix/plugins/oil.lua
+-- lua/nendix/plugins/blink.lua
+-- lua/nendix/plugins/codeium.lua
+-- lua/nendix/plugins/colorizer.lua
+-- lua/nendix/plugins/fugitive.lua
+-- lua/nendix/plugins/preview.lua

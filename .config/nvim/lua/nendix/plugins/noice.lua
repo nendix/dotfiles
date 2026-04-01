@@ -36,6 +36,35 @@ return {
 						winblend = 0,
 					},
 				},
+				cmdline_popup = {
+					position = {
+						row = "30%", -- Position it 30% down from the top
+						col = "50%", -- Keep it centered
+					},
+					size = {
+						width = 100, -- Make it much wider (default is usually around 60 columns)
+						height = "auto",
+					},
+				},
+				-- 2. Optional: Also widen the popup menu (the autocomplete dropdown) to match
+				popupmenu = {
+					relative = "editor",
+					position = {
+						row = "40%", -- Place it right below the cmdline
+						col = "50%",
+					},
+					size = {
+						width = "60%",
+						height = 10,
+					},
+					border = {
+						style = "rounded",
+						padding = { 0, 1 },
+					},
+					win_options = {
+						winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+					},
+				},
 			},
 		})
 	end,
