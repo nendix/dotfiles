@@ -4,16 +4,31 @@ return {
 	{ "szw/vim-maximizer", event = "VeryLazy" }, -- maximize split
 	{ "mbbill/undotree", event = "VeryLazy" }, -- undo tree
 	{
-		"windwp/nvim-autopairs", -- autopairs
+		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		config = true,
+		config = function()
+			local npairs = require("nvim-autopairs")
+			local Rule = require("nvim-autopairs.rule")
+			local cond = require("nvim-autopairs.conds")
+
+			npairs.setup({ check_ts = true }) -- tree sitter
+
+			npairs.add_rules({
+				Rule("$", "$", { "tex", "latex", "typst" })
+					:with_pair(cond.not_before_regex("\\", 1))
+					:with_pair(cond.not_after_regex("$", 1)),
+			})
+			npairs.add_rules({
+				Rule("<", ">", { "html", "javascriptreact", "typescriptreact", "vue", "xml" }):with_pair(
+					cond.not_after_regex(">", 1)
+				),
+			})
+		end,
 	},
 	{
 		"echasnovski/mini.icons", -- icons
 		version = false,
-		config = function()
-			require("mini.icons").setup()
-		end,
+		config = true,
 	},
 	{
 		"echasnovski/mini.surround", -- change surroundings
@@ -37,8 +52,6 @@ return {
 	{
 		"echasnovski/mini.ai", -- better a/i text objects
 		version = false,
-		config = function()
-			require("mini.ai").setup()
-		end,
+		config = true,
 	},
 }
