@@ -14,6 +14,10 @@ return {
 			},
 		},
 	},
+	keys = {
+		vim.api.nvim_set_keymap("n", "grD", "<CMD>lua vim.lsp.buf.declaration()<CR>", { desc = "Go to declaration" }),
+		vim.api.nvim_set_keymap("n", "grd", "<CMD>lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition" }),
+	},
 	config = function()
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
@@ -42,7 +46,7 @@ return {
 
 		vim.lsp.config("jdtls", {
 			handlers = {
-				["$/progress"] = function(_, result, ctx) end,
+				["$/progress"] = function(_, _, _) end,
 			},
 		})
 

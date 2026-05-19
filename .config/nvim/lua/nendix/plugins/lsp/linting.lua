@@ -9,8 +9,8 @@ return {
 			typescript = { "trivy" },
 			javascriptreact = { "trivy" },
 			typescriptreact = { "trivy" },
-			hmtl = { "htmlhint" },
-			hmtldjango = { "djlint" },
+			html = { "htmlhint" },
+			htmldjango = { "djlint" },
 			go = { "trivy" },
 			rust = { "trivy" },
 		}

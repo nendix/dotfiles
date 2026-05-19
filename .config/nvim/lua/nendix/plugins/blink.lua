@@ -21,16 +21,16 @@ return {
 						return cmp.select_and_accept()
 					end
 				end,
-				"snippet_forward",
 				"fallback",
 			},
-			["<S-Tab>"] = { "snippet_backward", "fallback" },
+			["<C-f>"] = { "snippet_forward", "fallback" },
+			["<C-b>"] = { "snippet_backward", "fallback" },
 
 			["<C-k>"] = { "select_prev", "fallback_to_mappings" },
 			["<C-j>"] = { "select_next", "fallback_to_mappings" },
 
-			["<C-p>"] = { "scroll_documentation_up", "fallback" },
-			["<C-n>"] = { "scroll_documentation_down", "fallback" },
+			["<C-p>"] = { "scroll_documentation_up" },
+			["<C-n>"] = { "scroll_documentation_down" },
 
 			["<C-v>"] = { "show_signature", "hide_signature", "fallback_to_mappings" },
 		},

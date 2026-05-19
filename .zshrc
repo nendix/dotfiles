@@ -83,6 +83,8 @@ alias t="todopher"
 alias y="yazi"
 alias k="clear"
 
+alias claude-personal='CLAUDE_CONFIG_DIR=~/.claude-personal claude'
+
 # exports
 export EDITOR=nvim
 export TERM=xterm-256color
@@ -103,3 +105,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+# Added by Antigravity
+export PATH="/Users/daniele/.antigravity/antigravity/bin:$PATH"
+

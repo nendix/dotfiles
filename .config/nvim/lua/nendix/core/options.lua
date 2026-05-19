@@ -25,7 +25,6 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 opt.cursorline = true -- highlight the current cursor line
 
 -- appearance
-
 -- turn on termguicolors for nightfly colorscheme to work
 opt.termguicolors = true
 opt.background = "dark" -- colorschemes that can be light or dark will be made dark
@@ -41,3 +40,13 @@ opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 -- split windows
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
+
+-- This makes folding "smart"
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+-- Disable folding by default when opening a file
+opt.foldenable = false
+
+-- Set a high foldlevel so most things stay open
+opt.foldlevel = 99

@@ -1,52 +1,66 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
-	dependencies = {
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		"windwp/nvim-ts-autotag",
+	{
+		"romus204/tree-sitter-manager.nvim",
+		dependencies = {},
+		config = function()
+			require("tree-sitter-manager").setup({
+				-- 1. The parsers you want automatically downloaded
+				ensure_installed = {
+					"json",
+					"javascript",
+					"html",
+					"css",
+					"c",
+					"markdown",
+					"markdown_inline",
+					"go",
+					"java",
+					"bash",
+					"lua",
+					"vim",
+					"vimdoc",
+					"gitignore",
+					"python",
+				},
+
+				-- 2. Automatically install missing parsers when editing a new file type
+				auto_install = true,
+
+				-- 3. Ensure native treesitter highlighting is enabled
+				highlight = true,
+
+				-- 4. Your custom parser logic replaces the old core API calls
+				languages = {
+					templ = {
+						url = "https://github.com/vrischmann/tree-sitter-templ.git",
+						files = { "src/parser.c", "src/scanner.c" },
+						branch = "master",
+					},
+				},
+			})
+		end,
 	},
-	config = function()
-		require("nvim-treesitter.configs").setup({
-			-- enable syntax highlighting
-			highlight = { enable = true },
-			-- enable indentation
-			indent = { enable = true },
-			-- enable autotagging (w/ nvim-ts-autotag plugin)
-			autotag = { enable = true },
-			-- ensure these language parsers are installed
+	-- 1. Auto-close and auto-rename HTML/JSX tags
+	{
+		"windwp/nvim-ts-autotag",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end,
+	},
 
-			-- A list of parser names, or "all"
-			ensure_installed = {
-				"json",
-				"javascript",
-				"html",
-				"css",
-				"c",
-				"markdown",
-				"go",
-				"java",
-				"bash",
-				"lua",
-				"vim",
-				"gitignore",
-				"python",
-			},
-
-			auto_install = true,
-
-			-- Install parsers synchronously (only applied to `ensure_installed`)
-			sync_install = false,
-		})
-
-		local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-		treesitter_parser_config.templ = {
-			install_info = {
-				url = "https://github.com/vrischmann/tree-sitter-templ.git",
-				files = { "src/parser.c", "src/scanner.c" },
-				branch = "master",
-			},
-		}
-
-		vim.treesitter.language.register("templ", "templ")
-	end,
+	-- 3. Sticky scroll (keeps function signatures visible at the top of the screen)
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			require("treesitter-context").setup({
+				max_lines = 3, -- How many lines the window should span
+				multiline_threshold = 20, -- Maximum number of lines to show for a single context
+				trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded
+				mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
+				separator = "-", -- Separator between context and content
+			})
+		end,
+	},
 }
