@@ -1,6 +1,5 @@
 # zen flavor for Yazi
 # https://github.com/nendix/zen.nvim
-"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
 
 [mgr]
 cwd = { fg = "#858585" }
@@ -138,7 +137,7 @@ rules = [
 	# Documents
 	{ mime = "application/{pdf,doc,rtf}", fg = "#a0b0b0" },
 	# Fallback
-	{ name = "*", is = "orphan", bg = "#a06060" },
-	{ name = "*", is = "exec", fg = "#a0b9a0" },
-	{ name = "*/", fg = "#a0a0b9" }
+	{ url = "*", is = "orphan", bg = "#a06060" },
+	{ url = "*", is = "exec", fg = "#a0b9a0" },
+	{ url = "*/", fg = "#a0a0b9" }
 ]
