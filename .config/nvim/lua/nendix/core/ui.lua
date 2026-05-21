@@ -19,7 +19,6 @@ vim.ui.input = function(opts, on_confirm)
 		width = width,
 		height = 1,
 		style = "minimal",
-		border = "rounded",
 		title = " " .. prompt .. " ", -- Uses native Neovim 0.10+ window titles
 		title_pos = "center",
 	})

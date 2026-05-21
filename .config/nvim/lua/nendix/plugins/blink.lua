@@ -32,7 +32,7 @@ return {
 			["<C-p>"] = { "scroll_documentation_up" },
 			["<C-n>"] = { "scroll_documentation_down" },
 
-			["<C-v>"] = { "show_signature", "hide_signature", "fallback_to_mappings" },
+			["<C-s>"] = { "show_signature", "hide_signature", "fallback_to_mappings" },
 		},
 		cmdline = {
 			keymap = { preset = "inherit" },
@@ -45,6 +45,6 @@ return {
 			menu = { border = "rounded" },
 			documentation = { auto_show = false, window = { border = "rounded" } },
 		},
-		signature = { window = { border = "rounded" } },
+		signature = { enabled = true },
 	},
 }
