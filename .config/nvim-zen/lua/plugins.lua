@@ -34,7 +34,7 @@ vim.pack.add({
 	gh("toppair/peek.nvim"),
 	{ src = gh("chomosuke/typst-preview.nvim"), version = vim.version.range("1.0.0 - 2.0.0") },
 	-- treesitter
-	gh("romus204/tree-sitter-manager.nvim"),
+	gh("arborist-ts/arborist.nvim"),
 	gh("windwp/nvim-ts-autotag"),
 	-- lsp
 	gh("mason-org/mason.nvim"),
