@@ -71,7 +71,7 @@ MiniStatusline.setup({
 				{ hl = "MiniStatuslineFilename", strings = { "|", filename, diag_str } },
 				"%=",
 				{ hl = "MiniStatuslineFileinfo", strings = { progress, "%p%%" } },
-				{ hl = mode_hl, strings = { "%l:%c" } },
+				{ strings = { "%l:%c" } },
 			})
 		end,
 	},
@@ -116,7 +116,7 @@ MiniGit.setup()
 -- mini diff
 MiniDiff = require("mini.diff")
 MiniDiff.setup({
-	source = MiniDiff.gen_source.git({ index = false }),
+	source = MiniDiff.gen_source.git({ index = false }), -- compare to HEAD
 })
 
 -- mini surround
@@ -149,6 +149,3 @@ require("harpoon"):setup()
 -- preview
 require("peek").setup({ app = "webview" })
 require("typst-preview").setup()
-
--- maximize toggle
-vim.g.maximizer_set_default_mapping = 0

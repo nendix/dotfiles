@@ -106,19 +106,12 @@ vim.keymap.set("n", "<leader>ts", "<CMD>TypstPreviewSyncCursor<CR>", { desc = "F
 vim.keymap.set("n", "<leader>gaa", "<CMD>Git add --all<CR>", { desc = "Git add all" })
 vim.keymap.set("n", "<leader>gaf", "<CMD>Git add %<CR>", { desc = "Git add file" })
 vim.keymap.set("n", "<leader>gc", "<CMD>Git commit<CR>", { desc = "Git commit" })
-vim.keymap.set("n", "<leader>gC", function()
-	vim.ui.input({ prompt = "Commit: " }, function(msg)
-		if msg then
-			vim.cmd("Git commit -m " .. vim.fn.shellescape(msg))
-		end
-	end)
-end, { desc = "Git commit message" })
 vim.keymap.set("n", "<leader>gp", "<CMD>Git push<CR>", { desc = "Git push" })
 vim.keymap.set("n", "<leader>gr", "<CMD>Git reset<CR>", { desc = "Git reset" })
 vim.keymap.set("n", "<leader>gd", function()
 	MiniDiff.toggle_overlay()
 end, { desc = "Git diff overlay" })
-vim.keymap.set("n", "<leader>gP", "<CMD>Git pull --rebase<CR>", { desc = "Git pull" })
+vim.keymap.set("n", "<leader>gl", "<CMD>Git pull --rebase<CR>", { desc = "Git pull" })
 
 -- conform
 vim.keymap.set({ "n", "v" }, "<leader>mf", function()
