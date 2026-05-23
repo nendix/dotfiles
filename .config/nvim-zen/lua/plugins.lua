@@ -49,34 +49,7 @@ require("zen").setup({
 
 -- mini statusline
 MiniStatusline = require("mini.statusline")
-MiniStatusline.setup({
-	content = {
-		active = function()
-			local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
-			local git = MiniStatusline.section_git({ trunc_width = 75 })
-			local diff = MiniStatusline.section_diff({ trunc_width = 75, icon = "" })
-			local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
-			local diag_str = diagnostics ~= "" and ("| " .. diagnostics) or ""
-			local filename = vim.fn.expand("%:t") .. (vim.bo.modified and " [+]" or "")
-
-			local macro = vim.fn.reg_recording()
-			local macro_str = macro ~= "" and ("@" .. macro) or ""
-
-			local progress = vim.ui.progress_status()
-
-			return MiniStatusline.combine_groups({
-				{ hl = mode_hl, strings = { mode, macro_str } },
-				{ hl = "MiniStatuslineDevinfo", strings = { git, diff } },
-				"%<",
-				{ hl = "MiniStatuslineFilename", strings = { "|", filename, diag_str } },
-				"%=",
-				{ hl = "MiniStatuslineFileinfo", strings = { progress, "%p%%" } },
-				{ strings = { "%l:%c" } },
-			})
-		end,
-	},
-	use_icons = true,
-})
+MiniStatusline.setup()
 
 -- mini icons
 require("mini.icons").setup()
@@ -115,9 +88,7 @@ MiniGit.setup()
 
 -- mini diff
 MiniDiff = require("mini.diff")
-MiniDiff.setup({
-	source = MiniDiff.gen_source.git({ index = false }), -- compare to HEAD
-})
+MiniDiff.setup({})
 
 -- mini surround
 require("mini.surround").setup()
