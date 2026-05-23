@@ -117,10 +117,6 @@
     "zen.nvim": {
       "rev": "d70fcfb65d75bced5b82bbd99a41c403762877f3",
       "src": "https://github.com/nendix/zen.nvim"
-    },
-    "zen.nvim.bak": {
-      "rev": "d70fcfb65d75bced5b82bbd99a41c403762877f3",
-      "src": "https://github.com/nendix/zen.nvim"
     }
   }
 }

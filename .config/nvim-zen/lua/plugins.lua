@@ -44,7 +44,7 @@ vim.pack.add({
 
 -- colorscheme
 require("zen").setup({
-	transparent = true,
+	-- transparent = true,
 })
 
 -- mini statusline
