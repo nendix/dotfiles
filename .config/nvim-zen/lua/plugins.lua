@@ -88,7 +88,9 @@ MiniGit.setup()
 
 -- mini diff
 MiniDiff = require("mini.diff")
-MiniDiff.setup({})
+MiniDiff.setup({
+	source = MiniDiff.gen_source.git({ index = false }), -- compare to HEAD
+})
 
 -- mini surround
 require("mini.surround").setup()
