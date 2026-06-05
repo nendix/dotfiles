@@ -44,5 +44,3 @@ vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldenable = false -- Disable folding by default when opening a file
 
 vim.opt.foldlevel = 99 -- Set a high foldlevel so most things stay open
-
-vim.opt.completeopt:append("popup")

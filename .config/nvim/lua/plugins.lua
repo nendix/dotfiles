@@ -16,8 +16,10 @@ vim.pack.add({
 	gh("nvim-mini/mini.pick"),
 	gh("nvim-mini/mini.extra"),
 	gh("nvim-mini/mini.diff"),
-	gh("folke/which-key.nvim"),
+	gh("nvim-mini/mini-git"),
 	-- utils
+	gh("lukas-reineke/indent-blankline.nvim"),
+	gh("folke/which-key.nvim"),
 	gh("nvim-lua/plenary.nvim"),
 	{ src = gh("ThePrimeagen/harpoon"), version = "harpoon2" },
 	gh("stevearc/conform.nvim"),
@@ -25,10 +27,10 @@ vim.pack.add({
 	gh("windwp/nvim-autopairs"),
 	gh("christoomey/vim-tmux-navigator"),
 	gh("szw/vim-maximizer"),
-	gh("nvim-mini/mini-git"),
 	-- completion
-	gh("saghen/blink.lib"),
-	gh("saghen/blink.cmp"),
+  gh("nvim-mini/mini.completion"),
+  gh("nvim-mini/mini.cmdline"),
+  gh("nvim-mini/mini.snippets"),
 	gh("rafamadriz/friendly-snippets"),
 	-- preview
 	gh("toppair/peek.nvim"),
@@ -44,8 +46,10 @@ vim.pack.add({
 
 -- colorscheme
 require("zen").setup({
+	variant = "auto",
 	transparent = true,
 })
+vim.cmd.colorscheme("zen")
 
 -- mini statusline
 MiniStatusline = require("mini.statusline")
@@ -66,21 +70,24 @@ MiniPick.setup({
 })
 MiniExtra.setup()
 
+
 -- completions
-Blink = require("blink.cmp")
-Blink.build():wait(60000)
-Blink.setup({
-	keymap = { preset = "super-tab" },
-	completion = {
-		documentation = { auto_show = false },
-		trigger = { show_in_snippet = false },
-	},
-	cmdline = {
-		keymap = { preset = "inherit" },
-		completion = { menu = { auto_show = true }, ghost_text = { enabled = true } },
-	},
-	signature = { enabled = true },
+require("mini.cmdline").setup({
+    autocorrect = { enable = false }
 })
+require("mini.completion").setup({
+    lsp_completion = {
+        auto_setup = true,
+    }
+})
+-- snippets --
+local MiniSnippets = require("mini.snippets")
+MiniSnippets.setup({
+    snippets = {
+        MiniSnippets.gen_loader.from_lang(), -- loads friendly-snippets
+    },
+})
+MiniSnippets.start_lsp_server({ match = false })
 
 -- mini git
 MiniGit = require("mini.git")
@@ -115,6 +122,12 @@ require("which-key").setup()
 
 -- autopairs
 require("nvim-autopairs").setup({ check_ts = true })
+
+-- indent-blankline
+require("ibl").setup({
+	indent = { char = "│" },
+	scope = { enabled = false },
+})
 
 -- harpoon
 require("harpoon"):setup()
