@@ -28,9 +28,8 @@ vim.pack.add({
 	gh("christoomey/vim-tmux-navigator"),
 	gh("szw/vim-maximizer"),
 	-- completion
-  gh("nvim-mini/mini.completion"),
-  gh("nvim-mini/mini.cmdline"),
-  gh("nvim-mini/mini.snippets"),
+	gh("saghen/blink.lib"),
+	gh("saghen/blink.cmp"),
 	gh("rafamadriz/friendly-snippets"),
 	-- preview
 	gh("toppair/peek.nvim"),
@@ -70,24 +69,20 @@ MiniPick.setup({
 })
 MiniExtra.setup()
 
-
 -- completions
-require("mini.cmdline").setup({
-    autocorrect = { enable = false }
+Blink = require("blink.cmp")
+Blink.build():wait(60000)
+Blink.setup({
+	completion = {
+		documentation = { auto_show = false },
+		trigger = { show_in_snippet = false },
+	},
+	cmdline = {
+		keymap = { preset = "inherit" },
+		completion = { menu = { auto_show = true }, ghost_text = { enabled = true } },
+	},
+	signature = { enabled = true },
 })
-require("mini.completion").setup({
-    lsp_completion = {
-        auto_setup = true,
-    }
-})
--- snippets --
-local MiniSnippets = require("mini.snippets")
-MiniSnippets.setup({
-    snippets = {
-        MiniSnippets.gen_loader.from_lang(), -- loads friendly-snippets
-    },
-})
-MiniSnippets.start_lsp_server({ match = false })
 
 -- mini git
 MiniGit = require("mini.git")
