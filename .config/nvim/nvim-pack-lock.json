@@ -41,14 +41,6 @@
       "rev": "deacc8e9cf05df0297e3b14a08c2f8a415045c6f",
       "src": "https://github.com/nvim-mini/mini.ai"
     },
-    "mini.cmdline": {
-      "rev": "044848fd9b69d01ba05d0a56a530969743a94eba",
-      "src": "https://github.com/nvim-mini/mini.cmdline"
-    },
-    "mini.completion": {
-      "rev": "04abe6fc7860858785ba63c435d76bf5b8b64b5f",
-      "src": "https://github.com/nvim-mini/mini.completion"
-    },
     "mini.diff": {
       "rev": "5af2b6be4a4beb673f3196a414f6fd932bbedd48",
       "src": "https://github.com/nvim-mini/mini.diff"
@@ -72,10 +64,6 @@
     "mini.pick": {
       "rev": "26f94e9c84f529d713de00b900c0a307ca260f35",
       "src": "https://github.com/nvim-mini/mini.pick"
-    },
-    "mini.snippets": {
-      "rev": "9a08aa14e02abb790c823a622d7d6c736cbbe65a",
-      "src": "https://github.com/nvim-mini/mini.snippets"
     },
     "mini.statusline": {
       "rev": "7091f554d7d26b5d55f4c937634da53ba277a44a",
@@ -112,6 +100,10 @@
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "tiny-cmdline.nvim": {
+      "rev": "b1db8607a78f0c23b3bae08e079b1b7f147619d7",
+      "src": "https://github.com/rachartier/tiny-cmdline.nvim"
     },
     "typst-preview.nvim": {
       "rev": "325036ee145ca51d9efb145c09ac16bce3bc8b7d",

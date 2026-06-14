@@ -27,6 +27,7 @@ vim.pack.add({
 	gh("windwp/nvim-autopairs"),
 	gh("christoomey/vim-tmux-navigator"),
 	gh("szw/vim-maximizer"),
+	gh("rachartier/tiny-cmdline.nvim"),
 	-- completion
 	gh("saghen/blink.lib"),
 	gh("saghen/blink.cmp"),
@@ -73,6 +74,7 @@ MiniExtra.setup()
 Blink = require("blink.cmp")
 Blink.build():wait(60000)
 Blink.setup({
+	keymap = { preset = "super-tab" },
 	completion = {
 		documentation = { auto_show = false },
 		trigger = { show_in_snippet = false },
@@ -82,6 +84,11 @@ Blink.setup({
 		completion = { menu = { auto_show = true }, ghost_text = { enabled = true } },
 	},
 	signature = { enabled = true },
+})
+
+-- cmdline
+require("tiny-cmdline").setup({
+	on_reposition = require("tiny-cmdline").adapters.blink,
 })
 
 -- mini git
