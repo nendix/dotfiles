@@ -52,26 +52,68 @@ require("zen").setup({
 vim.cmd.colorscheme("zen")
 
 -- mini statusline
-MiniStatusline = require("mini.statusline")
-MiniStatusline.setup()
+local MiniStatusline = require("mini.statusline")
+
+-- mode + macro recording indicator
+local function section_mode(args)
+	local mode, hl = MiniStatusline.section_mode(args)
+	local rec = vim.fn.reg_recording()
+	return mode .. (rec ~= "" and " @" .. rec or ""), hl
+end
+
+-- filename relative to CWD
+local function section_filename(args)
+	if vim.bo.buftype == "terminal" then
+		return "%t"
+	end
+	local path = vim.fn.fnamemodify(vim.fn.expand("%"), ":.")
+	if path == "" or MiniStatusline.is_truncated(args.trunc_width) then
+		path = path == "" and "%f" or vim.fn.pathshorten(path)
+	end
+	return path .. "%m%r"
+end
+
+MiniStatusline.setup({
+	content = {
+		active = function()
+			local mode, mode_hl = section_mode({ trunc_width = 120 })
+			local git = MiniStatusline.section_git({ trunc_width = 40 })
+			local diff = MiniStatusline.section_diff({ trunc_width = 75 })
+			local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
+			local filename = section_filename({ trunc_width = 140 })
+			local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
+			local location = MiniStatusline.section_location({ trunc_width = 75 })
+			local search = MiniStatusline.section_searchcount({ trunc_width = 75 })
+			return MiniStatusline.combine_groups({
+				{ hl = mode_hl, strings = { mode } },
+				{ hl = "MiniStatuslineDevinfo", strings = { git, diff, diagnostics } },
+				"%<", -- Mark general truncate point
+				{ hl = "MiniStatuslineFilename", strings = { filename } },
+				"%=", -- End left alignment
+				{ hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
+				{ hl = mode_hl, strings = { search, location } },
+			})
+		end,
+	},
+})
 
 -- mini icons
 require("mini.icons").setup()
 
 -- mini files
-MiniFiles = require("mini.files")
+local MiniFiles = require("mini.files")
 MiniFiles.setup()
 
 -- mini picker
-MiniPick = require("mini.pick")
-MiniExtra = require("mini.extra")
+local MiniPick = require("mini.pick")
+local MiniExtra = require("mini.extra")
 MiniPick.setup({
 	mappings = { mark_all = "<C-q>", choose_marked = "<C-CR>" },
 })
 MiniExtra.setup()
 
 -- completions
-Blink = require("blink.cmp")
+local Blink = require("blink.cmp")
 Blink.build():wait(60000)
 Blink.setup({
 	keymap = { preset = "super-tab" },
@@ -92,11 +134,11 @@ require("tiny-cmdline").setup({
 })
 
 -- mini git
-MiniGit = require("mini.git")
+local MiniGit = require("mini.git")
 MiniGit.setup()
 
 -- mini diff
-MiniDiff = require("mini.diff")
+local MiniDiff = require("mini.diff")
 MiniDiff.setup({
 	source = MiniDiff.gen_source.git({ index = false }), -- compare to HEAD
 })
