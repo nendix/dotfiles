@@ -1,0 +1,154 @@
+[settings]
+auto_focus_blacklist = [
+  "com.apple.dock",
+  "com.apple.systemuiserver",
+  "com.apple.Spotlight",
+  "com.apple.SecurityAgent",
+]
+
+animate = false
+
+focus_follows_mouse = false
+mouse_follows_focus = false
+mouse_hides_on_focus = false
+
+[settings.layout]
+mode = "stack"
+
+[settings.layout.gaps.outer]
+top = 6.0
+left = 6.0
+bottom = 6.0
+right = 6.0
+
+[settings.layout.gaps.inner]
+horizontal = 6.0
+vertical = 6.0
+
+[settings.layout.stack]
+stack_offset = 12.0
+default_orientation = "horizontal"
+
+[settings.layout.bsp]
+window_insertion_point = "end_of_tree"
+
+[settings.layout.master_stack]
+new_window_placement = "stack"
+
+[settings.layout.scrolling]
+column_width_ratio = 0.9
+focus_navigation_style = "anchored"
+
+[settings.layout.scrolling.gestures]
+enabled = false
+invert_horizontal = true
+
+[settings.gestures]
+enabled = false
+fingers = 3
+skip_empty = false
+haptics_enabled = false
+
+[settings.ui.menu_bar]
+enabled = true
+display_style = "label"
+
+[settings.ui.mission_control]
+enabled = true
+
+[keys]
+"Alt + Z" = "toggle_space_activated"
+
+"Alt + H" = { move_focus = "left" }
+"Alt + J" = { move_focus = "down" }
+"Alt + K" = { move_focus = "up" }
+"Alt + L" = { move_focus = "right" }
+
+"Ctrl + Alt + H" = { move_node = "left" }
+"Ctrl + Alt + J" = { move_node = "down" }
+"Ctrl + Alt + K" = { move_node = "up" }
+"Ctrl + Alt + L" = { move_node = "right" }
+
+"Ctrl + Alt + Space" = "toggle_window_floating"
+
+"Ctrl + Alt + F" = "toggle_fullscreen_within_gaps"
+
+"Alt + Tab" = "show_mission_control_all"
+
+"Ctrl + 1" = { switch_to_workspace = 0 }
+"Ctrl + 2" = { switch_to_workspace = 1 }
+"Ctrl + 3" = { switch_to_workspace = 2 }
+"Ctrl + 4" = { switch_to_workspace = 3 }
+"Ctrl + 5" = { switch_to_workspace = 4 }
+"Ctrl + 6" = { switch_to_workspace = 5 }
+"Ctrl + 7" = { switch_to_workspace = 6 }
+"Ctrl + 8" = { switch_to_workspace = 7 }
+"Ctrl + 9" = { switch_to_workspace = 8 }
+"Ctrl + 0" = { switch_to_workspace = 9 }
+
+"Ctrl + Tab" = "switch_to_last_workspace"
+
+"Ctrl + Alt + 1" = { move_window_to_workspace = 0 }
+"Ctrl + Alt + 2" = { move_window_to_workspace = 1 }
+"Ctrl + Alt + 3" = { move_window_to_workspace = 2 }
+"Ctrl + Alt + 4" = { move_window_to_workspace = 3 }
+"Ctrl + Alt + 5" = { move_window_to_workspace = 4 }
+"Ctrl + Alt + 6" = { move_window_to_workspace = 5 }
+"Ctrl + Alt + 7" = { move_window_to_workspace = 6 }
+"Ctrl + Alt + 8" = { move_window_to_workspace = 7 }
+"Ctrl + Alt + 9" = { move_window_to_workspace = 8 }
+"Ctrl + Alt + 0" = { move_window_to_workspace = 9 }
+
+"Ctrl + Alt + O" = "toggle_orientation"
+
+"Alt + Right" = { focus_display = "right" }
+"Alt + Left" = { focus_display = "left" }
+"Alt + Down" = { focus_display = "down" }
+"Alt + Up" = { focus_display = "up" }
+
+"Ctrl + Alt + Left" = { move_window_to_display = { selector = "left" } }
+"Ctrl + Alt + Right" = { move_window_to_display = { selector = "right" } }
+"Ctrl + Alt + Down" = { move_window_to_display = { selector = "down" } }
+"Ctrl + Alt + Up" = { move_window_to_display = { selector = "up" } }
+
+"Ctrl + Shift + 6" = { set_workspace_layout = { mode = "bsp" } }
+"Ctrl + Shift + 7" = { set_workspace_layout = { mode = "floating" } }
+"Ctrl + Shift + 8" = { set_workspace_layout = { mode = "stack" } }
+"Ctrl + Shift + 9" = { set_workspace_layout = { mode = "master_stack" } }
+"Ctrl + Shift + 0" = { set_workspace_layout = { mode = "scrolling" } }
+
+"Ctrl + Alt + S" = { binding_mode = "service" }
+
+[binding_modes.service]
+"S" = { resize_window_shrink = "smart" }
+"E" = { resize_window_grow = "smart" }
+
+"H" = { join_window = "left" }
+"J" = { join_window = "down" }
+"K" = { join_window = "up" }
+"L" = { join_window = "right" }
+"U" = "unjoin_windows"
+
+"Esc" = { binding_mode = "default" }
+"Q" = { binding_mode = "default" }
+
+[virtual_workspaces]
+default_workspace_count = 10
+prevent_wrapping = true
+preserve_focus_per_workspace = true
+
+workspace_names = [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ]
+workspace_rules = [
+  # { workspace = "1", layout = "master_stack" },
+]
+
+app_rules = [
+  { app_name = "System Settings", floating = true },
+  { app_name = "Calculator", floating = true },
+  { app_name = "Activity Monitor", floating = true },
+  { app_name = "FaceTime", floating = true },
+  { app_name = "Vorssaint", floating = true },
+
+  { title_substring = "Preferences", floating = true },
+  { title_substring = "Bitwarden", floating = true },
+]
