@@ -1,4 +1,6 @@
 [settings]
+default_disable = false # MacOS Spaces are manages by default (when false)
+
 auto_focus_blacklist = [
   "com.apple.dock",
   "com.apple.systemuiserver",
@@ -13,7 +15,7 @@ mouse_follows_focus = false
 mouse_hides_on_focus = false
 
 [settings.layout]
-mode = "stack"
+mode = "scrolling"
 
 [settings.layout.gaps.outer]
 top = 6.0
@@ -37,17 +39,18 @@ new_window_placement = "stack"
 
 [settings.layout.scrolling]
 column_width_ratio = 0.9
-focus_navigation_style = "anchored"
+expand_single_column = true
 
 [settings.layout.scrolling.gestures]
 enabled = false
 invert_horizontal = true
 
 [settings.gestures]
-enabled = false
+enabled = true
 fingers = 3
-skip_empty = false
+skip_empty = true
 haptics_enabled = false
+distance_pct = 0.04
 
 [settings.ui.menu_bar]
 enabled = true
@@ -55,6 +58,9 @@ display_style = "label"
 
 [settings.ui.mission_control]
 enabled = true
+
+[settings.drag_drop]
+preview = false
 
 [keys]
 "Alt + Z" = "toggle_space_activated"
