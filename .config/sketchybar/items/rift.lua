@@ -1,11 +1,11 @@
 local colors = require("colors")
+local icon_map = require("helpers.icon_map")
 
 sbar.add("event", "rift_workspace_changed")
 sbar.add("event", "rift_windows_changed")
 sbar.add("event", "rift_binding_mode_changed")
 
 local spaces = {}
-local spaces_bracket
 local front_app_loaded = false
 local border_color = colors.border
 local watcher = sbar.add("item", "rift.watcher", {
@@ -20,9 +20,10 @@ local function update_mode()
     mode = mode:match('^%s*"(.-)"%s*$')
     if not mode then return end
     border_color = mode == "service" and colors.red or colors.border
-    if spaces_bracket then
-      spaces_bracket:set({ background = { border_color = border_color } })
+    for _, space in pairs(spaces) do
+      space:set({ background = { border_color = space.is_active and colors.border or border_color } })
     end
+
   end)
 end
 
@@ -32,14 +33,6 @@ local function refresh()
 
     local seen = {}
     local changed = false
-    local has_windows = false
-    local first_visible, last_visible
-    for _, workspace in ipairs(workspaces) do
-      if workspace.window_count > 0 then
-        first_visible = first_visible or workspace.index
-        last_visible = workspace.index
-      end
-    end
     for _, workspace in ipairs(workspaces) do
       local index = workspace.index
       seen[index] = true
@@ -48,12 +41,20 @@ local function refresh()
           position = "left",
           icon = {
             string = workspace.name,
-            color = 0x6fe0e0e0,
+            color = colors.white,
             padding_left = 4,
             padding_right = 4,
           },
-          label = { drawing = false },
-          background = { drawing = false, padding_right = 0, padding_left = 0 },
+          label = {
+            font = { family = "sketchybar-app-font", style = "Regular", size = 14.0 },
+            padding_left = 8,
+          },
+          background = {
+            drawing = true,
+            padding_right = 4,
+            padding_left = 4,
+            border_color = border_color,
+          },
         })
         space:subscribe("mouse.clicked", function()
           sbar.exec("rift-cli execute workspace switch " .. index)
@@ -61,16 +62,34 @@ local function refresh()
         spaces[index] = space
         changed = true
       end
+      local app_icons, apps = {}, {}
+      for _, window in ipairs(workspace.windows or {}) do
+        local app = window.app_name
+        if app and not apps[app] then
+          apps[app] = true
+          table.insert(app_icons, icon_map(app))
+        end
+      end
       local occupied = workspace.window_count > 0
-      has_windows = has_windows or occupied
+      spaces[index].is_active = workspace.is_active
       spaces[index]:set({
         drawing = occupied,
+        background = {
+          color = workspace.is_active and colors.workspace_active or colors.black,
+          border_color = workspace.is_active and colors.border or border_color,
+        },
         icon = {
           string = workspace.name,
           highlight = workspace.is_active,
           highlight_color = colors.white,
-          padding_left = index == first_visible and 8 or 4,
-          padding_right = index == last_visible and 8 or 4,
+          padding_left = 8,
+          padding_right = #app_icons > 0 and 6 or 8,
+        },
+        label = {
+          drawing = #app_icons > 0,
+          string = table.concat(app_icons, " "),
+          color = colors.white,
+          padding_right = 8,
         },
       })
     end
@@ -81,21 +100,6 @@ local function refresh()
         spaces[index] = nil
         changed = true
       end
-    end
-
-    if changed then
-      if spaces_bracket then sbar.remove("spaces") end
-      local names = {}
-      for _, workspace in ipairs(workspaces) do
-        table.insert(names, "space." .. workspace.index)
-      end
-      spaces_bracket = #names > 0 and sbar.add("bracket", "spaces", names, {
-        background = { drawing = true, border_color = border_color },
-      }) or nil
-    end
-
-    if spaces_bracket then
-      spaces_bracket:set({ drawing = has_windows })
     end
 
     if not front_app_loaded then

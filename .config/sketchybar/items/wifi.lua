@@ -73,10 +73,7 @@ local function toggle_popup()
 	local current = wifi:query().popup.drawing
 	if current == "off" then
 		fetch_wifi_popup()
-		wifi:set({ popup = { blur_radius = 0, drawing = "on" } })
-		sbar.animate("sin", 16, function()
-			wifi:set({ popup = { blur_radius = 33 } })
-		end)
+		wifi:set({ popup = { drawing = "on" } })
 	else
 		wifi:set({ popup = { drawing = "off" } })
 	end

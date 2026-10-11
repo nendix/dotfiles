@@ -56,10 +56,7 @@ local function toggle_popup()
   local current = calendar:query().popup.drawing
   if current == "off" then
     fetch_calendar_popup()
-    calendar:set({ popup = { blur_radius = 0, drawing = "on" } })
-    sbar.animate("sin", 16, function()
-      calendar:set({ popup = { blur_radius = 33 } })
-    end)
+    calendar:set({ popup = { drawing = "on" } })
   else
     calendar:set({ popup = { drawing = "off" } })
   end

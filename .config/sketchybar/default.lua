@@ -22,19 +22,19 @@ sbar.default({
 		border_color = colors.border,
 		padding_right = 4,
 		padding_left = 4,
-		corner_radius = 12,
+		corner_radius = 8,
 	},
 	popup = {
 		background = {
 			drawing = true,
-			color = colors.grey,
+			color = colors.transparent_grey,
 			border_color = colors.border,
 			border_width = 1,
 			corner_radius = 8,
 			padding_left = 4,
 			padding_right = 4,
 		},
-		blur_radius = 33,
+		blur_radius = 25,
 		align = "center",
 	},
 })

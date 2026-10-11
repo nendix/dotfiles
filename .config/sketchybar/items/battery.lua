@@ -76,10 +76,7 @@ local function toggle_popup()
 	local current = battery:query().popup.drawing
 	if current == "off" then
 		fetch_battery_popup()
-		battery:set({ popup = { blur_radius = 0, drawing = "on" } })
-		sbar.animate("sin", 16, function()
-			battery:set({ popup = { blur_radius = 33 } })
-		end)
+		battery:set({ popup = { drawing = "on" } })
 	else
 		battery:set({ popup = { drawing = "off" } })
 	end
