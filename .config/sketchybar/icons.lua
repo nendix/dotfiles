@@ -1,13 +1,4 @@
 return {
-	apple = "󰀵",
-	system = {
-		about = "",
-		settings = "󰒓",
-		sleep = "󰤄",
-		lock = "󰌾",
-		restart = "󰜉",
-		shutdown = "󰐥",
-	},
 	wifi = {
 		disconnected = "󰤭",
 		excellent = "󰤨",

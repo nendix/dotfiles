@@ -1,5 +1,4 @@
-require("items.apple")
-require("items.aerospace")
+require("items.rift")
 require("items.calendar")
 require("items.wifi")
 require("items.battery")
