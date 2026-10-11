@@ -7,19 +7,26 @@ sbar.add("event", "rift_binding_mode_changed")
 local spaces = {}
 local spaces_bracket
 local front_app_loaded = false
+local border_color = colors.border
 local watcher = sbar.add("item", "rift.watcher", {
   drawing = false,
   updates = true,
   update_freq = 10,
 })
 
-local function refresh()
-  -- Re-registering is deduplicated by Rift; also reconnects after WM restarts.
-  for _, event in ipairs({ "workspace_changed", "windows_changed", "binding_mode_changed" }) do
-    sbar.exec("rift-cli subscribe cli --event " .. event
-      .. " --command /opt/homebrew/bin/sketchybar --args --trigger --args rift_" .. event)
-  end
+local function update_mode()
+  sbar.exec("rift-cli query binding-mode", function(mode, code)
+    if code ~= 0 or type(mode) ~= "string" then return end
+    mode = mode:match('^%s*"(.-)"%s*$')
+    if not mode then return end
+    border_color = mode == "service" and colors.red or colors.border
+    if spaces_bracket then
+      spaces_bracket:set({ background = { border_color = border_color } })
+    end
+  end)
+end
 
+local function refresh()
   sbar.exec("rift-cli query workspaces", function(workspaces, exit_code)
     if exit_code ~= 0 or type(workspaces) ~= "table" then return end
 
@@ -83,7 +90,7 @@ local function refresh()
         table.insert(names, "space." .. workspace.index)
       end
       spaces_bracket = #names > 0 and sbar.add("bracket", "spaces", names, {
-        background = { drawing = true },
+        background = { drawing = true, border_color = border_color },
       }) or nil
     end
 
@@ -96,17 +103,28 @@ local function refresh()
       front_app_loaded = true
     end
 
-    sbar.exec("rift-cli query binding-mode", function(mode, code)
-      if code ~= 0 or not spaces_bracket then return end
-      -- JSON string responses are returned as text by SbarLua.
-      mode = type(mode) == "string" and mode:match('^%s*"(.-)"%s*$') or nil
-      if not mode then return end
-      spaces_bracket:set({
-        background = { border_color = mode == "service" and colors.red or colors.border },
-      })
-    end)
+    if changed then
+      local names = {}
+      for _, workspace in ipairs(workspaces) do
+        table.insert(names, "space." .. workspace.index)
+      end
+      table.insert(names, "front_app")
+      sbar.exec("sketchybar --reorder " .. table.concat(names, " "))
+    end
   end)
 end
 
-watcher:subscribe({ "routine", "system_woke", "rift_workspace_changed", "rift_windows_changed", "rift_binding_mode_changed" }, refresh)
-refresh()
+local function reconnect()
+  -- Rift deduplicates subscriptions; watchdog recovers after WM restarts.
+  for _, event in ipairs({ "workspace_changed", "windows_changed", "binding_mode_changed" }) do
+    sbar.exec("rift-cli subscribe cli --event " .. event
+      .. " --command /opt/homebrew/bin/sketchybar --args --trigger --args rift_" .. event)
+  end
+  update_mode()
+  refresh()
+end
+
+watcher:subscribe({ "routine", "system_woke" }, reconnect)
+watcher:subscribe({ "rift_workspace_changed", "rift_windows_changed" }, refresh)
+watcher:subscribe("rift_binding_mode_changed", update_mode)
+reconnect()

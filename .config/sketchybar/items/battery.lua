@@ -1,4 +1,5 @@
 local icons = require("icons")
+local colors = require("colors")
 
 -- Main battery item
 local battery = sbar.add("item", "battery", {
@@ -26,9 +27,14 @@ local battery_settings = sbar.add("item", "battery.settings", {
 
 -- Update main display (every 60s)
 local function update_battery()
-	sbar.exec("pmset -g batt", function(result)
+	sbar.exec("pmset -g batt", function(result, code)
+		if code ~= 0 then return end
 		local charging = result:find("AC Power")
-		local percent = tonumber(result:match("(%d+)%%")) or 0
+		local percent = tonumber(result:match("(%d+)%%"))
+		if not percent then
+			battery:set({ drawing = false })
+			return
+		end
 
 		-- Calculate index (0-10)
 		local index = math.min(math.floor(percent / 10), 10)
@@ -40,9 +46,11 @@ local function update_battery()
 			icon = icons.battery.discharging[index]
 		end
 
+		local color = not charging and percent <= 20 and colors.red or colors.white
 		battery:set({
-			icon = icon,
-			label = percent .. "%",
+			drawing = true,
+			icon = { string = icon, color = color },
+			label = { string = percent .. "%", color = color },
 		})
 	end)
 end
@@ -80,6 +88,7 @@ end
 -- Subscribe
 battery:subscribe({ "routine", "power_source_change", "system_woke" }, update_battery)
 battery:subscribe("mouse.clicked", toggle_popup)
+update_battery()
 battery_settings:subscribe("mouse.clicked", function()
 	sbar.exec("open 'x-apple.systempreferences:com.apple.preference.battery'")
 	battery:set({ popup = { drawing = "off" } })

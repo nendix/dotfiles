@@ -36,32 +36,7 @@ local function update_wifi()
 	sbar.exec("ipconfig getsummary en0 2>/dev/null", function(summary)
 		local connected = summary:find("LinkStatusActive.*TRUE")
 
-		if not connected then
-			wifi:set({ icon = icons.wifi.disconnected })
-			return
-		end
-
-		-- Get signal strength
-		sbar.exec(
-			"system_profiler SPAirPortDataType 2>/dev/null | grep -A 10 'Current Network Information' | head -15",
-			function(info)
-				local signal = info:match("Signal / Noise: (%-?%d+)")
-				signal = tonumber(signal) or -100
-
-				local icon
-				if signal >= -60 then
-					icon = icons.wifi.excellent
-				elseif signal >= -70 then
-					icon = icons.wifi.good
-				elseif signal >= -80 then
-					icon = icons.wifi.fair
-				else
-					icon = icons.wifi.poor
-				end
-
-				wifi:set({ icon = icon })
-			end
-		)
+		wifi:set({ icon = connected and icons.wifi.excellent or icons.wifi.disconnected })
 	end)
 end
 
@@ -108,7 +83,8 @@ local function toggle_popup()
 end
 
 -- Subscribe
-wifi:subscribe({ "routine", "wifi_change" }, update_wifi)
+wifi:subscribe({ "routine", "wifi_change", "system_woke" }, update_wifi)
+update_wifi()
 wifi:subscribe("mouse.clicked", toggle_popup)
 wifi_settings:subscribe("mouse.clicked", function()
 	sbar.exec("open 'x-apple.systempreferences:com.apple.wifi-settings'")

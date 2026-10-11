@@ -10,4 +10,5 @@ StardewValley/
 bat/
 bpytop/
 thefuck/
-sketchybar.menus/
+.config/sketchybar.menus/helpers/menus/bin/
+.config/sketchybar/tests/
