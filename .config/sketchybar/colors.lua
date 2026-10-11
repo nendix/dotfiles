@@ -1,15 +1,15 @@
 return {
 	black = 0xff121212,
-	transparent_black = 0x99121212,
+	translucent_black = 0x88121212,
 	white = 0xffe0e0e0,
-	workspace_active = 0xff323232,
+	workspace_active = 0x88323232,
 	red = 0xffb9a0a0,
 	green = 0xffa0b9a0,
 	blue = 0xffa0a0b9,
 	yellow = 0xffb9b0a0,
 	magenta = 0xffb0a0b9,
 	grey = 0xff1a1a1a,
-	transparent_grey = 0x881a1a1a,
+	translucent_grey = 0x881a1a1a,
 	border = 0xff424242,
 	transparent = 0x00000000,
 }

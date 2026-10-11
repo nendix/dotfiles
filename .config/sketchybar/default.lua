@@ -3,6 +3,7 @@ local settings = require("settings")
 
 sbar.default({
 	updates = "when_shown",
+	blur_radius = 25,
 	icon = {
 		font = { family = settings.font, style = "Regular", size = 14.0 },
 		color = colors.white,
@@ -17,7 +18,7 @@ sbar.default({
 	},
 	background = {
 		height = 26,
-		color = colors.black,
+		color = colors.translucent_black,
 		border_width = 1,
 		border_color = colors.border,
 		padding_right = 4,
@@ -27,7 +28,7 @@ sbar.default({
 	popup = {
 		background = {
 			drawing = true,
-			color = colors.transparent_grey,
+			color = colors.translucent_grey,
 			border_color = colors.border,
 			border_width = 1,
 			corner_radius = 8,
