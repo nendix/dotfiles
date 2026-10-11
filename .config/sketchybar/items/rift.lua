@@ -26,13 +26,25 @@ local function refresh()
     local seen = {}
     local changed = false
     local has_windows = false
+    local first_visible, last_visible
+    for _, workspace in ipairs(workspaces) do
+      if workspace.window_count > 0 then
+        first_visible = first_visible or workspace.index
+        last_visible = workspace.index
+      end
+    end
     for _, workspace in ipairs(workspaces) do
       local index = workspace.index
       seen[index] = true
       if not spaces[index] then
         local space = sbar.add("item", "space." .. index, {
           position = "left",
-          icon = { string = workspace.name, color = 0x6fe0e0e0 },
+          icon = {
+            string = workspace.name,
+            color = 0x6fe0e0e0,
+            padding_left = 4,
+            padding_right = 4,
+          },
           label = { drawing = false },
           background = { drawing = false, padding_right = 0, padding_left = 0 },
         })
@@ -50,6 +62,8 @@ local function refresh()
           string = workspace.name,
           highlight = workspace.is_active,
           highlight_color = colors.white,
+          padding_left = index == first_visible and 8 or 4,
+          padding_right = index == last_visible and 8 or 4,
         },
       })
     end
