@@ -22,14 +22,14 @@ mouse_hides_on_focus = false
 mode = "scrolling"
 
 [settings.layout.gaps.outer]
-top = 4.0
-left = 4.0
-bottom = 4.0
-right = 4.0
+top = 8.0
+left = 8.0
+bottom = 8.0
+right = 8.0
 
 [settings.layout.gaps.inner]
-horizontal = 4.0
-vertical = 4.0
+horizontal = 8.0
+vertical = 8.0
 
 [settings.layout.stack]
 stack_offset = 12.0
@@ -59,9 +59,15 @@ distance_pct = 0.04
 [settings.ui.menu_bar]
 enabled = true
 display_style = "label"
+active_label = "index"
 
 [settings.ui.mission_control]
 enabled = true
+
+[settings.ui.stack_line]
+enabled = true
+thickness = 24.0
+spacing = 0.0
 
 [settings.drag_drop]
 preview = false
@@ -158,6 +164,8 @@ app_rules = [
   { app_name = "Activity Monitor", floating = true },
   { app_name = "FaceTime", floating = true },
   { app_name = "Vorssaint", floating = true },
+	{ app_name = "rift", floating = true},
+	{ app_name = "UTM", floating = true},
 
   { title_substring = "Preferences", floating = true },
   { title_substring = "Bitwarden", floating = true },
