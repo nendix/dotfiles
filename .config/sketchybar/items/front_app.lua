@@ -12,6 +12,8 @@ local front_app = sbar.add("item", "front_app", {
 		font = { family = settings.font, style = "Regular", size = 14.0 },
 		padding_left = 2,
 	},
+
+	background = { padding_left = 4 },
 })
 
 front_app:subscribe("front_app_switched", function(env)

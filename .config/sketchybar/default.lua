@@ -21,8 +21,6 @@ sbar.default({
 		color = colors.translucent_black,
 		border_width = 1,
 		border_color = colors.border,
-		padding_right = 4,
-		padding_left = 4,
 		corner_radius = 8,
 	},
 	popup = {
@@ -35,7 +33,7 @@ sbar.default({
 			padding_left = 4,
 			padding_right = 4,
 		},
-		blur_radius = 25,
+		blur_radius = 20,
 		align = "center",
 	},
 })

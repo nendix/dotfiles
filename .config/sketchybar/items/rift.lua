@@ -23,9 +23,9 @@ local function update_mode()
 		if not mode then
 			return
 		end
-		border_color = mode == "service" and colors.red or colors.border
+		border_color = mode == "service" and colors.translucent_red or colors.border
 		for _, space in pairs(spaces) do
-			space:set({ background = { border_color = space.is_active and colors.border or border_color } })
+			space:set({ background = { border_color = border_color } })
 		end
 	end)
 end
@@ -57,7 +57,6 @@ local function refresh()
 					background = {
 						drawing = true,
 						padding_right = 4,
-						padding_left = 4,
 						border_color = border_color,
 					},
 				})

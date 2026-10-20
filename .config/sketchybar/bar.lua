@@ -5,10 +5,10 @@ sbar.bar({
 	color = colors.transparent,
 	position = "top",
 	sticky = true,
-	corner_radius = 12,
+	corner_radius = 8,
 	padding_left = 0,
 	padding_right = 0,
 	y_offset = 2,
-	margin = 4,
+	margin = 8,
 	blur_radius = 33,
 })

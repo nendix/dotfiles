@@ -5,7 +5,7 @@ local wifi = sbar.add("item", "wifi", {
 	position = "right",
 	update_freq = 60,
 	background = { drawing = false },
-	icon = { padding_left = 2 },
+	icon = { padding_left = 8 },
 	label = { drawing = false },
 })
 

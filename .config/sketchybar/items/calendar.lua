@@ -5,7 +5,7 @@ local calendar = sbar.add("item", "calendar", {
   position = "right",
   icon = { drawing = false },
   update_freq = 1,
-  background = { padding_right = 0 },
+  background = { padding_left = 8, padding_right = 0 },
   popup = { align = "right" },
 })
 

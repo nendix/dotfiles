@@ -6,7 +6,7 @@ local battery = sbar.add("item", "battery", {
 	position = "right",
 	update_freq = 60,
 	icon = { padding_right = 2 },
-	label = { padding_left = 2, padding_right = 2 },
+	label = { padding_left = 2, padding_right = 6 },
 	background = { drawing = false },
 })
 
@@ -28,7 +28,9 @@ local battery_settings = sbar.add("item", "battery.settings", {
 -- Update main display (every 60s)
 local function update_battery()
 	sbar.exec("pmset -g batt", function(result, code)
-		if code ~= 0 then return end
+		if code ~= 0 then
+			return
+		end
 		local charging = result:find("AC Power")
 		local percent = tonumber(result:match("(%d+)%%"))
 		if not percent then
