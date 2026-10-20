@@ -1,6 +1,6 @@
 theme = zen-dark
 
-background-opacity = 0.9
+background-opacity = 0.8
 background-blur-radius = 20
 
 mouse-hide-while-typing = true
