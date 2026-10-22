@@ -76,14 +76,12 @@ function take {
 alias rm="trash"
 alias vim="nvim"
 alias ls="eza --icons=auto --color=auto"
-alias lsa="ls -a"
-alias lsl="ls -l" 
-alias lst="ls --tree"
+alias la="ls -a"
+alias ll="ls -l" 
+alias lt="ls --tree"
 alias t="todopher"
 alias y="yazi"
 alias k="clear"
-
-alias claude-personal='CLAUDE_CONFIG_DIR=~/.claude-personal claude'
 
 # exports
 export EDITOR=nvim
@@ -108,4 +106,3 @@ fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
 # Added by Antigravity
 export PATH="/Users/daniele/.antigravity/antigravity/bin:$PATH"
-
