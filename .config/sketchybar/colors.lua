@@ -3,6 +3,7 @@ return {
 	translucent_black = 0x88121212,
 	white = 0xffe0e0e0,
 	workspace_active = 0x88323232,
+	hover = 0x88323232,
 	red = 0xffb9a0a0,
 	translucent_red = 0x88b9a0a0,
 	green = 0xffa0b9a0,

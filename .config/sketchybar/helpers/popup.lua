@@ -26,7 +26,7 @@ function popup.action(item, callback)
   item:set({
     width = 224,
     background = {
-      color = colors.workspace_active,
+      color = colors.hover,
       border_width = 0,
       height = 22,
       padding_left = 4,

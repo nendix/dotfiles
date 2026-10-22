@@ -182,7 +182,7 @@ for _, name in ipairs({ "wifi.settings", "battery.settings" }) do
   assert(not action.properties.background.drawing)
   action.callbacks["mouse.entered"]()
   assert(action.properties.background.drawing)
-  assert(action.properties.background.color == colors.workspace_active)
+  assert(action.properties.background.color == colors.hover)
   action.callbacks["mouse.exited"]()
   assert(not action.properties.background.drawing)
   for _, parent in ipairs(parents) do parent:set({ popup = { drawing = true } }) end
