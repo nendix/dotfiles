@@ -11,11 +11,14 @@ end
 function popup.attach(parent, refresh)
   table.insert(parents, parent)
   parent:subscribe("mouse.clicked", function()
-    if parent:query().popup.drawing == "on" then return end
+    local opening = parent:query().popup.drawing == "off"
     close_all()
-    refresh()
-    parent:set({ popup = { drawing = true } })
+    if opening then
+      refresh()
+      parent:set({ popup = { drawing = true } })
+    end
   end)
+  parent:subscribe("front_app_switched", close_all)
 end
 
 function popup.action(item, callback)
@@ -39,6 +42,7 @@ function popup.action(item, callback)
     item:set({ background = { drawing = false } })
   end)
   item:subscribe("mouse.clicked", function()
+    close_all()
     item:set({ background = { drawing = false } })
     callback()
   end)

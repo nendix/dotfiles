@@ -37,9 +37,9 @@ lua tests/checks.lua
 
 ## Behavior
 
-- Popups close only when opening another popup, not on pointer exit, app switches,
-  actions, or repeated clicks on the same parent. Wi-Fi and battery actions share
-  row spacing and subtle hover feedback.
+- Popups close when opening another popup, switching apps, clicking an action,
+  or clicking the same parent again. Pointer exit leaves them open. Wi-Fi and
+  battery actions share row spacing and subtle hover feedback.
 - Normal content stays white; bold emphasizes the calendar heading and today.
   Color is reserved for low-battery warnings and Rift service mode.
 

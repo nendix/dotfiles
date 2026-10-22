@@ -165,10 +165,13 @@ for _, parent in ipairs(parents) do
     if other ~= parent then assert(other:query().popup.drawing == "off") end
   end
   parent.callbacks["mouse.clicked"]()
-  assert(parent:query().popup.drawing == "on")
-  for _, event in ipairs({ "mouse.exited", "mouse.exited.global", "front_app_switched" }) do
+  assert(parent:query().popup.drawing == "off")
+  for _, event in ipairs({ "mouse.exited", "mouse.exited.global" }) do
     assert(not parent.callbacks[event])
   end
+  parent.callbacks["mouse.clicked"]()
+  parent.callbacks.front_app_switched()
+  for _, other in ipairs(parents) do assert(other:query().popup.drawing == "off") end
 end
 for _, name in ipairs({ "wifi.settings", "battery.settings" }) do
   local action = items[name]
@@ -185,7 +188,7 @@ for _, name in ipairs({ "wifi.settings", "battery.settings" }) do
   assert(not action.properties.background.drawing)
   for _, parent in ipairs(parents) do parent:set({ popup = { drawing = true } }) end
   action.callbacks["mouse.clicked"]()
-  for _, parent in ipairs(parents) do assert(parent:query().popup.drawing == "on") end
+  for _, parent in ipairs(parents) do assert(parent:query().popup.drawing == "off") end
   assert(commands[#commands]:find("open 'x-apple.systempreferences:", 1, true))
 end
 -- Failed queries clear prior successful details rather than retaining old values.
