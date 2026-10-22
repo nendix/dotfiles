@@ -51,5 +51,6 @@ lua tests/checks.lua
 - Battery shows percentage and power-source icon. Red at <=20% on battery;
   normal color on AC. Devices without battery omit the item.
 - Wi-Fi shows connection state, not signal strength. SSID and negotiated link
-  rate load only when opening its popup; Mbps is not an internet speed test.
+  rate load only when opening its popup. “Link rate” is not an internet speed test.
+  Failed queries clear stale details; delayed rate responses cannot undo a disconnect.
 - Wi-Fi uses `en0`, matching this machine; change interface on other hardware.

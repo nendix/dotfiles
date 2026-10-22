@@ -11,6 +11,9 @@ local mode = '"default"'
 local battery_result = "Now drawing from 'Battery Power'\n20%; discharging;"
 local battery_code = 0
 local connected = true
+local wifi_code, profiler_code = 0, 0
+local profiler_result = "Current Network Information:\n  Test:\n    Transmit Rate: 300"
+local defer_profiler, pending_profiler = false, nil
 local function merge(target, values)
   for key, value in pairs(values) do
     if type(value) == "table" and type(target[key]) == "table" then
@@ -50,8 +53,10 @@ sbar = {
     elseif command == "rift-cli query binding-mode" then callback(mode, 0)
     elseif command == "pmset -g batt" then callback(battery_result, battery_code)
     elseif command:find("ipconfig", 1, true) then
-      callback(connected and "LinkStatusActive : TRUE\nSSID : Test\n" or "", 0)
-    elseif command:find("system_profiler", 1, true) then callback("Transmit Rate: 300", 0)
+      callback(connected and "LinkStatusActive : TRUE\nBSSID : aa:bb:cc:dd:ee:ff\nSSID : Test\n" or "LinkStatusActive : FALSE\n", wifi_code)
+    elseif command:find("system_profiler", 1, true) then
+      if defer_profiler then pending_profiler = callback
+      else callback(profiler_result, profiler_code) end
     else callback("App\nFile\n", 0) end
   end,
 }
@@ -77,7 +82,8 @@ items.wifi.callbacks.wifi_change()
 assert(items.wifi.properties.icon == require("icons").wifi.disconnected)
 connected = true
 items.wifi.callbacks["mouse.clicked"]()
-assert(items["wifi.speed"].properties.label == "300 Mbps")
+assert(items["wifi.speed"].properties.label == "Link rate: 300 Mbps")
+assert(items["wifi.ssid"].properties.label == "Test")
 require("items.rift")
 assert(items["space.0"].properties.drawing and not items["space.1"].properties.drawing)
 assert(items["space.0"].properties.icon.padding_left == 8)
@@ -176,4 +182,34 @@ for _, name in ipairs({ "wifi.settings", "battery.settings" }) do
   for _, parent in ipairs(parents) do assert(parent:query().popup.drawing == "off") end
   assert(commands[#commands]:find("open 'x-apple.systempreferences:", 1, true))
 end
+-- Failed queries clear prior successful details rather than retaining old values.
+items.wifi.callbacks["mouse.clicked"]()
+assert(items["wifi.speed"].properties.label == "Link rate: 300 Mbps")
+wifi_code = 1
+items.wifi.callbacks.routine()
+assert(items["wifi.ssid"].properties.label == "Unavailable")
+assert(items["wifi.speed"].properties.label == "Link rate: --")
+assert(items.wifi.properties.icon == require("icons").wifi.disconnected)
+items.wifi.callbacks["mouse.clicked"]() -- Close.
+items.wifi.callbacks["mouse.clicked"]() -- Open with failed summary.
+assert(items["wifi.ssid"].properties.label == "Unavailable")
+wifi_code, profiler_code = 0, 1
+items.wifi.callbacks["mouse.clicked"]()
+items.wifi.callbacks["mouse.clicked"]()
+assert(items["wifi.ssid"].properties.label == "Test")
+assert(items["wifi.speed"].properties.label == "Link rate: --")
+profiler_code, profiler_result = 0, "No current network information"
+items.wifi.callbacks["mouse.clicked"]()
+items.wifi.callbacks["mouse.clicked"]()
+assert(items["wifi.speed"].properties.label == "Link rate: --")
+-- A delayed link-rate response cannot undo a disconnect.
+defer_profiler = true
+items.wifi.callbacks["mouse.clicked"]()
+items.wifi.callbacks["mouse.clicked"]()
+assert(pending_profiler)
+connected = false
+items.wifi.callbacks.wifi_change()
+pending_profiler("Current Network Information:\nTransmit Rate: 999", 0)
+assert(items["wifi.ssid"].properties.label == "Not Connected")
+assert(items["wifi.speed"].properties.label == "Link rate: --")
 print("Checks passed: " .. root)
