@@ -1,5 +1,6 @@
 local icons = require("icons")
 local colors = require("colors")
+local popup = require("helpers.popup")
 
 -- Main battery item
 local battery = sbar.add("item", "battery", {
@@ -13,6 +14,7 @@ local battery = sbar.add("item", "battery", {
 -- Popup items
 local battery_time = sbar.add("item", "battery.time", {
 	position = "popup.battery",
+	width = 232,
 	icon = { string = icons.popup.time, padding_right = 4 },
 	label = { string = "--", padding_left = 4 },
 	background = { drawing = false },
@@ -57,7 +59,7 @@ local function update_battery()
 	end)
 end
 
--- Fetch popup data (only when opening - improvement #1)
+-- Fetch details only when opening.
 local function fetch_battery_popup()
 	sbar.exec("pmset -g batt", function(result)
 		local charging = result:find("AC Power")
@@ -73,22 +75,10 @@ local function fetch_battery_popup()
 	end)
 end
 
--- Toggle popup with animation
-local function toggle_popup()
-	local current = battery:query().popup.drawing
-	if current == "off" then
-		fetch_battery_popup()
-		battery:set({ popup = { drawing = "on" } })
-	else
-		battery:set({ popup = { drawing = "off" } })
-	end
-end
-
 -- Subscribe
 battery:subscribe({ "routine", "power_source_change", "system_woke" }, update_battery)
-battery:subscribe("mouse.clicked", toggle_popup)
+popup.attach(battery, fetch_battery_popup)
 update_battery()
-battery_settings:subscribe("mouse.clicked", function()
+popup.action(battery_settings, function()
 	sbar.exec("open 'x-apple.systempreferences:com.apple.preference.battery'")
-	battery:set({ popup = { drawing = "off" } })
 end)

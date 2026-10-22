@@ -146,4 +146,34 @@ assert(items["calendar.month"].properties.label.string == "February 2024")
 assert(items["calendar.days5"].properties.label.string:find("29", 1, true))
 assert(not items["calendar.days5"].properties.label.string:find("30", 1, true))
 os.date = real_date
+local parents = { items.calendar, items.wifi, items.battery }
+for _, parent in ipairs(parents) do
+  for _, other in ipairs(parents) do other:set({ popup = { drawing = true } }) end
+  parent:set({ popup = { drawing = false } })
+  parent.callbacks["mouse.clicked"]()
+  assert(parent:query().popup.drawing == "on")
+  for _, other in ipairs(parents) do
+    if other ~= parent then assert(other:query().popup.drawing == "off") end
+  end
+  parent.callbacks["mouse.clicked"]()
+  assert(parent:query().popup.drawing == "off")
+  for _, event in ipairs({ "mouse.exited", "mouse.exited.global", "front_app_switched" }) do
+    parent.callbacks["mouse.clicked"]()
+    parent.callbacks[event]()
+    for _, other in ipairs(parents) do assert(other:query().popup.drawing == "off") end
+  end
+end
+for _, name in ipairs({ "wifi.settings", "battery.settings" }) do
+  local action = items[name]
+  assert(action.properties.width == 232)
+  action.callbacks["mouse.entered"]()
+  assert(action.properties.background.drawing)
+  assert(action.properties.background.color == colors.workspace_active)
+  action.callbacks["mouse.exited"]()
+  assert(not action.properties.background.drawing)
+  for _, parent in ipairs(parents) do parent:set({ popup = { drawing = true } }) end
+  action.callbacks["mouse.clicked"]()
+  for _, parent in ipairs(parents) do assert(parent:query().popup.drawing == "off") end
+  assert(commands[#commands]:find("open 'x-apple.systempreferences:", 1, true))
+end
 print("Checks passed: " .. root)

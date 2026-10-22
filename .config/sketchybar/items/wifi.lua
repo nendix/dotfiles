@@ -1,4 +1,5 @@
 local icons = require("icons")
+local popup = require("helpers.popup")
 
 -- Main WiFi item
 local wifi = sbar.add("item", "wifi", {
@@ -12,6 +13,7 @@ local wifi = sbar.add("item", "wifi", {
 -- Popup items
 local wifi_ssid = sbar.add("item", "wifi.ssid", {
 	position = "popup.wifi",
+	width = 232,
 	icon = { string = icons.popup.network, padding_right = 4 },
 	label = { string = "Not Connected", padding_left = 4 },
 	background = { drawing = false },
@@ -19,6 +21,7 @@ local wifi_ssid = sbar.add("item", "wifi.ssid", {
 
 local wifi_speed = sbar.add("item", "wifi.speed", {
 	position = "popup.wifi",
+	width = 232,
 	icon = { string = icons.popup.speed, padding_right = 4 },
 	label = { string = "-- Mbps", padding_left = 4 },
 	background = { drawing = false },
@@ -40,7 +43,7 @@ local function update_wifi()
 	end)
 end
 
--- Fetch popup data (only when opening - improvement #1)
+-- Fetch details only when opening.
 local function fetch_wifi_popup()
 	sbar.exec("ipconfig getsummary en0 2>/dev/null", function(summary)
 		local connected = summary:find("LinkStatusActive.*TRUE")
@@ -68,22 +71,10 @@ local function fetch_wifi_popup()
 	end)
 end
 
--- Toggle popup with animation
-local function toggle_popup()
-	local current = wifi:query().popup.drawing
-	if current == "off" then
-		fetch_wifi_popup()
-		wifi:set({ popup = { drawing = "on" } })
-	else
-		wifi:set({ popup = { drawing = "off" } })
-	end
-end
-
 -- Subscribe
 wifi:subscribe({ "routine", "wifi_change", "system_woke" }, update_wifi)
 update_wifi()
-wifi:subscribe("mouse.clicked", toggle_popup)
-wifi_settings:subscribe("mouse.clicked", function()
+popup.attach(wifi, fetch_wifi_popup)
+popup.action(wifi_settings, function()
 	sbar.exec("open 'x-apple.systempreferences:com.apple.wifi-settings'")
-	wifi:set({ popup = { drawing = "off" } })
 end)

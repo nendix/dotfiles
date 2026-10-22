@@ -1,5 +1,6 @@
 local settings = require("settings")
 local colors = require("colors")
+local popup = require("helpers.popup")
 
 local calendar = sbar.add("item", "calendar", {
   position = "right",
@@ -74,11 +75,4 @@ local function update_calendar()
 end
 calendar:subscribe({ "routine", "system_woke" }, update_calendar)
 update_calendar()
-calendar:subscribe("mouse.clicked", function()
-  if calendar:query().popup.drawing == "off" then
-    render()
-    calendar:set({ popup = { drawing = "on" } })
-  else
-    calendar:set({ popup = { drawing = "off" } })
-  end
-end)
+popup.attach(calendar, render)

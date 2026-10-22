@@ -20,11 +20,6 @@ front_app:subscribe("front_app_switched", function(env)
 	local app = env.INFO or ""
 	local icon = icon_map(app)
 
-	-- Close all popups when switching apps (improvement #2)
-	sbar.set("calendar", { popup = { drawing = false } })
-	sbar.set("wifi", { popup = { drawing = false } })
-	sbar.set("battery", { popup = { drawing = false } })
-
 	sbar.animate("sin", 16, function()
 		front_app:set({
 			icon = icon,

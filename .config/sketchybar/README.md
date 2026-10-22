@@ -37,6 +37,11 @@ lua tests/checks.lua
 
 ## Behavior
 
+- Popups are mutually exclusive and dismiss when leaving the parent/popup area
+  or switching apps. Wi-Fi and battery actions share row spacing and subtle hover feedback.
+- Normal content stays white; bold emphasizes the calendar heading and today.
+  Color is reserved for low-battery warnings and Rift service mode.
+
 - Occupied and active Rift workspaces appear, each in its own pill with app icons.
   Each pill has 8px outer padding; number-to-app gap is 12px, with one space between app icons.
 - Workspace changes query workspaces only; binding-mode changes query mode only.
