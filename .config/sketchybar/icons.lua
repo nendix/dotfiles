@@ -36,7 +36,6 @@ return {
 	},
 	popup = {
 		network = "󰀂",
-		speed = "󰓅",
 		settings = "󰒓",
 		time = "󱎫",
 	},

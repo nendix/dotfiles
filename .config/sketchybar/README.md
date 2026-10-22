@@ -51,7 +51,7 @@ lua tests/checks.lua
   The clock updates every 30 seconds; the grid rebuilds only when the date changes.
 - Battery shows percentage and power-source icon. Red at <=20% on battery;
   normal color on AC. Devices without battery omit the item.
-- Wi-Fi shows connection state, not signal strength. SSID and negotiated link
-  rate load only when opening its popup. “Link rate” is not an internet speed test.
-  Failed queries clear stale details; delayed rate responses cannot undo a disconnect.
+- Wi-Fi shows connection state, not signal strength. Its popup contains only the
+  network name and Wi-Fi Settings; the name loads when opening the popup.
+  Failed queries clear stale details; delayed responses cannot undo a disconnect.
 - Wi-Fi uses `en0`, matching this machine; change interface on other hardware.

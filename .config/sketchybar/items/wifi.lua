@@ -19,14 +19,6 @@ local wifi_ssid = sbar.add("item", "wifi.ssid", {
 	background = { drawing = false },
 })
 
-local wifi_speed = sbar.add("item", "wifi.speed", {
-	position = "popup.wifi",
-	width = 232,
-	icon = { string = icons.popup.speed, padding_right = 4 },
-	label = { string = "Link rate: --", padding_left = 4 },
-	background = { drawing = false },
-})
-
 local wifi_settings = sbar.add("item", "wifi.settings", {
 	position = "popup.wifi",
 	icon = { string = icons.popup.settings, padding_right = 4 },
@@ -35,11 +27,6 @@ local wifi_settings = sbar.add("item", "wifi.settings", {
 })
 
 local popup_generation = 0
-local function clear_details(status)
-	wifi_ssid:set({ label = status })
-	wifi_speed:set({ label = "Link rate: --" })
-end
-
 local function connection_state(summary, code)
 	if code ~= 0 or type(summary) ~= "string" or summary == "" then
 		return false, "Unavailable"
@@ -55,7 +42,7 @@ local function update_wifi()
 		wifi:set({ icon = connected and icons.wifi.excellent or icons.wifi.disconnected })
 		if not connected then
 			popup_generation = popup_generation + 1
-			clear_details(status)
+			wifi_ssid:set({ label = status })
 		end
 	end)
 end
@@ -64,25 +51,18 @@ end
 local function fetch_wifi_popup()
 	popup_generation = popup_generation + 1
 	local generation = popup_generation
-	clear_details("Loading…")
+	wifi_ssid:set({ label = "Loading…" })
 	sbar.exec("ipconfig getsummary en0 2>/dev/null", function(summary, code)
 		if generation ~= popup_generation then return end
 		local connected, status = connection_state(summary, code)
 		wifi:set({ icon = connected and icons.wifi.excellent or icons.wifi.disconnected })
 		if not connected then
-			clear_details(status)
+			wifi_ssid:set({ label = status })
 			return
 		end
 
 		local ssid = summary:match("%f[%w]SSID%s*:%s*([^\n]+)") or "Unknown"
 		wifi_ssid:set({ label = ssid })
-		sbar.exec("system_profiler SPAirPortDataType 2>/dev/null", function(info, profiler_code)
-			if generation ~= popup_generation then return end
-			if profiler_code ~= 0 or type(info) ~= "string" then return end
-			local network = info:match("Current Network Information:(.*)") or ""
-			local speed = network:match("Transmit Rate:%s*(%d+)")
-			wifi_speed:set({ label = speed and ("Link rate: " .. speed .. " Mbps") or "Link rate: --" })
-		end)
 	end)
 end
 
