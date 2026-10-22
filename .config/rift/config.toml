@@ -27,6 +27,12 @@ left = 8.0
 bottom = 8.0
 right = 8.0
 
+[settings.layout.gaps.per_display."A9852BA3-C717-4727-9B28-0396D3A54232".outer]
+top = 40.0 # 32 + custom gap
+bottom = 8.0
+left = 8.0
+right = 8.0
+
 [settings.layout.gaps.inner]
 horizontal = 8.0
 vertical = 8.0
@@ -155,7 +161,7 @@ preserve_focus_per_workspace = true
 
 workspace_names = [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ]
 workspace_rules = [
-  # { workspace = "1", layout = "master_stack" },
+  { workspace = "1", layout = "master_stack" },
 ]
 
 app_rules = [
