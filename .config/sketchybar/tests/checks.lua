@@ -165,11 +165,9 @@ for _, parent in ipairs(parents) do
     if other ~= parent then assert(other:query().popup.drawing == "off") end
   end
   parent.callbacks["mouse.clicked"]()
-  assert(parent:query().popup.drawing == "off")
+  assert(parent:query().popup.drawing == "on")
   for _, event in ipairs({ "mouse.exited", "mouse.exited.global", "front_app_switched" }) do
-    parent.callbacks["mouse.clicked"]()
-    parent.callbacks[event]()
-    for _, other in ipairs(parents) do assert(other:query().popup.drawing == "off") end
+    assert(not parent.callbacks[event])
   end
 end
 for _, name in ipairs({ "wifi.settings", "battery.settings" }) do
@@ -187,33 +185,34 @@ for _, name in ipairs({ "wifi.settings", "battery.settings" }) do
   assert(not action.properties.background.drawing)
   for _, parent in ipairs(parents) do parent:set({ popup = { drawing = true } }) end
   action.callbacks["mouse.clicked"]()
-  for _, parent in ipairs(parents) do assert(parent:query().popup.drawing == "off") end
+  for _, parent in ipairs(parents) do assert(parent:query().popup.drawing == "on") end
   assert(commands[#commands]:find("open 'x-apple.systempreferences:", 1, true))
 end
 -- Failed queries clear prior successful details rather than retaining old values.
-items.wifi.callbacks["mouse.clicked"]()
+local function reopen_wifi()
+  items.calendar.callbacks["mouse.clicked"]()
+  items.wifi.callbacks["mouse.clicked"]()
+end
+items.wifi:set({ popup = { drawing = false } })
+reopen_wifi()
 assert(items["wifi.speed"].properties.label == "Link rate: 300 Mbps")
 wifi_code = 1
 items.wifi.callbacks.routine()
 assert(items["wifi.ssid"].properties.label == "Unavailable")
 assert(items["wifi.speed"].properties.label == "Link rate: --")
 assert(items.wifi.properties.icon == require("icons").wifi.disconnected)
-items.wifi.callbacks["mouse.clicked"]() -- Close.
-items.wifi.callbacks["mouse.clicked"]() -- Open with failed summary.
+reopen_wifi() -- Open with failed summary.
 assert(items["wifi.ssid"].properties.label == "Unavailable")
 wifi_code, profiler_code = 0, 1
-items.wifi.callbacks["mouse.clicked"]()
-items.wifi.callbacks["mouse.clicked"]()
+reopen_wifi()
 assert(items["wifi.ssid"].properties.label == "Test")
 assert(items["wifi.speed"].properties.label == "Link rate: --")
 profiler_code, profiler_result = 0, "No current network information"
-items.wifi.callbacks["mouse.clicked"]()
-items.wifi.callbacks["mouse.clicked"]()
+reopen_wifi()
 assert(items["wifi.speed"].properties.label == "Link rate: --")
 -- A delayed link-rate response cannot undo a disconnect.
 defer_profiler = true
-items.wifi.callbacks["mouse.clicked"]()
-items.wifi.callbacks["mouse.clicked"]()
+reopen_wifi()
 assert(pending_profiler)
 connected = false
 items.wifi.callbacks.wifi_change()

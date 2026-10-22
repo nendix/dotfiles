@@ -11,15 +11,11 @@ end
 function popup.attach(parent, refresh)
   table.insert(parents, parent)
   parent:subscribe("mouse.clicked", function()
-    local opening = parent:query().popup.drawing == "off"
+    if parent:query().popup.drawing == "on" then return end
     close_all()
-    if opening then
-      refresh()
-      parent:set({ popup = { drawing = true } })
-    end
+    refresh()
+    parent:set({ popup = { drawing = true } })
   end)
-  -- The global subscription preserves the transition from the parent into its popup.
-  parent:subscribe({ "mouse.exited", "mouse.exited.global", "front_app_switched" }, close_all)
 end
 
 function popup.action(item, callback)
@@ -43,7 +39,6 @@ function popup.action(item, callback)
     item:set({ background = { drawing = false } })
   end)
   item:subscribe("mouse.clicked", function()
-    close_all()
     item:set({ background = { drawing = false } })
     callback()
   end)
