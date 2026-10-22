@@ -31,6 +31,9 @@ sbar = {
     function item:set(values)
       self.set_count = self.set_count + 1
       merge(self.properties, values)
+      if values.background and values.background.color then
+        self.properties.background.drawing = true
+      end
     end
     function item:subscribe(events, callback)
       if type(events) == "string" then events = { events } end
@@ -172,6 +175,7 @@ end
 for _, name in ipairs({ "wifi.settings", "battery.settings" }) do
   local action = items[name]
   assert(action.properties.width == 232)
+  assert(not action.properties.background.drawing)
   action.callbacks["mouse.entered"]()
   assert(action.properties.background.drawing)
   assert(action.properties.background.color == colors.workspace_active)
