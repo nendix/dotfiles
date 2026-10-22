@@ -23,7 +23,17 @@ function popup.attach(parent, refresh)
 end
 
 function popup.action(item, callback)
-  item:set({ width = 232, background = { color = colors.workspace_active, border_width = 0 } })
+  item:set({
+    width = 224,
+    background = {
+      color = colors.workspace_active,
+      border_width = 0,
+      height = 22,
+      padding_left = 4,
+      padding_right = 4,
+      corner_radius = 5,
+    },
+  })
   -- Setting a background color enables drawing in SketchyBar.
   item:set({ background = { drawing = false } })
   item:subscribe("mouse.entered", function()
