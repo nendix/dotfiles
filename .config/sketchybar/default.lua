@@ -17,13 +17,14 @@ sbar.default({
 		padding_right = settings.paddings,
 	},
 	background = {
-		height = 26,
+		height = 24,
 		color = colors.translucent_black,
 		border_width = 1,
 		border_color = colors.border,
 		corner_radius = 8,
 	},
 	popup = {
+		y_offset = 4,
 		background = {
 			drawing = true,
 			color = colors.translucent_grey,

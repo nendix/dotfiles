@@ -105,7 +105,7 @@ mode = '"service"'
 commands = {}
 items["rift.watcher"].callbacks.rift_binding_mode_changed()
 assert(#commands == 1 and commands[1] == "rift-cli query binding-mode")
-assert(items["space.0"].properties.background.border_color == colors.border)
+assert(items["space.0"].properties.background.border_color == colors.translucent_red)
 assert(items["space.1"].properties.background.border_color == colors.translucent_red)
 assert(items["space.0"].properties.background.drawing)
 assert(not items.spaces)
@@ -119,6 +119,15 @@ workspaces[2].is_active = true
 items["rift.watcher"].callbacks.rift_workspace_changed()
 assert(items["space.1"].properties.drawing)
 assert(items["space.1"].properties.background.color == colors.workspace_active)
+for index = 0, 2 do
+  assert(items["space." .. index].properties.background.border_color == colors.translucent_red)
+end
+mode = '"default"'
+items["rift.watcher"].callbacks.rift_binding_mode_changed()
+items["rift.watcher"].callbacks.rift_workspace_changed()
+for index = 0, 2 do
+  assert(items["space." .. index].properties.background.border_color == colors.border)
+end
 workspaces[2].is_active = false
 items["rift.watcher"].callbacks.rift_workspace_changed()
 assert(not items["space.1"].properties.drawing)

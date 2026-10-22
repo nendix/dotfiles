@@ -46,6 +46,8 @@ lua tests/checks.lua
 - Occupied and active Rift workspaces appear, each in its own pill with app icons.
   Each pill has 8px outer padding; number-to-app gap is 12px, with one space between app icons.
 - Workspace changes query workspaces only; binding-mode changes query mode only.
+- Service mode gives every workspace a red border, including the active workspace.
+  Leaving service mode restores normal borders.
 - A 10-second watchdog restores subscriptions after Rift restarts.
 - Calendar shows the current month, with a centered bold heading and bold today.
   The clock updates every 30 seconds; the grid rebuilds only when the date changes.
