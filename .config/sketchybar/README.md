@@ -29,7 +29,7 @@ The backup only works with its original Lua version.
 
 ## Checks
 
-Local, Git-ignored mocked checks leave the live bar untouched:
+Tracked mocked checks leave the live bar untouched:
 
 ```sh
 lua tests/checks.lua
@@ -37,10 +37,12 @@ lua tests/checks.lua
 
 ## Behavior
 
-- Only occupied Rift workspaces appear, each in its own pill with app icons.
+- Occupied and active Rift workspaces appear, each in its own pill with app icons.
   Each pill has 8px outer padding; number-to-app gap is 12px, with one space between app icons.
 - Workspace changes query workspaces only; binding-mode changes query mode only.
 - A 10-second watchdog restores subscriptions after Rift restarts.
+- Calendar shows the current month, with a centered bold heading and bold today.
+  The clock updates every 30 seconds; the grid rebuilds only when the date changes.
 - Battery shows percentage and power-source icon. Red at <=20% on battery;
   normal color on AC. Devices without battery omit the item.
 - Wi-Fi shows connection state, not signal strength. SSID and negotiated link

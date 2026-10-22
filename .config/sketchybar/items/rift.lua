@@ -25,7 +25,7 @@ local function update_mode()
 		end
 		border_color = mode == "service" and colors.translucent_red or colors.border
 		for _, space in pairs(spaces) do
-			space:set({ background = { border_color = border_color } })
+			space:set({ background = { border_color = space.is_active and colors.border or border_color } })
 		end
 	end)
 end
@@ -77,7 +77,7 @@ local function refresh()
 			local occupied = workspace.window_count > 0
 			spaces[index].is_active = workspace.is_active
 			spaces[index]:set({
-				drawing = occupied,
+				drawing = occupied or workspace.is_active,
 				background = {
 					color = workspace.is_active and colors.workspace_active or colors.translucent_black,
 					border_color = workspace.is_active and colors.border or border_color,
