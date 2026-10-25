@@ -4,6 +4,7 @@ background-opacity = 0.8
 background-blur-radius = 20
 
 mouse-hide-while-typing = true
+cursor-style-blink = false
 
 window-padding-x = 4
 window-padding-y = 4

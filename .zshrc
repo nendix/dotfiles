@@ -60,10 +60,12 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
 
 # vim mode
-zinit ice depth=1
-zinit light jeffreytse/zsh-vi-mode
-ZVM_VI_HIGHLIGHT_FOREGROUND=#c5c9c7
-ZVM_VI_HIGHLIGHT_BACKGROUND=#3E424A
+bindkey -v
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M viins '^G' edit-command-line
+bindkey -M viins '^E' autosuggest-accept
+bindkey -M vicmd '^G' edit-command-line
 
 # aliases
 alias rm="trash"
@@ -89,17 +91,19 @@ path=(
 export FZF_DEFAULT_OPTS="--multi"
 
 # shell integrations
-# Vi mode initializes lazily and would overwrite earlier fzf bindings.
-zvm_after_init() {
-  eval "$(fzf --zsh)"
-  bindkey -M viins "©" fzf-cd-widget
-  bindkey -M viins "^r" fzf-history-widget
-}
+eval "$(fzf --zsh)"
+bindkey -M viins "©" fzf-cd-widget
+bindkey -M viins "^r" fzf-history-widget
 eval "$(zoxide init --cmd j zsh)"
 eval "$(direnv hook zsh)"
 
 # Activate Node.js versions with fnm and switch on directory changes.
 eval "$(fnm env --use-on-cd --shell zsh)"
+
+# Ghostty only auto-initializes integration in shells it launches directly.
+if [[ -n $GHOSTTY_RESOURCES_DIR && -r "$GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration" ]]; then
+  source "$GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration"
+fi
 
 # Load after plugins and integrations that wrap line-editor widgets.
 zinit light zsh-users/zsh-syntax-highlighting
