@@ -6,6 +6,24 @@ Requires SketchyBar, Lua, SbarLua, and `rift-cli` on PATH.
 Reload with `sketchybar --reload`; loaded Lua files also hot-reload on save.
 Keep the active config's file symlinks in sync when adding or removing modules.
 
+## Password-free Low Power Mode toggle
+
+Install the narrowly scoped sudoers rule once (configured for user `daniele`):
+
+```sh
+cd ~/dotfiles
+/usr/sbin/visudo -cf .config/sketchybar/sudoers-low-power && \
+  sudo install -o root -g wheel -m 0440 .config/sketchybar/sudoers-low-power /private/etc/sudoers.d/sketchybar-low-power
+```
+
+This permits only the four exact battery/AC Low Power Mode commands without a
+password. The popup uses noninteractive sudo; without the rule, toggling fails
+without prompting. Remove the permission with:
+
+```sh
+sudo rm /private/etc/sudoers.d/sketchybar-low-power
+```
+
 ## Lua upgrades
 
 SbarLua is a compiled Lua module. After a Lua major-version upgrade, rebuild it
@@ -51,8 +69,9 @@ lua tests/checks.lua
 - A 10-second watchdog restores subscriptions after Rift restarts.
 - Calendar shows the current month, with a centered bold heading and bold today.
   The clock updates every 30 seconds; the grid rebuilds only when the date changes.
-- Battery shows percentage and power-source icon. Red at <=20% on battery;
-  normal color on AC. Devices without battery omit the item.
+- Battery shows percentage and power-source icon. Yellow in Low Power Mode;
+  otherwise red at <=20% on battery and normal color on AC. Its popup toggles
+  Low Power Mode for the current power source. Devices without battery omit the item.
 - Wi-Fi shows connection state, not signal strength. Its popup contains only the
   network name and Wi-Fi Settings; the name loads when opening the popup.
   Failed queries clear stale details; delayed responses cannot undo a disconnect.

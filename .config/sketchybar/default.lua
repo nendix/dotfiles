@@ -24,6 +24,7 @@ sbar.default({
 		corner_radius = 8,
 	},
 	popup = {
+		height = 26,
 		y_offset = 4,
 		background = {
 			drawing = true,

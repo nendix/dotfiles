@@ -53,7 +53,7 @@ sbar = {
     if not callback then return end
     if command == "rift-cli query workspaces" then callback(workspaces, 0)
     elseif command == "rift-cli query binding-mode" then callback(mode, 0)
-    elseif command == "pmset -g batt" then callback(battery_result, battery_code)
+    elseif command == "pmset -g batt" or command == "pmset -g batt && pmset -g live" then callback(battery_result, battery_code)
     elseif command:find("ipconfig", 1, true) then
       if defer_summary then pending_summary = callback
       else callback(connected and "LinkStatusActive : TRUE\nBSSID : aa:bb:cc:dd:ee:ff\nSSID : Test\n" or "LinkStatusActive : FALSE\n", wifi_code) end
@@ -67,6 +67,32 @@ assert(items.battery.properties.icon.color == colors.red)
 battery_result = "Now drawing from 'AC Power'\n20%; charging;"
 items.battery.callbacks.power_source_change()
 assert(items.battery.properties.icon.color == colors.white)
+for _, source in ipairs({ "Battery Power", "AC Power" }) do
+  battery_result = "Now drawing from '" .. source .. "'\n20%;\n lowpowermode 1\n"
+  items.battery.callbacks.routine()
+  assert(items.battery.properties.label.string == "20%")
+  assert(items.battery.properties.icon.color == colors.yellow)
+  assert(items.battery.properties.label.color == colors.yellow)
+end
+battery_result = "Now drawing from 'Battery Power'\n20%;\n lowpowermode 0\n"
+items.battery.callbacks.routine()
+assert(items.battery.properties.label.string == "20%")
+assert(items.battery.properties.icon.color == colors.red)
+for _, case in ipairs({
+  { source = "Battery Power", flag = "-b", enabled = "0", value = "1" },
+  { source = "AC Power", flag = "-c", enabled = "1", value = "0" },
+}) do
+  battery_result = "Now drawing from '" .. case.source .. "'\n20%;\n lowpowermode " .. case.enabled .. "\n"
+  local first = #commands + 1
+  items["battery.low_power"].callbacks["mouse.clicked"]()
+  assert(commands[first + 1] == "/usr/bin/sudo -n /usr/bin/pmset " .. case.flag .. " lowpowermode " .. case.value)
+  assert(commands[first + 2] == "pmset -g batt && pmset -g live")
+end
+battery_code = 1
+local first = #commands + 1
+items["battery.low_power"].callbacks["mouse.clicked"]()
+assert(#commands == first)
+battery_code = 0
 battery_result = "Now drawing from 'AC Power'"
 items.battery.callbacks.routine()
 assert(not items.battery.properties.drawing)
@@ -183,17 +209,15 @@ for _, parent in ipairs(parents) do
 end
 for _, name in ipairs({ "wifi.settings", "battery.settings" }) do
   local action = items[name]
-  assert(action.properties.width == 224)
-  assert(action.properties.background.padding_left == 4)
-  assert(action.properties.background.padding_right == 4)
-  assert(action.properties.background.height == 22)
-  assert(action.properties.background.corner_radius == 5)
-  assert(not action.properties.background.drawing)
+  assert(action.properties.width == 232)
+  assert(action.properties.background.drawing)
+  assert(action.properties.background.color == colors.transparent)
   action.callbacks["mouse.entered"]()
   assert(action.properties.background.drawing)
   assert(action.properties.background.color == colors.hover)
   action.callbacks["mouse.exited"]()
-  assert(not action.properties.background.drawing)
+  assert(action.properties.background.drawing)
+  assert(action.properties.background.color == colors.transparent)
   for _, parent in ipairs(parents) do parent:set({ popup = { drawing = true } }) end
   action.callbacks["mouse.clicked"]()
   for _, parent in ipairs(parents) do assert(parent:query().popup.drawing == "off") end

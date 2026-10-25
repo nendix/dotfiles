@@ -1,0 +1,2 @@
+# Only permit this user's Low Power Mode toggles, with exact arguments.
+daniele ALL=(root) NOPASSWD: /usr/bin/pmset -b lowpowermode 0, /usr/bin/pmset -b lowpowermode 1, /usr/bin/pmset -c lowpowermode 0, /usr/bin/pmset -c lowpowermode 1

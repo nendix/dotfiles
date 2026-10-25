@@ -37,6 +37,7 @@ return {
 	popup = {
 		network = "󰀂",
 		settings = "󰒓",
+		low_power = "󰌪",
 		time = "󱎫",
 	},
 }
