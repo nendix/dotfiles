@@ -1,17 +1,20 @@
+# Keep the first occurrence of each command and completion directory.
+typeset -U path fpath
+
+# Initialize Homebrew before loading plugins.
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-# download zinit, if it's not there yet
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-
-# source/load zinit
-source "${ZINIT_HOME}/zinit.zsh"
-
-# If you're using macOS, you'll want this enabled
-if [[ -f "/opt/homebrew/bin/brew" ]] then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+# Stop initialization if bootstrap fails, rather than calling a missing zinit.
+if [[ ! -d "$ZINIT_HOME/.git" ]]; then
+  mkdir -p "${ZINIT_HOME:h}" &&
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME" || return 1
 fi
+source "${ZINIT_HOME}/zinit.zsh" || return 1
 
 # Load pure prompt
 zinit ice pick"async.zsh" src"pure.zsh" # with zsh-async library that's bundled with it.
@@ -22,8 +25,6 @@ zstyle ':prompt:pure:git:stash' show yes
 # add in zsh plugins
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light Aloxaf/fzf-tab
 
 # add in snippets
 zinit snippet OMZP::git
@@ -31,25 +32,21 @@ zinit snippet OMZP::tmux
 zinit snippet OMZP::docker-compose
 
 # load completions
-autoload -U compinit && compinit
-
+fpath+=("$HOME/.zfunc")
+autoload -Uz compinit
+compinit
 zinit cdreplay -q
-
-# keybindings
-bindkey "©" fzf-cd-widget
-bindkey "^r" fzf-history-widget
+zinit light Aloxaf/fzf-tab
 
 # history
-HISTSIZE=5000
+HISTSIZE=10000
 HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
+SAVEHIST=5000
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
-setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # completion styling
@@ -57,8 +54,8 @@ zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab: complete:cd:*' ff-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --color=always -- "$realpath"'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --color=always -- "$realpath"'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
 
@@ -69,10 +66,6 @@ ZVM_VI_HIGHLIGHT_FOREGROUND=#c5c9c7
 ZVM_VI_HIGHLIGHT_BACKGROUND=#3E424A
 
 # aliases
-function take {
-  mkdir -p $1
-  cd $1
-}
 alias rm="trash"
 alias vim="nvim"
 alias ls="eza --icons=auto --color=auto"
@@ -85,24 +78,28 @@ alias k="clear"
 
 # exports
 export EDITOR=nvim
-export TERM=xterm-256color
-export PATH="$HOME/Developer/utils:$PATH"
-export PATH="$HOME/go/bin:$PATH"
+
+path=(
+  "$HOME/go/bin"
+  "$HOME/.antigravity/antigravity/bin"
+  $path
+)
 
 # fzf styling
 export FZF_DEFAULT_OPTS="--multi"
 
 # shell integrations
-eval "$(fzf --zsh)"
+# Vi mode initializes lazily and would overwrite earlier fzf bindings.
+zvm_after_init() {
+  eval "$(fzf --zsh)"
+  bindkey -M viins "©" fzf-cd-widget
+  bindkey -M viins "^r" fzf-history-widget
+}
 eval "$(zoxide init --cmd j zsh)"
 eval "$(direnv hook zsh)"
 
-# load nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# Activate Node.js versions with fnm and switch on directory changes.
+eval "$(fnm env --use-on-cd --shell zsh)"
 
-fpath+=~/.zfunc; autoload -Uz compinit; compinit
-
-# Added by Antigravity
-export PATH="/Users/daniele/.antigravity/antigravity/bin:$PATH"
+# Load after plugins and integrations that wrap line-editor widgets.
+zinit light zsh-users/zsh-syntax-highlighting
