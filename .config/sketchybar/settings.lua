@@ -1,4 +1,4 @@
 return {
-  font = "Iosevka Nerd Font",
-  paddings = 8,
+	font = "Iosevka Nerd Font",
+	paddings = 8,
 }

@@ -38,26 +38,26 @@ horizontal = 8.0
 vertical = 8.0
 
 [settings.layout.stack]
-stack_offset = 12.0
+stack_offset = 16.0
 default_orientation = "horizontal"
-
-[settings.layout.bsp]
-window_insertion_point = "end_of_tree"
 
 [settings.layout.master_stack]
 new_window_placement = "stack"
 
 [settings.layout.scrolling]
-column_width_ratio = 0.9
+column_width_ratio = 0.95
 expand_single_column = true
+preserve_window_sizes = false
+max_column_width_ratio = 0.95
+min_column_width_ratio = 0.05
 
 [settings.layout.scrolling.gestures]
-enabled = false
+enabled = true
 invert_horizontal = true
 
 [settings.gestures]
 enabled = true
-fingers = 3
+fingers = 4
 skip_empty = true
 haptics_enabled = false
 distance_pct = 0.04
@@ -68,7 +68,9 @@ display_style = "label"
 active_label = "index"
 
 [settings.ui.mission_control]
-enabled = true
+enabled = false
+show_empty_workspaces = false
+window_previews = false
 
 [settings.ui.stack_line]
 enabled = true
