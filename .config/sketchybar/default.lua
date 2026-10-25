@@ -5,7 +5,7 @@ sbar.default({
 	updates = "when_shown",
 	blur_radius = 25,
 	icon = {
-		font = { family = settings.font, style = "Regular", size = 14.0 },
+		font = { family = settings.icon_font, style = "Regular", size = 14.0 },
 		color = colors.white,
 		padding_left = settings.paddings,
 		padding_right = settings.paddings,
